@@ -2,7 +2,6 @@ import React from "react";
 import { landingPageStyle } from "../styles/pages-style";
 import {
   Typography,
-  StylesProvider,
   Paper,
   CssBaseline,
   Container
@@ -15,7 +14,7 @@ export default function Landing() {
     <Container className={root}>
       <CssBaseline />
       <Paper>
-        <Typography variant="headline" component="h3">
+        <Typography variant="h3" component="h3">
           Our Content.
         </Typography>
       </Paper>

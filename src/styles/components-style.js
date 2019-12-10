@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Paper, AppBar } from "@material-ui/core";
+import { AppBar } from "@material-ui/core";
 
 const StyledNavbar = styled(AppBar)``;
 const StyledLogo = styled.img`
