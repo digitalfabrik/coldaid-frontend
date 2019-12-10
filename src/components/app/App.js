@@ -4,6 +4,7 @@ import GlobalStyles from "../../styles/app-style";
 import Landing from "../../pages/Landing";
 import Navbar from "../../components/navbar/NavigationBar";
 import Geolocate from "../../components/DemoGeoLocate";
+import {UsePositionDemo} from "../../components/usePossitionDemo";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           render={routeProps => <Landing {...routeProps} />}
         />
         <Route exact path="/gps" component={Geolocate}/>
+        <Route exact path="/gpsdemo" component={UsePositionDemo}/>
         {/*
         <Route exact path="/" component={}/>
         <Route exact path="/" component={}/>
