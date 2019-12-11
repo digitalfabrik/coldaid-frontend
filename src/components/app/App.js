@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import GlobalStyles from "../../styles/app-style";
 import Landing from "../../pages/Landing";
 import Navbar from "../../components/navbar/NavigationBar";
+import FindShelters from "../../pages/FindShelters";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           path="/"
           render={routeProps => <Landing {...routeProps} />}
         />
+        <Route exact path="/find_shelters" component={FindShelters}/>
         {/* <Route exact path="/" component={}/>
         <Route exact path="/" component={}/>
         <Route exact path="/" component={}/>
