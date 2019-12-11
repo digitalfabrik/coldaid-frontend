@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Container } from "@material-ui/core";
+import { Container, Box } from "@material-ui/core";
 
 const StyledFeatureContainer = styled(Container)`
-  position: fixed;
+  position: relative;
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 5px;
@@ -11,5 +11,6 @@ const StyledFeatureContainer = styled(Container)`
   text-align: center;
   justify-items: center;
 `;
+const StyledLandingContainer = styled(Box)``;
 
-export { StyledFeatureContainer };
+export { StyledFeatureContainer, StyledLandingContainer };

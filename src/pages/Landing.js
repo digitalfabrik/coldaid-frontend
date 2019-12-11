@@ -1,11 +1,12 @@
 import React from "react";
-import { Paper, CssBaseline, Box, Container } from "@material-ui/core";
+import { Paper, CssBaseline, Container } from "@material-ui/core";
 import Description from "../components/Landingpage/Description";
 import Features from "../components/Landingpage/Features";
+import { StyledLandingContainer } from "../styles/pages-style";
 
 export default function Landing() {
   return (
-    <Box>
+    <StyledLandingContainer>
       <CssBaseline />
       <Container>
         <Paper>
@@ -15,6 +16,6 @@ export default function Landing() {
       {/* <Paper> */}
       <Features />
       {/* </Paper> */}
-    </Box>
+    </StyledLandingContainer>
   );
 }
