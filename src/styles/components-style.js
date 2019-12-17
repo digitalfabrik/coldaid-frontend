@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { AppBar, Typography, Grid } from "@material-ui/core";
-import { AccessibilityNew, Map } from "@material-ui/icons";
+import { AppBar, Typography } from "@material-ui/core";
+import { AccessibilityNew, Map, Subject} from "@material-ui/icons";
 
 /* Styles for Navbar */
 
@@ -37,6 +37,9 @@ const featureButtonStyle = css`
 const StyledMapIcon = styled(Map)`
   ${featureButtonStyle}
 `;
+const StyledSubjectIcon = styled(Subject)`
+  ${featureButtonStyle}
+`;
 const StyledAccessibilityNewIcon = styled(AccessibilityNew)`
   ${featureButtonStyle}
 `;
@@ -63,5 +66,6 @@ export {
   StyledMapIcon,
   StyledAccessibilityNewIcon,
   StyledFeature,
-  StyledHeader
+  StyledHeader,
+  StyledSubjectIcon
 };

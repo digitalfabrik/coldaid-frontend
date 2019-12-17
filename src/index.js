@@ -7,6 +7,7 @@ import {
   ThemeProvider,
   createMuiTheme
 } from "@material-ui/core";
+import './i18n';
 
 const theme = createMuiTheme();
 
