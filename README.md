@@ -1,6 +1,10 @@
 # coldaid-frontend
 Frontend to provide the functionality to request a coldaid assistance
 
+### `npm install`
+
+Install necessary npm modules.
+
 ### `npm start`
 
 Runs the app in the development mode.<br />

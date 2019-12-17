@@ -1,24 +1,21 @@
 import React from "react";
-import { landingPageStyle } from "../styles/pages-style";
-import {
-  Typography,
-  StylesProvider,
-  Paper,
-  CssBaseline,
-  Container
-} from "@material-ui/core";
+import { Paper, CssBaseline, Container } from "@material-ui/core";
+import Description from "../components/Landingpage/Description";
+import Features from "../components/Landingpage/Features";
+import { StyledLandingContainer } from "../styles/pages-style";
 
 export default function Landing() {
-  console.log(landingPageStyle());
-  const { root } = landingPageStyle();
   return (
-    <Container className={root}>
+    <StyledLandingContainer>
       <CssBaseline />
-      <Paper>
-        <Typography variant="headline" component="h3">
-          Our Content.
-        </Typography>
-      </Paper>
-    </Container>
+      <Container>
+        <Paper>
+          <Description />
+        </Paper>
+      </Container>
+      {/* <Paper> */}
+      <Features />
+      {/* </Paper> */}
+    </StyledLandingContainer>
   );
 }

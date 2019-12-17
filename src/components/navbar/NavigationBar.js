@@ -8,7 +8,6 @@ export default function NavigationBar() {
       <StyledNavbar color="default" position="static">
         <IntegreatLogo />
       </StyledNavbar>
-      ;
     </React.Fragment>
   );
 }
