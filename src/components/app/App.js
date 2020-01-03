@@ -5,10 +5,10 @@ import Landing from "../../pages/Landing";
 import Navbar from "../../components/navbar/NavigationBar";
 
 import Map from "../../pages/Map";
-import Help from "../../pages/Help";
-import Page4 from "../../pages/Page4";
+import Help from "../../pages/Info";
+import Page4 from "../../pages/Kältebus";
 
-import FindShelters from "../../pages/FindShelters";
+import FindShelters from "../../pages/ShelterOverview";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           path="/"
           render={routeProps => <Landing {...routeProps} />}
         />
-          <Route exact path="/find_shelters" component={FindShelters}/>
+        <Route exact path="/find_shelters" component={FindShelters} />
         {/*
         <Route exact path="/" component={}/>
         <Route exact path="/" component={}/>
