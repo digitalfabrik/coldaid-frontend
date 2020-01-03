@@ -13,8 +13,8 @@ const useStyles = makeStyles({
     padding: "1rem"
   },
   featureContainer: {
-    display: "inline",
-    top: "0px"
+    top: "0px",
+    textAlign: "center"
   },
   icon: {
     height: "64px",
