@@ -15,7 +15,7 @@ export default function MapPage () {
         position = [latitude.toFixed(2), longitude.toFixed(2)]
     }
     return (
-        <Map center={position} zoom={13} style={{height: "90vh"}}>
+        <Map center={position} zoom={12} style={{height: "90vh"}}>
             <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -23,10 +23,14 @@ export default function MapPage () {
             {
             	shelters.map((shelter, i) =>
 					<Marker position={[shelter.address.geo.lat, shelter.address.geo.long]}>
-			            <Popup>
-			                <span>
+			         
+			            <Tooltip direction='center' offset={[0, 50]} opacity={1} permanent={false}>
+			                      <span>
 			                    {shelter.name}
-			                </span> <br/>
+			                </span>
+                            <span>
+                               {shelter.name}
+                            </span> <br/>
                             <span>
                                Email: {shelter.email}
                             </span> <br/>
@@ -35,12 +39,7 @@ export default function MapPage () {
                             </span> <br/>
                             <span>
                                Opening Hours: {shelter.opening_hours.from} To {shelter.opening_hours.to}
-                            </span>
-			            </Popup>
-			            <Tooltip direction='right' offset={[-8, -2]} opacity={1} permanent>
-			                      <span>
-			                    {shelter.name}
-			                </span>              
+                            </span>              
 			            </Tooltip>
 		            </Marker>
 
