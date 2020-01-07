@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import {useTranslation} from 'react-i18next';
+import Filters from "./Filters";
 
 let rows = createData();
 
@@ -59,14 +61,15 @@ function getSorting(order, orderBy) {
 }
 
 const headCells = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-    { id: 'address', numeric: true, disablePadding: false, label: 'Address' },
-    { id: 'available_beds', numeric: true, disablePadding: false, label: 'Available Beds' },
-    { id: 'intake_hours', numeric: true, disablePadding: false, label: 'Intake Hours' },
-    { id: 'distance', numeric: true, disablePadding: false, label: 'Distance' },
+    { id: 'name', numeric: false, disablePadding: true, label: 'name' },
+    { id: 'address', numeric: true, disablePadding: false, label: 'address' },
+    { id: 'available_beds', numeric: true, disablePadding: false, label: 'available_beds' },
+    { id: 'intake_hours', numeric: true, disablePadding: false, label: 'intake_hours' },
+    { id: 'distance', numeric: true, disablePadding: false, label: 'distance' },
 ];
 
 function EnhancedTableHead(props) {
+    const {t}                   = useTranslation();
     const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
     const createSortHandler = property => event => {
         onRequestSort(event, property);
@@ -89,7 +92,7 @@ function EnhancedTableHead(props) {
                             direction={order}
                             onClick={createSortHandler(headCell.id)}
                         >
-                            {headCell.label}
+                            {t(headCell.label)}
                             {orderBy === headCell.id ? (
                                 <span className={classes.visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
@@ -250,6 +253,9 @@ export default function FindShelters() {
 
     return (
         <div className={classes.root}>
+            <div>
+                <Filters/>
+            </div>
             <Paper className={classes.paper}>
                 <EnhancedTableToolbar numSelected={selected.length} />
                 <div className={classes.tableWrapper}>

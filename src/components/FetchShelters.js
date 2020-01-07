@@ -2,7 +2,7 @@ import React from "react";
 import DummyData from "../components/DummyData";
 
 
-const FetchShelter = () =>{
+const FetchShelter = (filters) =>{
 
     console.log('fetch shelters function');
     return DummyData;

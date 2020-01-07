@@ -38,7 +38,12 @@ const resources = {
                                      "      nulla laoreet porttitor eu nec lorem. Vestibulum vitae lacinia orci.\n" +
                                      "      Pellentesque tristique nulla sed metus semper lobortis. Aenean auctor id\n" +
                                      "      est sed facilisis.",
-            "shelters": "Shelters"
+            "shelters": "Shelters",
+            "name": "Name",
+            "address": "Address",
+            "available_beds": "Available Beds",
+            "intake_hours": "Intake Hours",
+            "distance": "Distance"
         }
     },
     de: {
@@ -75,7 +80,12 @@ const resources = {
                                      "      nulla laoreet porttitor eu nec lorem. Vestibulum vitae lacinia orci.\n" +
                                      "      Pellentesque tristique nulla sed metus semper lobortis. Aenean auctor id\n" +
                                      "      est sed facilisis.",
-            "shelters": "Unterkünfte"
+            "shelters": "Unterkünfte",
+            "name": "Name",
+            "address": "Adresse",
+            "available_beds": "Verfügbare Betten",
+            "intake_hours": "Aufnahmezeiten",
+            "distance": "Distanz"
         },
 
 
