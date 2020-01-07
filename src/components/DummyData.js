@@ -9,7 +9,7 @@ const shelters = [
             'city': 'Berlin',
             'geo': {
                 'lat': 52.543091,
-                'long': 13.364982
+                'long': 13.164982
             }
 
         },
