@@ -6,7 +6,8 @@ import Navbar from "../../components/navbar/NavigationBar";
 
 import Map from "../../pages/Map";
 import Help from "../../pages/Info";
-import Page4 from "../../pages/Kältebus";
+import KaeltebusFormular from "../../pages/KaeltebusFormular";
+import KaeltebusLogin from "../../pages/KaeltebusLogin";
 
 import FindShelters from "../../pages/ShelterOverview";
 
@@ -24,12 +25,12 @@ function App() {
         <Route exact path="/find_shelters" component={FindShelters} />
         {/*
         <Route exact path="/" component={}/>
-        <Route exact path="/" component={}/>
-        <Route exact path="/" component={}/> */}
+      <Route exact path="/" component={}/> */}
         <Route exact path="/map" component={Map} />
         <Route exact path="/help" component={Help} />
         <Route exact path="/find_shelters" component={FindShelters} />
-        <Route exact path="/page4" component={Page4} />
+        <Route exact path="/kaeltebus_formular" component={KaeltebusFormular} />
+        <Route exact path="/kaeltebus_login" component={KaeltebusLogin} />
         <Redirect to="/" />
       </Switch>
     </React.Fragment>

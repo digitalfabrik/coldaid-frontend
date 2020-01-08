@@ -5,13 +5,14 @@ import Typography from "@material-ui/core/Typography";
 /* Styles for Navbar */
 
 const StyledNavbar = styled(AppBar)`
+  padding: 3px;
   background-color: #fff;
   box-shadow: 0px 2px 3px 0px rgba(204, 204, 204, 0.75);
 `;
 const StyledLogo = styled.img`
   width: auto;
   max-height: 58px;
-  padding: 5px;
+  padding: 2px;
 `;
 
 /* End of Navbar */

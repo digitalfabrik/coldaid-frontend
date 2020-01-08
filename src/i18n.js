@@ -58,12 +58,12 @@ const resources = {
       shelters: "Unterkünfte",
       features_header: "Entdecke unsere Features",
       landingText:
-        "Dieses Projekt der TU-Berlin hat sich zum Ziel gesetzt Obdachlosenheime" +
+        "Dieses Projekt der TU-Berlin hat sich zum Ziel gesetzt, Obdachlosenheime" +
         " mit unserer digitalen Welt zu verknüpfen. Mit unserer Website können Sie einfach Unterkünfte" +
-        " für Personen ausfindig machen, die einen Schlafplatz benötigen. Zur Zeit können diese auf einer " +
-        "Karte oder in einer Liste angezeigt. \n" +
+        " für Personen ausfindig machen, die einen Schlafplatz benötigen. Zurzeit können diese auf einer " +
+        "Karte oder in einer Liste angezeigt werden. \n" +
         "\nAußerdem arbeiten wir in enger Zusammenarbeit mit dem Kältebus der Stadtmission " +
-        "Berlin, die Personen helfen welche aus eigener Kraft den Weg in einer Unterkunft" +
+        "Berlin, die Personen helfen, welche aus eigener Kraft den Weg in eine Unterkunft" +
         " nicht mehr erbringen können."
     }
   }

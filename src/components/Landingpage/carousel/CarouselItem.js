@@ -6,27 +6,30 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 const useStyles = makeStyles({
   root: {
     display: "grid",
-    gridTemplateColumns: "20% 20% 60%",
-    gridTemplateRows: "50px auto",
-    textAlign: "center"
+    gridTemplateColumns: "45vw 55vw",
+    gridTemplateRows: "225px 250px",
+    textAlign: "center",
+    height: "475px"
   },
   title: {
-    gridColumn: "1 / 3",
+    gridColumn: "1 / 2",
     gridRow: "1/2",
+    padding: "1rem",
+    fontSize: "26px",
+    alignSelf: "flex-end"
+  },
+  content: {
+    gridColumn: "1 / 2",
+    alignSelf: "flex-start",
+    gridRow: "2/3",
     padding: "1rem",
     fontSize: "26px"
   },
-  content: {
-    gridColumn: "1 / 3",
-    gridRow: "2/3",
-    padding: "5.5rem",
-    fontSize: "26px"
-  },
   img: {
-    gridColumn: "3 / 4",
+    gridColumn: "2 / 3",
     gridRow: "1/3",
-    height: "350px",
-    width: "725px",
+    height: "475px",
+    width: "55vw",
     justifySelf: "end"
   }
 });

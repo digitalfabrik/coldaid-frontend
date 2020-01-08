@@ -43,13 +43,13 @@ export default function Features() {
       icon: <ContactPhoneIcon className={icon} />,
       header: translation("kaeltebus_feature_header"),
       text: translation("kaeltebus_feature_text"),
-      link: "/page4"
+      link: "/kaeltebus_formular"
     },
     {
       icon: <AirportShuttleIcon className={icon} />,
       header: translation("kaeltebus_feature_header"),
       text: translation("kaeltebus_feature_text"),
-      link: "/page4"
+      link: "/kaeltebus_login"
     },
     {
       icon: <InfoOutlinedIcon className={icon} />,
