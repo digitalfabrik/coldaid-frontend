@@ -20,7 +20,12 @@ const StyledLogo = styled.img`
 
 const StyledDescription = styled(Typography)`
   text-align: center;
-  font: 16px "Courier New";
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  padding: 2rem;
+  /* font-weight: bold; */
+  white-space: pre-line;
+  background-color: "#FFFFFF";
 `;
 
 /* END of Landing Page */

@@ -12,10 +12,11 @@ const useStyles = makeStyles({
       background: "#F5F5F5"
     },
     color: "black",
-    height: "200px"
+    height: "300px"
   },
   body: {
-    width: "252px"
+    width: "252px",
+    padding: "0.5rem"
   }
 });
 

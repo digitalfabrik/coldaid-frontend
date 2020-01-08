@@ -8,8 +8,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 1rem;
+    font-weight:bold;
     background-color:"#FFFFFF"
   }
 `;
