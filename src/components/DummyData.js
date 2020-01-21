@@ -1,6 +1,7 @@
 const shelters = [
     {
         'name': 'Obdachlosen e.V.',
+        'current_language': 'de-de',
         'description': 'Beschreibung inkl. Öffnungszeiten und Kontaktpersonen / E-Mail & Website',
         'short_description': 'Beschreibung in 1-2 Sätzen',
         'address': {
@@ -29,8 +30,23 @@ const shelters = [
             'male_only': false,
             'kids_welcome': true
         },
-        'spoken_languages':['English', 'German'],
-        'institution': 'church',
+        'spoken_languages':[
+            {
+                'translated': 'German',
+                'code': 'de-de',
+                'native': 'Deutsch'
+            },
+            {
+                'translated': 'English',
+                'code': 'en-us',
+                'native': 'English'
+            }
+        ],
+        'institution': {
+            'slug': 'berliner-stadtmission',
+            'name': 'Berliner Stadtmission',
+            'thumbnail': 'https://tailwindcss.com/img/card-top.jpg'
+        },
         'beds': [
             {
                 'target_group': 'female_only',
