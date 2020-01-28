@@ -15,24 +15,29 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import {useTranslation} from 'react-i18next';
 import Filters from "./Filters";
+import availableFilters from './../constants/FilterConfig'
 
-let rows = createData();
 
+function createData(filters) {
+    //console.log(FetchShelters());
+    let allShelters = FetchShelters(filters);
+    let parsedData = [];
 
-function createData() {
-    console.log(FetchShelters());
-    let allShelters = FetchShelters();
-    let parsedData = allShelters.map(shelter =>{
-        let data = {};
-        data.name = shelter.name;
-        data.address = shelter.address.street;
-        data.available_beds = shelter.number_of_beds - shelter.taken_beds;
-        data.intake_hours = shelter.intake_hours.from +' - '+ shelter.intake_hours.to;
-        data.distance = '4.3km';
-        return data;
-    });
+    if(!allShelters === undefined || !allShelters.length == 0){
 
+         parsedData = allShelters.map(shelter =>{
+            let data = {};
+            data.name = shelter.name;
+            data.address = shelter.address.street;
+            data.available_beds = shelter.number_of_beds - shelter.taken_beds;
+            data.intake_hours = shelter.intake_hours.from +' - '+ shelter.intake_hours.to;
+            data.distance = '4.3km';
+            return data;
+        });
+
+    }
     return parsedData;
+
 }
 
 
@@ -199,6 +204,18 @@ export default function FindShelters() {
     const [dense, setDense] = React.useState(true);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+    const [filters, setFilters] = React.useState({'animals':false});
+    const onFilterChange = (event) => {
+        setFilters({ ...filters, [event.target.name]: event.target.value });
+        console.log(filters);
+    };
+    const filterHandleChange = name => event => {
+        setFilters({ ...filters, [name]: event.target.checked });
+    };
+
+    let rows = createData(filters);
+
+
     const handleRequestSort = (event, property) => {
         const isDesc = orderBy === property && order === 'desc';
         setOrder(isDesc ? 'asc' : 'desc');
@@ -254,7 +271,7 @@ export default function FindShelters() {
     return (
         <div className={classes.root}>
             <div>
-                <Filters/>
+                <Filters onFilterChange={onFilterChange} filterHandleChange={filterHandleChange} filters={filters}/>
             </div>
             <Paper className={classes.paper}>
                 <EnhancedTableToolbar numSelected={selected.length} />

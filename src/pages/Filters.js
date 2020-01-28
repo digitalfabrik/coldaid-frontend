@@ -18,49 +18,21 @@ const useStyles = makeStyles(theme => ({
 function FiltersStateManagement() {
     
 }
-export default function CheckboxesGroup() {
+export default function CheckboxesGroup(props) {
+
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        gilad: true,
-        jason: false,
-        antoine: false,
-    });
-    const [filters, setFilters] = React.useState({
-        name:""
-    });
-
-    const onFilterChange = (event) => {
-        setFilters({ ...filters, [event.target.name]: event.target.value });
-        console.log(filters);
-    };
-
-    const handleChange = name => event => {
-        setState({ ...state, [name]: event.target.checked });
-    };
-
-    const { gilad, jason, antoine } = state;
-    const error = [gilad, jason, antoine].filter(v => v).length !== 2;
-
     return (
         <div className={classes.root}>
             <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend">Rules</FormLabel>
                 <FormGroup>
                     <FormControlLabel
-                        control={<Checkbox checked={gilad} onChange={handleChange('gilad')} value="gilad" />}
-                        label="Male"
+                        control={<Checkbox checked={props.filters.animals} onChange={props.filterHandleChange('animals')} value="animals" />}
+                        label="Pets"
                     />
-                    <TextField name="name" id="standard-basic" label="Standard" onChange={onFilterChange} />
+                    <TextField name="name" id="standard-basic" label="Name" onChange={props.onFilterChange} />
                 </FormGroup>
-                <FormHelperText>Be careful</FormHelperText>
-            </FormControl>
-            <FormControl required error={error} component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Pick two</FormLabel>
-                <FormGroup>
-
-
-                </FormGroup>
-                <FormHelperText>You can display an error</FormHelperText>
+                {/*<FormHelperText>Shelter name</FormHelperText>*/}
             </FormControl>
         </div>
     );

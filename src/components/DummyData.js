@@ -27,7 +27,7 @@ const shelters = [
             'shower': false
         },
         'rules':{
-            'animals': false,
+            'animals': true,
             'shelter_seeking_person_intoxicated': false,
             'female_only': false,
             'families_welcome': false,
