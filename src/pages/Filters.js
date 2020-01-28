@@ -15,10 +15,8 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(3),
     },
 }));
-function FiltersStateManagement() {
-    
-}
-export default function CheckboxesGroup(props) {
+
+export default function Filters(props) {
 
     const classes = useStyles();
     return (

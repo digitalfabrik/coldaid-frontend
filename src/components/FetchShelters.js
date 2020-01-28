@@ -12,7 +12,7 @@ const filterData = (data,filter) =>{
 
             //Filter by string
             if (filter[key] && typeof filter[key] === 'string' )
-                if (item[key] === undefined || item[key] !== filter[key])
+                if (item[key] === undefined || !item[key].includes(filter[key]))
                     return false;
 
             //Check Boxes
