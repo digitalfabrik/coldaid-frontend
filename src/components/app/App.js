@@ -4,9 +4,11 @@ import GlobalStyles from "../../styles/app-style";
 import Landing from "../../pages/Landing";
 import Navbar from "../../components/navbar/NavigationBar";
 
+import Map from "../../pages/Map";
+import Help from "../../pages/Info";
+import KaeltebusFormular from "../../pages/KaeltebusFormular";
+import KaeltebusLogin from "../../pages/KaeltebusLogin";
 import MapPage from "../../pages/Map";
-import Help from "../../pages/Help";
-import Page4 from "../../pages/Page4";
 
 import FindShelters from "../../pages/FindShelters";
 
@@ -21,7 +23,7 @@ function App() {
           path="/"
           render={routeProps => <Landing {...routeProps} />}
         />
-          <Route exact path="/find_shelters" component={FindShelters}/>
+        <Route exact path="/find_shelters" component={FindShelters} />
         {/*
         <Route exact path="/" component={}/>
         <Route exact path="/" component={}/>
@@ -29,7 +31,8 @@ function App() {
         <Route exact path="/map" component={MapPage} />
         <Route exact path="/help" component={Help} />
         <Route exact path="/find_shelters" component={FindShelters} />
-        <Route exact path="/page4" component={Page4} />
+        <Route exact path="/kaeltebus_formular" component={KaeltebusFormular} />
+        <Route exact path="/kaeltebus_login" component={KaeltebusLogin} />
         <Redirect to="/" />
       </Switch>
     </React.Fragment>

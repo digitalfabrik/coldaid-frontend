@@ -31,11 +31,11 @@ const filterData = (data,filter) =>{
     });
 
     return filteredData;
-   /* const lessons = Snapshot.docs.map(doc => {
-        let data = doc.data();
-        data.id =  doc.id;
-        return data;
-    });*/
+    /* const lessons = Snapshot.docs.map(doc => {
+         let data = doc.data();
+         data.id =  doc.id;
+         return data;
+     });*/
     /*data= users.filter(function(item) {
         for (var key in filter) {
             if (item[key] === undefined || item[key] != filter[key])
@@ -43,7 +43,7 @@ const filterData = (data,filter) =>{
         }
         return true;
     });*/
-}
+};
 
 const FetchShelter = (filters) =>{
     return filterData(DummyData,filters);

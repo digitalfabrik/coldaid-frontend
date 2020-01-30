@@ -1,14 +1,18 @@
-import styled, { css } from "styled-components";
-import { AppBar, Typography } from "@material-ui/core";
-import { AccessibilityNew, Map, Subject} from "@material-ui/icons";
+import styled from "styled-components";
+import AppBar from "@material-ui/core/AppBar";
+import Typography from "@material-ui/core/Typography";
 
 /* Styles for Navbar */
 
-const StyledNavbar = styled(AppBar)``;
+const StyledNavbar = styled(AppBar)`
+  padding: 3px;
+  background-color: #fff;
+  box-shadow: 0px 2px 3px 0px rgba(204, 204, 204, 0.75);
+`;
 const StyledLogo = styled.img`
   width: auto;
   max-height: 58px;
-  padding: 5px;
+  padding: 2px;
 `;
 
 /* End of Navbar */
@@ -16,56 +20,14 @@ const StyledLogo = styled.img`
 /*  Styles for Landing Page */
 
 const StyledDescription = styled(Typography)`
-  font: 16px "Courier New";
-`;
-
-// Styles for Feature Container
-
-const featureButtonStyle = css`
-  color: white;
   text-align: center;
-  width: 128px;
-  height: 128px;
-  min-width: 64px;
-  min-height: 64px;
-  :hover {
-    background-color: white;
-    color: #333;
-  }
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  padding: 2rem;
+  /* font-weight: bold; */
+  white-space: pre-line;
+  background-color: "#FFFFFF";
 `;
 
-const StyledMapIcon = styled(Map)`
-  ${featureButtonStyle}
-`;
-const StyledSubjectIcon = styled(Subject)`
-  ${featureButtonStyle}
-`;
-const StyledAccessibilityNewIcon = styled(AccessibilityNew)`
-  ${featureButtonStyle}
-`;
-const StyledHeader = styled.div`
-  color: white;
-  font-size: 26px;
-  grid-column-start: 1;
-  grid-column-end: 3;
-`;
-const StyledFeature = styled.div`
-  border: 2px solid white;
-  width: 128px;
-  height: 128px;
-  min-width: 64px;
-  min-height: 64px;
-`;
-
-// END of Feature Container
 /* END of Landing Page */
-export {
-  StyledNavbar,
-  StyledLogo,
-  StyledDescription,
-  StyledMapIcon,
-  StyledAccessibilityNewIcon,
-  StyledFeature,
-  StyledHeader,
-  StyledSubjectIcon
-};
+export { StyledNavbar, StyledLogo, StyledDescription };
