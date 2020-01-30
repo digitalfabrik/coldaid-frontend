@@ -5,6 +5,7 @@ import L from 'leaflet';
 import { Map, Polygon, TileLayer, Tooltip, Marker, Popup } from 'react-leaflet'
 import FetchShelters from '../components/FetchShelters'
 import markerIcon from "../assets/images/marker.png"
+import markerIconGray from "../assets/images/marker_gray.png"
 import userMarker from "../assets/images/userMarker.png"
 import Sidebar from "react-sidebar";
 
@@ -36,6 +37,11 @@ export default class MapPage extends Component {
 
     houseIcon = L.icon({
         iconUrl: markerIcon,
+        iconSize: [50, 50]
+    });
+
+    houseIconGray = L.icon({
+        iconUrl: markerIconGray,
         iconSize: [50, 50]
     });
 
@@ -73,10 +79,13 @@ export default class MapPage extends Component {
                     <span style={{display: "block"}}>{shelter.email}</span>
                     <br/>
                     <span style={{display: "block"}}><b>Free beds:</b></span>
-                    <span style={{display: "block"}}>{shelter.number_of_beds - shelter.taken_beds}</span>
+                    <span style={{display: "block"}}>{shelter.taken_beds} / {shelter.number_of_beds}</span>
                     <br/>
                     <span style={{display: "block"}}><b>Intake hours:</b></span>
                     <span style={{display: "block"}}>{shelter.intake_hours.from} - {shelter.intake_hours.to}</span>
+                    <br/>
+                    <span style={{display: "block"}}><b>Opening hours:</b></span>
+                    <span style={{display: "block"}}>{shelter.opening_hours.from} - {shelter.opening_hours.to}</span>
                     <br/>
                     <span style={{display: "block"}}><b>Rules:</b></span>
                     <span style={{display: "block"}}>Kids: {shelter.rules.kids_welcome ? "yes": "no"}</span>
@@ -84,9 +93,33 @@ export default class MapPage extends Component {
                     <span style={{display: "block"}}>Female only: {shelter.rules.female_only ? "yes": "no"}</span>
                     <span style={{display: "block"}}>Families welcome: {shelter.rules.families_welcome ? "yes": "no"}</span>
                     <span style={{display: "block"}}>Male only: {shelter.rules.male_only ? "yes": "no"}</span>
+                    <br/>
+                    <span style={{display: "block"}}><b>Holder:</b></span>
+                    <span style={{display: "block"}}>{shelter.holder}</span>
+                    <br/>
+                    <span style={{display: "block"}}><b>Languages:</b></span>
+                    {shelter.spoken_languages.map((language, i) =>
+                        <span key={i} style={{display: "block"}}>{language}</span>
+                    )}
                 </div>
             );
         }
+    }
+
+    getToolTipInfo(shelter) {
+        return (
+            <Tooltip direction='center' offset={[0, 50]} opacity={1} permanent={false}>
+                <span>
+                   {shelter.name}
+                </span> <br/>
+                <span>
+                    Intake Hours: {shelter.opening_hours.from} To {shelter.opening_hours.to}
+                </span> <br/>
+                <span>
+                    Beds: {shelter.taken_beds} / {shelter.number_of_beds}
+                </span>
+            </Tooltip>
+        );
     }
 
     render() {
@@ -106,25 +139,10 @@ export default class MapPage extends Component {
                         <Marker position={this.state.position} icon={this.positionIcon} />
                         {
                             this.state.shelters.map((shelter, i) =>
-                                <Marker onClick={() => {this.onSetSidebarOpen(true); this.setState({selectedShelter: shelter}) }} key={i} position={[shelter.address.geo.lat, shelter.address.geo.long]} icon={this.houseIcon}>
-
-                                    <Tooltip direction='center' offset={[0, 50]} opacity={1} permanent={false}>
-                                      <span>
-                                    {shelter.name}
-                                </span>
-                                        <span>
-                                   {shelter.name}
-                                </span> <br/>
-                                        <span>
-                                   Email: {shelter.email}
-                                </span> <br/>
-                                        <span>
-                                   Phone: {shelter.phone.mobile}
-                                </span> <br/>
-                                        <span>
-                                   Intake Hours: {shelter.opening_hours.from} To {shelter.opening_hours.to}
-                                </span>
-                                    </Tooltip>
+                                <Marker onClick={() => {this.onSetSidebarOpen(true); this.setState({selectedShelter: shelter}) }}
+                                        key={i} position={[shelter.address.geo.lat, shelter.address.geo.long]}
+                                        icon={shelter.number_of_beds - shelter.taken_beds > 0 ? this.houseIcon : this.houseIconGray}>
+                                    {this.getToolTipInfo(shelter)}
                                 </Marker>
                             )
                         }
