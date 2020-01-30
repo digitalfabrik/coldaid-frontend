@@ -8,26 +8,22 @@ import markerIcon from "../assets/images/marker.png"
 import markerIconGray from "../assets/images/marker_gray.png"
 import userMarker from "../assets/images/userMarker.png"
 import Sidebar from "react-sidebar";
+import { geolocated } from "react-geolocated";
 
 
-export default class MapPage extends Component {
+class MapPage extends Component {
 
 
     constructor(props) {
         super(props);
 
         const shelters = FetchShelters();
-        //const {latitude, longitude, error} = usePosition();
-        let position = [52.52, 13.4];
-        /*if (latitude !== undefined && longitude !== undefined) {
-            position = [latitude.toFixed(2), longitude.toFixed(2)]
-        }*/
+
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
         this.selectedShelterToString = this.selectedShelterToString.bind(this);
 
         this.state = {
             shelters: shelters,
-            position: position,
             sidebarOpen: false,
             selectedShelter: {}
 
@@ -123,6 +119,11 @@ export default class MapPage extends Component {
     }
 
     render() {
+        let position = [52.52, 13.4];
+        if (this.props.coords != null && this.props.isGeolocationAvailable && this.props.isGeolocationEnabled  ) {
+            position = [this.props.coords.latitude.toFixed(2), this.props.coords.longitude.toFixed(2)]
+        }
+
         return (
             <div>
                 <Sidebar
@@ -131,12 +132,12 @@ export default class MapPage extends Component {
                     styles={{ sidebar: { background: "white" } }}
                     onSetOpen={this.onSetSidebarOpen}
                 >
-                    <Map center={this.state.position} zoom={12} style={{height: "90vh", zIndex: "0"}} >
+                    <Map center={position} zoom={12} style={{height: "90vh", zIndex: "0"}} >
                         <TileLayer
                             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                        <Marker position={this.state.position} icon={this.positionIcon} />
+                        <Marker position={position} icon={this.positionIcon} />
                         {
                             this.state.shelters.map((shelter, i) =>
                                 <Marker onClick={() => {this.onSetSidebarOpen(true); this.setState({selectedShelter: shelter}) }}
@@ -156,7 +157,12 @@ export default class MapPage extends Component {
 
 };
 
-
+export default geolocated({
+    positionOptions: {
+        enableHighAccuracy: true,
+    },
+    userDecisionTimeout: 5000,
+})(MapPage);
 
 
 
