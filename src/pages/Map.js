@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
-import {usePosition} from '../components/usePosition';
-import {useTranslation} from 'react-i18next';
+import {withTranslation} from 'react-i18next';
 import L from 'leaflet';
-import { Map, Polygon, TileLayer, Tooltip, Marker, Popup } from 'react-leaflet'
-import FetchShelters from '../components/FetchShelters'
-import markerIcon from "../assets/images/marker.png"
-import markerIconGray from "../assets/images/marker_gray.png"
-import userMarker from "../assets/images/userMarker.png"
+import { Map, TileLayer, Tooltip, Marker } from 'react-leaflet';
+import FetchShelters from '../components/FetchShelters';
+import markerIcon from "../assets/images/marker.png";
+import markerIconGray from "../assets/images/marker_gray.png";
+import userMarker from "../assets/images/userMarker.png";
 import Sidebar from "react-sidebar";
 import { geolocated } from "react-geolocated";
+import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet';
+import pipe from 'lodash/fp/pipe';
 
 
 class MapPage extends Component {
@@ -29,7 +31,6 @@ class MapPage extends Component {
 
         }
     }
-
 
     houseIcon = L.icon({
         iconUrl: markerIcon,
@@ -52,7 +53,8 @@ class MapPage extends Component {
         });
     }
 
-    selectedShelterToString() {
+    selectedShelterToString(t) {
+        this.t = t;
         let shelter = this.state.selectedShelter;
         if (Object.keys(shelter).length === 0) {
             return (<b>empty</b>)
@@ -62,38 +64,38 @@ class MapPage extends Component {
                 <div style={{ padding: "0 5vh"}}>
                     <h2 style={{display: "block"}}>{shelter.name}</h2>
 
-                    <span style={{display: "block"}}><b>Address:</b></span>
+                    <span style={{display: "block"}}><b>{t('address')}:</b></span>
                     <span style={{display: "block"}}>{shelter.address.street} {shelter.address.number}</span>
                     <span style={{display: "block"}}>{shelter.address.additional}</span>
                     <span style={{display: "block"}}>{shelter.address.plz} {shelter.address.city}</span>
                     <br/>
-                    <span style={{display: "block"}}><b>Phone:</b></span>
+                    <span style={{display: "block"}}><b>{t('phone')}:</b></span>
                     <span style={{display: "block"}}>{shelter.phone.mobile}</span>
                     <span style={{display: "block"}}>{shelter.phone.home}</span>
                     <br/>
-                    <span style={{display: "block"}}><b>Email:</b></span>
+                    <span style={{display: "block"}}><b>{t('email')}:</b></span>
                     <span style={{display: "block"}}>{shelter.email}</span>
                     <br/>
-                    <span style={{display: "block"}}><b>Free beds:</b></span>
+                    <span style={{display: "block"}}><b>{t('free_beds')}:</b></span>
                     <span style={{display: "block"}}>{shelter.taken_beds} / {shelter.number_of_beds}</span>
                     <br/>
-                    <span style={{display: "block"}}><b>Intake hours:</b></span>
+                    <span style={{display: "block"}}><b>{t('intake_hours')}:</b></span>
                     <span style={{display: "block"}}>{shelter.intake_hours.from} - {shelter.intake_hours.to}</span>
                     <br/>
-                    <span style={{display: "block"}}><b>Opening hours:</b></span>
+                    <span style={{display: "block"}}><b>{t('opening_hours')}:</b></span>
                     <span style={{display: "block"}}>{shelter.opening_hours.from} - {shelter.opening_hours.to}</span>
                     <br/>
-                    <span style={{display: "block"}}><b>Rules:</b></span>
-                    <span style={{display: "block"}}>Kids: {shelter.rules.kids_welcome ? "yes": "no"}</span>
-                    <span style={{display: "block"}}>Animals: {shelter.rules.animals ? "yes": "no"}</span>
-                    <span style={{display: "block"}}>Female only: {shelter.rules.female_only ? "yes": "no"}</span>
-                    <span style={{display: "block"}}>Families welcome: {shelter.rules.families_welcome ? "yes": "no"}</span>
-                    <span style={{display: "block"}}>Male only: {shelter.rules.male_only ? "yes": "no"}</span>
+                    <span style={{display: "block"}}><b>{t('rules')}:</b></span>
+                    <span style={{display: "block"}}>{t('kids')}: {shelter.rules.kids_welcome ? t('yes'): t('no')}</span>
+                    <span style={{display: "block"}}>{t('animals')}: {shelter.rules.animals ? t('yes'): t('no')}</span>
+                    <span style={{display: "block"}}>{t('female_only')}: {shelter.rules.female_only ? t('yes'): t('no')}</span>
+                    <span style={{display: "block"}}>{t('families_welcome')}: {shelter.rules.families_welcome ? t('yes'): t('no')}</span>
+                    <span style={{display: "block"}}>{t('male_only')}: {shelter.rules.male_only ? t('yes'): t('no')}</span>
                     <br/>
-                    <span style={{display: "block"}}><b>Holder:</b></span>
+                    <span style={{display: "block"}}><b>{t('holder')}:</b></span>
                     <span style={{display: "block"}}>{shelter.holder}</span>
                     <br/>
-                    <span style={{display: "block"}}><b>Languages:</b></span>
+                    <span style={{display: "block"}}><b>{t('languages')}:</b></span>
                     {shelter.spoken_languages.map((language, i) =>
                         <span key={i} style={{display: "block"}}>{language}</span>
                     )}
@@ -102,23 +104,25 @@ class MapPage extends Component {
         }
     }
 
-    getToolTipInfo(shelter) {
+    getToolTipInfo(shelter, t) {
+        this.t = t;
         return (
             <Tooltip direction='center' offset={[0, 50]} opacity={1} permanent={false}>
                 <span>
                    {shelter.name}
                 </span> <br/>
                 <span>
-                    Intake Hours: {shelter.opening_hours.from} To {shelter.opening_hours.to}
+                    {t('intake_hours')}: {shelter.opening_hours.from} - {shelter.opening_hours.to}
                 </span> <br/>
                 <span>
-                    Beds: {shelter.taken_beds} / {shelter.number_of_beds}
+                    {t('beds')}: {shelter.taken_beds} / {shelter.number_of_beds}
                 </span>
             </Tooltip>
         );
     }
 
     render() {
+        const {t} = this.props;
         let position = [52.52, 13.4];
         if (this.props.coords != null && this.props.isGeolocationAvailable && this.props.isGeolocationEnabled  ) {
             position = [this.props.coords.latitude.toFixed(2), this.props.coords.longitude.toFixed(2)]
@@ -127,7 +131,7 @@ class MapPage extends Component {
         return (
             <div>
                 <Sidebar
-                    sidebar={this.selectedShelterToString()}
+                    sidebar={this.selectedShelterToString(t)}
                     open={this.state.sidebarOpen}
                     styles={{ sidebar: { background: "white" } }}
                     onSetOpen={this.onSetSidebarOpen}
@@ -143,7 +147,7 @@ class MapPage extends Component {
                                 <Marker onClick={() => {this.onSetSidebarOpen(true); this.setState({selectedShelter: shelter}) }}
                                         key={i} position={[shelter.address.geo.lat, shelter.address.geo.long]}
                                         icon={shelter.number_of_beds - shelter.taken_beds > 0 ? this.houseIcon : this.houseIconGray}>
-                                    {this.getToolTipInfo(shelter)}
+                                    {this.getToolTipInfo(shelter, t)}
                                 </Marker>
                             )
                         }
@@ -153,16 +157,14 @@ class MapPage extends Component {
             </div>
         );
     }
+}
 
-
-};
-
-export default geolocated({
+export default pipe(withTranslation(), geolocated({
     positionOptions: {
         enableHighAccuracy: true,
     },
     userDecisionTimeout: 5000,
-})(MapPage);
+}))(MapPage);
 
 
 
