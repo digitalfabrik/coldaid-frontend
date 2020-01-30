@@ -38,12 +38,27 @@ const resources = {
                                      "      nulla laoreet porttitor eu nec lorem. Vestibulum vitae lacinia orci.\n" +
                                      "      Pellentesque tristique nulla sed metus semper lobortis. Aenean auctor id\n" +
                                      "      est sed facilisis.",
-            "shelters": "Shelters",
-            "name": "Name",
-            "address": "Address",
-            "available_beds": "Available Beds",
-            "intake_hours": "Intake Hours",
-            "distance": "Distance"
+            "shelters":         "Shelters",
+            "name":             "Name",
+            "available_beds":   "Available Beds",
+            "distance":         "Distance",
+            "address":          "Address",
+            "phone":            "Phone",
+            "email":            "E-Mail",
+            "free_beds":        "Free beds",
+            "intake_hours":     "Intake hours",
+            "opening_hours":    "Opening hours",
+            "rules":            "Rules",
+            "kids":             "Kids",
+            "animals":          "Animals",
+            "female_only":      "Female only",
+            "families_welcome": "Families welocme",
+            "male_only":        "Male only",
+            "holder":           "Holder",
+            "languages":        "Languages",
+            "yes":              "Yes",
+            "no":               "No",
+            "beds":             "Beds"
         }
     },
     de: {
@@ -80,12 +95,27 @@ const resources = {
                                      "      nulla laoreet porttitor eu nec lorem. Vestibulum vitae lacinia orci.\n" +
                                      "      Pellentesque tristique nulla sed metus semper lobortis. Aenean auctor id\n" +
                                      "      est sed facilisis.",
-            "shelters": "Unterkünfte",
-            "name": "Name",
-            "address": "Adresse",
-            "available_beds": "Verfügbare Betten",
-            "intake_hours": "Aufnahmezeiten",
-            "distance": "Distanz"
+            "shelters":         "Unterkünfte",
+            "name":             "Name",
+            "available_beds":   "Verfügbare Betten",
+            "distance":         "Distanz",
+            "address":          "Adresse",
+            "phone":            "Telefon",
+            "email":            "E-Mail",
+            "free_beds":        "Freie Betten",
+            "intake_hours":     "Aufnahmezeiten",
+            "opening_hours":    "Öffnungszeiten",
+            "rules":            "Regeln",
+            "kids":             "Kinder",
+            "animals":          "Tiere",
+            "female_only":      "Nur Frauen",
+            "families_welcome": "Familien willkommen",
+            "male_only":        "Nur Männer",
+            "holder":           "Träger",
+            "languages":        "Sprachen",
+            "yes":              "Ja",
+            "no":               "Nein",
+            "beds":             "Betten"
         },
 
 

@@ -1,10 +1,11 @@
 const shelters = [
     {
         'name': 'Obdachlosen e.V.',
+        'current_language': 'de-de',
+        'description': 'Beschreibung inkl. Öffnungszeiten und Kontaktpersonen / E-Mail & Website',
+        'short_description': 'Beschreibung in 1-2 Sätzen',
         'address': {
-            'street': 'Müllerstraße',
-            'number': 30,
-            'additional': 'Vorderhaus',
+            'street': 'Müllerstraße 30',
             'plz': 13353,
             'city': 'Berlin',
             'geo': {
@@ -13,14 +14,9 @@ const shelters = [
             }
 
         },
-        'email': 'Obdachlosen.ev@freenet.de',
         'phone':{
             'mobile': '0160 997865',
             'home':'0160 997865'
-        },
-        'opening_hours':{
-            'from' : '6 pm',
-            'to': '9 am'
         },
         'sanitary_amenities':{
             'wc': true,
@@ -34,21 +30,47 @@ const shelters = [
             'male_only': false,
             'kids_welcome': true
         },
-        'spoken_languages':['English', 'German'],
-        'holder': 'church',
-        'number_of_beds':30,
-        'taken_beds':20,
-        'intake_hours':{
-            'from': '6 pm',
-            'to': '22 pm'
-        }
+        'spoken_languages':[
+            {
+                'translated': 'German',
+                'code': 'de-de',
+                'native': 'Deutsch'
+            },
+            {
+                'translated': 'English',
+                'code': 'en-us',
+                'native': 'English'
+            }
+        ],
+        'institution': {
+            'slug': 'berliner-stadtmission',
+            'name': 'Berliner Stadtmission',
+            'thumbnail': 'https://tailwindcss.com/img/card-top.jpg'
+        },
+        'beds': [
+            {
+                'target_group': 'female_only',
+                'num_beds': 20,
+                'num_free_beds': 10
+            },
+            {
+                'target_group': 'families',
+                'num_beds': 10,
+                'num_free_beds': 2
+            },
+            {
+                'target_group': 'intoxicated',
+                'num_beds': 2,
+                'num_free_beds': 0
+            }
+        ]
     },
     {
         'name': 'Test e.V.',
+        'description': 'Beschreibung inkl. Öffnungszeiten und Kontaktpersonen / E-Mail & Website',
+        'short_description': 'Beschreibung in 1-2 Sätzen',
         'address': {
-            'street': 'Siegmunds Hof',
-            'number': 20,
-            'additional': 'Vorderhaus',
+            'street': 'Siegmunds Hof 20',
             'plz': 13353,
             'city': 'Berlin',
             'geo': {
@@ -57,14 +79,9 @@ const shelters = [
             }
 
         },
-        'email': 'Obdachlosen.ev@freenet.de',
         'phone':{
             'mobile': '0160 997865',
             'home':'0160 997865'
-        },
-        'opening_hours':{
-            'from' : '9 am',
-            'to': '6 pm'
         },
         'sanitary_amenities':{
             'wc': true,
@@ -79,13 +96,24 @@ const shelters = [
             'kids_welcome': true
         },
         'spoken_languages':['English', 'German'],
-        'holder': 'church',
-        'number_of_beds':20,
-        'taken_beds':5,
-        'intake_hours':{
-            'from': '7 pm',
-            'to': '20 pm'
-        }
+        'institution': 'church',
+        'beds': [
+            {
+                'target_group': 'female_only',
+                'num_beds': 30,
+                'num_free_beds': 10
+            },
+            {
+                'target_group': 'families',
+                'num_beds': 20,
+                'num_free_beds': 2
+            },
+            {
+                'target_group': 'intoxicated',
+                'num_beds': 3,
+                'num_free_beds': 0
+            }
+        ]
     }
 ];
 
