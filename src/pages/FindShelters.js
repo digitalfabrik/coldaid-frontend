@@ -15,7 +15,6 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import {useTranslation} from 'react-i18next';
 import Filters from "./Filters";
-import availableFilters from './../constants/FilterConfig'
 
 
 function createData(filters) {
@@ -23,13 +22,15 @@ function createData(filters) {
     let allShelters = FetchShelters(filters);
     let parsedData = [];
 
-    if(!allShelters === undefined || !allShelters.length == 0){
-
+    if(!allShelters === undefined || allShelters.length !== 0){
          parsedData = allShelters.map(shelter =>{
             let data = {};
             data.name = shelter.name;
             data.address = shelter.address.street;
-            data.available_beds = shelter.number_of_beds - shelter.taken_beds;
+            data.available_beds = 0;
+            shelter.beds.forEach(target_group => {
+                 data.available_beds += target_group.num_beds - target_group.num_free_beds;
+             });
             data.intake_hours = shelter.intake_hours.from +' - '+ shelter.intake_hours.to;
             data.distance = '4.3km';
             return data;
@@ -75,7 +76,7 @@ const headCells = [
 
 function EnhancedTableHead(props) {
     const {t}                   = useTranslation();
-    const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+    const { classes, order, orderBy, onRequestSort } = props;
     const createSortHandler = property => event => {
         onRequestSort(event, property);
     };
@@ -142,6 +143,7 @@ const useToolbarStyles = makeStyles(theme => ({
 }));
 
 const EnhancedTableToolbar = props => {
+    const {t}                   = useTranslation();
     const classes = useToolbarStyles();
     const { numSelected } = props;
 
@@ -153,11 +155,11 @@ const EnhancedTableToolbar = props => {
         >
             {numSelected > 0 ? (
                 <Typography className={classes.title} color="inherit" variant="subtitle1">
-                    {numSelected} selected
+                    {numSelected} {t('selected')}
                 </Typography>
             ) : (
                 <Typography className={classes.title} variant="h6" id="tableTitle">
-                    Shelters
+                    {t('shelters')}
                 </Typography>
             )}
         </Toolbar>
@@ -204,7 +206,7 @@ export default function FindShelters() {
     const [dense, setDense] = React.useState(true);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-    const [filters, setFilters] = React.useState({'animals':false});
+    const [filters, setFilters] = React.useState({'animals':false, 'kids_welcome' : false});
     const onFilterChange = (event) => {
         setFilters({ ...filters, [event.target.name]: event.target.value });
         console.log(filters);

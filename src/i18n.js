@@ -58,7 +58,8 @@ const resources = {
             "languages":        "Languages",
             "yes":              "Yes",
             "no":               "No",
-            "beds":             "Beds"
+            "beds":             "Beds",
+            "selected":         "selected"
         }
     },
     de: {
@@ -115,7 +116,8 @@ const resources = {
             "languages":        "Sprachen",
             "yes":              "Ja",
             "no":               "Nein",
-            "beds":             "Betten"
+            "beds":             "Betten",
+            "selected":         "ausgewählt"
         },
 
 

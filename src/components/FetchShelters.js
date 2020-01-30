@@ -19,6 +19,8 @@ const filterData = (data,filter) =>{
             if (filter[key] && typeof filter[key] === 'boolean'){
                 //Animals
                 if(filter['animals'] === true && item['rules']['animals']===false)
+                    return false;
+                if(filter['kids_welcome'] === true && item['rules']['kids_welcome']===false)
                     return false
             }
         }
