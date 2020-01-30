@@ -14,6 +14,14 @@ const shelters = [
             }
 
         },
+        'opening_hours':{
+            'from' : '06:00:00',
+            'to': '21:00:00'
+        },
+        'intake_hours':{
+            'from' : '10:00:00',
+            'to': '20:00:00'
+        },
         'phone':{
             'mobile': '0160 997865',
             'home':'0160 997865'
@@ -23,12 +31,12 @@ const shelters = [
             'shower': false
         },
         'rules':{
-            'animals': false,
+            'animals': true,
             'shelter_seeking_person_intoxicated': false,
             'female_only': false,
             'families_welcome': false,
             'male_only': false,
-            'kids_welcome': true
+            'kids_welcome': false
         },
         'spoken_languages':[
             {
@@ -78,6 +86,14 @@ const shelters = [
                 'long': 13.364982
             }
 
+        },
+        'opening_hours':{
+            'from' : '08:00:00',
+            'to': '19:00:00'
+        },
+        'intake_hours':{
+            'from' : '10:00:00',
+            'to': '19:00:00'
         },
         'phone':{
             'mobile': '0160 997865',

@@ -13,24 +13,32 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import {useTranslation} from 'react-i18next';
+import Filters from "./Filters";
 
-let rows = createData();
 
+function createData(filters) {
+    //console.log(FetchShelters());
+    let allShelters = FetchShelters(filters);
+    let parsedData = [];
 
-function createData() {
-    console.log(FetchShelters());
-    let allShelters = FetchShelters();
-    let parsedData = allShelters.map(shelter =>{
-        let data = {};
-        data.name = shelter.name;
-        data.address = shelter.address.street;
-        data.available_beds = shelter.number_of_beds - shelter.taken_beds;
-        data.intake_hours = shelter.intake_hours.from +' - '+ shelter.intake_hours.to;
-        data.distance = '4.3km';
-        return data;
-    });
+    if(!allShelters === undefined || allShelters.length !== 0){
+         parsedData = allShelters.map(shelter =>{
+            let data = {};
+            data.name = shelter.name;
+            data.address = shelter.address.street;
+            data.available_beds = 0;
+            shelter.beds.forEach(target_group => {
+                 data.available_beds += target_group.num_beds - target_group.num_free_beds;
+             });
+            data.intake_hours = shelter.intake_hours.from +' - '+ shelter.intake_hours.to;
+            data.distance = '4.3km';
+            return data;
+        });
 
+    }
     return parsedData;
+
 }
 
 
@@ -59,15 +67,16 @@ function getSorting(order, orderBy) {
 }
 
 const headCells = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-    { id: 'address', numeric: true, disablePadding: false, label: 'Address' },
-    { id: 'available_beds', numeric: true, disablePadding: false, label: 'Available Beds' },
-    { id: 'intake_hours', numeric: true, disablePadding: false, label: 'Intake Hours' },
-    { id: 'distance', numeric: true, disablePadding: false, label: 'Distance' },
+    { id: 'name', numeric: false, disablePadding: true, label: 'name' },
+    { id: 'address', numeric: true, disablePadding: false, label: 'address' },
+    { id: 'available_beds', numeric: true, disablePadding: false, label: 'available_beds' },
+    { id: 'intake_hours', numeric: true, disablePadding: false, label: 'intake_hours' },
+    { id: 'distance', numeric: true, disablePadding: false, label: 'distance' },
 ];
 
 function EnhancedTableHead(props) {
-    const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+    const {t}                   = useTranslation();
+    const { classes, order, orderBy, onRequestSort } = props;
     const createSortHandler = property => event => {
         onRequestSort(event, property);
     };
@@ -89,7 +98,7 @@ function EnhancedTableHead(props) {
                             direction={order}
                             onClick={createSortHandler(headCell.id)}
                         >
-                            {headCell.label}
+                            {t(headCell.label)}
                             {orderBy === headCell.id ? (
                                 <span className={classes.visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
@@ -134,6 +143,7 @@ const useToolbarStyles = makeStyles(theme => ({
 }));
 
 const EnhancedTableToolbar = props => {
+    const {t}                   = useTranslation();
     const classes = useToolbarStyles();
     const { numSelected } = props;
 
@@ -145,11 +155,11 @@ const EnhancedTableToolbar = props => {
         >
             {numSelected > 0 ? (
                 <Typography className={classes.title} color="inherit" variant="subtitle1">
-                    {numSelected} selected
+                    {numSelected} {t('selected')}
                 </Typography>
             ) : (
                 <Typography className={classes.title} variant="h6" id="tableTitle">
-                    Shelters
+                    {t('shelters')}
                 </Typography>
             )}
         </Toolbar>
@@ -195,6 +205,18 @@ export default function FindShelters() {
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(true);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+    const [filters, setFilters] = React.useState({'animals':false, 'kids_welcome' : false});
+    const onFilterChange = (event) => {
+        setFilters({ ...filters, [event.target.name]: event.target.value });
+        console.log(filters);
+    };
+    const filterHandleChange = name => event => {
+        setFilters({ ...filters, [name]: event.target.checked });
+    };
+
+    let rows = createData(filters);
+
 
     const handleRequestSort = (event, property) => {
         const isDesc = orderBy === property && order === 'desc';
@@ -250,6 +272,9 @@ export default function FindShelters() {
 
     return (
         <div className={classes.root}>
+            <div>
+                <Filters onFilterChange={onFilterChange} filterHandleChange={filterHandleChange} filters={filters}/>
+            </div>
             <Paper className={classes.paper}>
                 <EnhancedTableToolbar numSelected={selected.length} />
                 <div className={classes.tableWrapper}>
