@@ -8,8 +8,9 @@ import Map from "../../pages/Map";
 import Help from "../../pages/Info";
 import KaeltebusFormular from "../../pages/KaeltebusFormular";
 import KaeltebusLogin from "../../pages/KaeltebusLogin";
+import MapPage from "../../pages/Map";
 
-import FindShelters from "../../pages/ShelterOverview";
+import FindShelters from "../../pages/FindShelters";
 
 function App() {
   return (
@@ -25,8 +26,9 @@ function App() {
         <Route exact path="/find_shelters" component={FindShelters} />
         {/*
         <Route exact path="/" component={}/>
-      <Route exact path="/" component={}/> */}
-        <Route exact path="/map" component={Map} />
+        <Route exact path="/" component={}/>
+        <Route exact path="/" component={}/> */}
+        <Route exact path="/map" component={MapPage} />
         <Route exact path="/help" component={Help} />
         <Route exact path="/find_shelters" component={FindShelters} />
         <Route exact path="/kaeltebus_formular" component={KaeltebusFormular} />
