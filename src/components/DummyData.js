@@ -1,90 +1,136 @@
 const shelters = [
-  // {
-  //     'name': 'Obdachlosen e.V.',
-  //     'address': {
-  //         'street': 'Müllerstraße',
-  //         'number': 30,
-  //         'additional': 'Vorderhaus',
-  //         'plz': 13353,
-  //         'city': 'Berlin',
-  //         'geo': {
-  //             'lat': 52.543091,
-  //             'long': 13.364982
-  //         }
-  //     },
-  //     'email': 'Obdachlosen.ev@freenet.de',
-  //     'phone':{
-  //         'mobile': '0160 997865',
-  //         'home':'0160 997865'
-  //     },
-  //     'opening_hours':{
-  //         'from' : '6 pm',
-  //         'to': '9 am'
-  //     },
-  //     'sanitary_amenities':{
-  //         'wc': true,
-  //         'shower': false
-  //     },
-  //     'rules':{
-  //         'animals': false,
-  //         'shelter_seeking_person_intoxicated': false,
-  //         'female_only': false,
-  //         'families_welcome': false,
-  //         'male_only': false,
-  //         'kids_welcome': true
-  //     },
-  //     'spoken_languages':['English', 'German'],
-  //     'holder': 'church',
-  //     'number_of_beds':30,
-  //     'taken_beds':20,
-  //     'intake_hours':{
-  //         'from': '6 pm',
-  //         'to': '22 pm'
-  //     }
-  // },
-  // {
-  //     'name': 'Test e.V.',
-  //     'address': {
-  //         'street': 'Siegmunds Hof',
-  //         'number': 20,
-  //         'additional': 'Vorderhaus',
-  //         'plz': 13353,
-  //         'city': 'Berlin',
-  //         'geo': {
-  //             'lat': 52.543091,
-  //             'long': 13.364982
-  //         }
-  //     },
-  //     'email': 'Obdachlosen.ev@freenet.de',
-  //     'phone':{
-  //         'mobile': '0160 997865',
-  //         'home':'0160 997865'
-  //     },
-  //     'opening_hours':{
-  //         'from' : '9 am',
-  //         'to': '6 pm'
-  //     },
-  //     'sanitary_amenities':{
-  //         'wc': true,
-  //         'shower': false
-  //     },
-  //     'rules':{
-  //         'animals': false,
-  //         'shelter_seeking_person_intoxicated': false,
-  //         'female_only': false,
-  //         'families_welcome': false,
-  //         'male_only': false,
-  //         'kids_welcome': true
-  //     },
-  //     'spoken_languages':['English', 'German'],
-  //     'holder': 'church',
-  //     'number_of_beds':20,
-  //     'taken_beds':5,
-  //     'intake_hours':{
-  //         'from': '7 pm',
-  //         'to': '20 pm'
-  //     }
-  // }
+    {
+        'name': 'Obdachlosen e.V.',
+        'current_language': 'de-de',
+        'description': 'Beschreibung inkl. Öffnungszeiten und Kontaktpersonen / E-Mail & Website',
+        'short_description': 'Beschreibung in 1-2 Sätzen',
+        'address': {
+            'street': 'Müllerstraße 30',
+            'plz': 13353,
+            'city': 'Berlin',
+            'geo': {
+                'lat': 52.543091,
+                'long': 13.364982
+            }
+
+        },
+        'opening_hours':{
+            'from' : '06:00:00',
+            'to': '21:00:00'
+        },
+        'intake_hours':{
+            'from' : '10:00:00',
+            'to': '20:00:00'
+        },
+        'phone':{
+            'mobile': '0160 997865',
+            'home':'0160 997865'
+        },
+        'sanitary_amenities':{
+            'wc': true,
+            'shower': false
+        },
+        'rules':{
+            'animals': true,
+            'shelter_seeking_person_intoxicated': false,
+            'female_only': false,
+            'families_welcome': false,
+            'male_only': false,
+            'kids_welcome': false
+        },
+        'spoken_languages':[
+            {
+                'translated': 'German',
+                'code': 'de-de',
+                'native': 'Deutsch'
+            },
+            {
+                'translated': 'English',
+                'code': 'en-us',
+                'native': 'English'
+            }
+        ],
+        'institution': {
+            'slug': 'berliner-stadtmission',
+            'name': 'Berliner Stadtmission',
+            'thumbnail': 'https://tailwindcss.com/img/card-top.jpg'
+        },
+        'beds': [
+            {
+                'target_group': 'female_only',
+                'num_beds': 20,
+                'num_free_beds': 10
+            },
+            {
+                'target_group': 'families',
+                'num_beds': 10,
+                'num_free_beds': 2
+            },
+            {
+                'target_group': 'intoxicated',
+                'num_beds': 2,
+                'num_free_beds': 0
+            }
+        ]
+    },
+    {
+        'name': 'Test e.V.',
+        'description': 'Beschreibung inkl. Öffnungszeiten und Kontaktpersonen / E-Mail & Website',
+        'short_description': 'Beschreibung in 1-2 Sätzen',
+        'address': {
+            'street': 'Siegmunds Hof 20',
+            'plz': 13353,
+            'city': 'Berlin',
+            'geo': {
+                'lat': 52.543091,
+                'long': 13.364982
+            }
+
+        },
+        'opening_hours':{
+            'from' : '08:00:00',
+            'to': '19:00:00'
+        },
+        'intake_hours':{
+            'from' : '10:00:00',
+            'to': '19:00:00'
+        },
+        'phone':{
+            'mobile': '0160 997865',
+            'home':'0160 997865'
+        },
+        'sanitary_amenities':{
+            'wc': true,
+            'shower': false
+        },
+        'rules':{
+            'animals': false,
+            'shelter_seeking_person_intoxicated': false,
+            'female_only': false,
+            'families_welcome': false,
+            'male_only': false,
+            'kids_welcome': true
+        },
+        'spoken_languages':['English', 'German'],
+        'institution': 'church',
+        'beds': [
+            {
+                'target_group': 'female_only',
+                'num_beds': 30,
+                'num_free_beds': 10
+            },
+            {
+                'target_group': 'families',
+                'num_beds': 20,
+                'num_free_beds': 2
+            },
+            {
+                'target_group': 'intoxicated',
+                'num_beds': 3,
+                'num_free_beds': 0
+            }
+        ]
+    }
 ];
 
 export default shelters;

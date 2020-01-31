@@ -10,21 +10,15 @@ const useStyles = makeStyles({
     flexDirection: "row",
     alignItems: "center"
   },
-  logo: { flexGrow: 1 },
-  picker: {
-    zIndex: 999,
-    "&:hover": {
-      background: "#F5F5F5"
-    }
-  }
+  logo: { flexGrow: 1 }
 });
 
 export default function NavigationBar() {
-  const { root, logo, picker } = useStyles();
+  const { root, logo } = useStyles();
   return (
     <StyledNavbar className={root} color="default" position="static">
       <IntegreatLogo style={logo} />
-      <LanguagePicker style={picker} />
+      <LanguagePicker />
     </StyledNavbar>
   );
 }
