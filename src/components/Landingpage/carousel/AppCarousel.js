@@ -16,12 +16,14 @@ export default function AppCarousel() {
   const { root } = useStyles();
   var items = [
     {
+      id: 0,
       header: translation("welcome_header"),
       text: translation("welcome_text"),
       src: LandingPageWelcomeImage,
       alt: "Image1"
     },
     {
+      id: 1,
       header: translation("header2"),
       text: translation("text2"),
       src:
@@ -29,6 +31,7 @@ export default function AppCarousel() {
       alt: "Image2"
     },
     {
+      id: 2,
       header: translation("header3"),
       text: translation("text3"),
       src: "https://clipartart.com/images/clipart-lands-department-maps-5.png",
@@ -43,7 +46,7 @@ export default function AppCarousel() {
       animation={"slide"}
     >
       {items.map(item => {
-        return <CarouselItem item={item} />;
+        return <CarouselItem key={item.id} item={item} />;
       })}
     </Carousel>
   );

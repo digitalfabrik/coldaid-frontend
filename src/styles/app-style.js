@@ -11,7 +11,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: "Times New Roman", Times, serif;
     font-size: 1rem;
     font-weight:bold;
-    background-color:"#FFFFFF"
+    background-color:"#FFFFFF";
+    overflow-x:hidden;
   }
 `;
 
