@@ -28,30 +28,35 @@ export default function Features() {
   const { featureContainer, root, icon } = useStyles();
   var features = [
     {
+      id: 0,
       icon: <MapIcon className={icon} />,
       header: translation("map_feature_header"),
       text: translation("map_feature_text"),
       link: "/map"
     },
     {
+      id: 1,
       icon: <ViewListIcon className={icon} />,
       header: translation("view_feature_header"),
       text: translation("view_feature_text"),
       link: "/find_shelters"
     },
     {
+      id: 2,
       icon: <ContactPhoneIcon className={icon} />,
       header: translation("kaeltebus_feature_header"),
       text: translation("kaeltebus_feature_text"),
       link: "/kaeltebus_formular"
     },
     {
+      id: 3,
       icon: <AirportShuttleIcon className={icon} />,
       header: translation("kaeltebus_feature_header"),
       text: translation("kaeltebus_feature_text"),
       link: "/kaeltebus_login"
     },
     {
+      id: 4,
       icon: <InfoOutlinedIcon className={icon} />,
       header: translation("info_feature_header"),
       text: translation("info_feature_text"),
@@ -66,7 +71,7 @@ export default function Features() {
       <Divider variant="middle" />
       <div className={featureContainer}>
         {features.map(feature => {
-          return <Feature feature={feature} />;
+          return <Feature key={feature.id} feature={feature} />;
         })}
       </div>
     </div>

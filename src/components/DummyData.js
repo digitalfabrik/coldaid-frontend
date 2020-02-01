@@ -9,8 +9,8 @@ const shelters = [
             'plz': 13353,
             'city': 'Berlin',
             'geo': {
-                'lat': 52.543091,
-                'long': 13.364982
+                'lat': 52.563091,
+                'long': 13.314982
             }
 
         },

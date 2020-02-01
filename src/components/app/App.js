@@ -4,7 +4,6 @@ import GlobalStyles from "../../styles/app-style";
 import Landing from "../../pages/Landing";
 import Navbar from "../../components/navbar/NavigationBar";
 
-import Map from "../../pages/Map";
 import Help from "../../pages/Info";
 import KaeltebusFormular from "../../pages/KaeltebusFormular";
 import KaeltebusLogin from "../../pages/KaeltebusLogin";
@@ -23,7 +22,6 @@ function App() {
           path="/"
           render={routeProps => <Landing {...routeProps} />}
         />
-        <Route exact path="/find_shelters" component={FindShelters} />
         {/*
         <Route exact path="/" component={}/>
         <Route exact path="/" component={}/>
