@@ -35,7 +35,7 @@ const resources = {
         address:                  "Address",
         phone:                    "Phone",
         email:                    "E-Mail",
-        description:               "Description",
+        description:              "Description",
         free_beds:                "Free beds",
         intake_hours:             "Intake hours",
         opening_hours:            "Opening hours",
@@ -43,14 +43,19 @@ const resources = {
         kids:                     "Kids",
         animals:                  "Animals",
         female_only:              "Female only",
-        families_welcome:         "Families welocme",
+        families_welcome:         "Families welcome",
         male_only:                "Male only",
         holder:                   "Holder",
         languages:                "Languages",
         yes:                      "Yes",
         no:                       "No",
         beds:                     "Beds",
-        selected:                 "selected"
+        selected:                 "selected",
+        sanitary_amenities:       "Sanitary amenities",
+        wc:                       "WC",
+        shower:                   "Shower",
+        families:                 "Families",
+        intoxicated:              "Intoxicated"
         }
   },
   de: {
@@ -101,7 +106,12 @@ const resources = {
         yes:                      "Ja",
         no:                       "Nein",
         beds:                     "Betten",
-        selected:                 "ausgewählt"
+        selected:                 "ausgewählt",
+        sanitary_amenities:       "Sanitäreinrichtungen",
+        wc:                       "WC",
+        shower:                   "Dusche",
+        families:                 "Familien",
+        intoxicated:              "Rauschzustand"
     }
   }
 };
