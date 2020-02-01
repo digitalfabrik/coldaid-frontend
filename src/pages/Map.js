@@ -23,6 +23,7 @@ class MapPage extends Component {
 
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
         this.selectedShelterToString = this.selectedShelterToString.bind(this);
+        this.getSumFreeBeds = this.getSumFreeBeds.bind(this);
 
         this.state = {
             shelters: shelters,
@@ -61,7 +62,7 @@ class MapPage extends Component {
         }
         else {
             return (
-                <div style={{ padding: "0 5vh"}}>
+                <div style={{ padding: "0 5vh", maxWidth: "50vh"}}>
                     <h2 style={{display: "block"}}>{shelter.name}</h2>
 
                     <span style={{display: "block"}}><b>{t('address')}:</b></span>
@@ -73,11 +74,13 @@ class MapPage extends Component {
                     <span style={{display: "block"}}>{shelter.phone.mobile}</span>
                     <span style={{display: "block"}}>{shelter.phone.home}</span>
                     <br/>
-                    <span style={{display: "block"}}><b>{t('email')}:</b></span>
-                    <span style={{display: "block"}}>{shelter.email}</span>
+                    <span style={{display: "block"}}><b>{t('description')}:</b></span>
+                    <span style={{display: "block"}}>{shelter.description}</span>
                     <br/>
                     <span style={{display: "block"}}><b>{t('free_beds')}:</b></span>
-                    <span style={{display: "block"}}>{shelter.taken_beds} / {shelter.number_of_beds}</span>
+                    {shelter.beds.map((bed, i) =>
+                        <span key={i} style={{display: "block"}}>{bed.target_group} : {bed.num_free_beds} </span>
+                    )}
                     <br/>
                     <span style={{display: "block"}}><b>{t('intake_hours')}:</b></span>
                     <span style={{display: "block"}}>{shelter.intake_hours.from} - {shelter.intake_hours.to}</span>
@@ -92,12 +95,16 @@ class MapPage extends Component {
                     <span style={{display: "block"}}>{t('families_welcome')}: {shelter.rules.families_welcome ? t('yes'): t('no')}</span>
                     <span style={{display: "block"}}>{t('male_only')}: {shelter.rules.male_only ? t('yes'): t('no')}</span>
                     <br/>
+                    <span style={{display: "block"}}>sanitary_amenities: </span>
+                    <span style={{display: "block"}}>wc: {shelter.sanitary_amenities.wc ? t('yes'): t('no')}</span>
+                    <span style={{display: "block"}}>shower: {shelter.sanitary_amenities.shower ? t('yes'): t('no')}</span>
+                    <br/>
                     <span style={{display: "block"}}><b>{t('holder')}:</b></span>
-                    <span style={{display: "block"}}>{shelter.holder}</span>
+                    <span style={{display: "block"}}>{shelter.institution.name}</span>
                     <br/>
                     <span style={{display: "block"}}><b>{t('languages')}:</b></span>
                     {shelter.spoken_languages.map((language, i) =>
-                        <span key={i} style={{display: "block"}}>{language}</span>
+                        <span key={i} style={{display: "block"}}>{language.native}</span>
                     )}
                 </div>
             );
@@ -115,10 +122,18 @@ class MapPage extends Component {
                     {t('intake_hours')}: {shelter.opening_hours.from} - {shelter.opening_hours.to}
                 </span> <br/>
                 <span>
-                    {t('beds')}: {shelter.taken_beds} / {shelter.number_of_beds}
+                    {t('beds')}: { this.getSumFreeBeds(shelter.beds) }
                 </span>
             </Tooltip>
         );
+    }
+
+    getSumFreeBeds(beds) {
+        let sumValue = 0;
+        beds.map(
+            bedType => sumValue += bedType.num_free_beds
+        );
+        return sumValue;
     }
 
     render() {
@@ -146,7 +161,7 @@ class MapPage extends Component {
                             this.state.shelters.map((shelter, i) =>
                                 <Marker onClick={() => {this.onSetSidebarOpen(true); this.setState({selectedShelter: shelter}) }}
                                         key={i} position={[shelter.address.geo.lat, shelter.address.geo.long]}
-                                        icon={shelter.number_of_beds - shelter.taken_beds > 0 ? this.houseIcon : this.houseIconGray}>
+                                        icon={this.getSumFreeBeds(shelter.beds) > 0 ? this.houseIcon : this.houseIconGray}>
                                     {this.getToolTipInfo(shelter, t)}
                                 </Marker>
                             )
