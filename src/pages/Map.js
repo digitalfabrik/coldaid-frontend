@@ -75,15 +75,15 @@ class MapPage extends Component {
                     <span style={{display: "block"}}>{shelter.phone.home}</span>
                     <br/>
                     <span style={{display: "block"}}><b>{t('description')}:</b></span>
-                    <span style={{display: "block"}}>{shelter.description}</span>
+                    <span style={{display: "block"}} dangerouslySetInnerHTML={{__html:shelter.description}}></span>
                     <br/>
                     <span style={{display: "block"}}><b>{t('free_beds')}:</b></span>
                     {shelter.beds.map((bed, i) =>
-                        <span key={i} style={{display: "block"}}>{bed.target_group} : {bed.num_free_beds} </span>
+                        <span key={i} style={{display: "block"}}>{t(bed.target_group)} : {bed.num_free_beds} </span>
                     )}
                     <br/>
                     <span style={{display: "block"}}><b>{t('intake_hours')}:</b></span>
-                    <span style={{display: "block"}}>{shelter.intake_hours.from} - {shelter.intake_hours.to}</span>
+                    <span style={{display: "block"}}>{shelter.opening_hours.from} - {shelter.opening_hours.to}</span>
                     <br/>
                     <span style={{display: "block"}}><b>{t('opening_hours')}:</b></span>
                     <span style={{display: "block"}}>{shelter.opening_hours.from} - {shelter.opening_hours.to}</span>
@@ -95,9 +95,9 @@ class MapPage extends Component {
                     <span style={{display: "block"}}>{t('families_welcome')}: {shelter.rules.families_welcome ? t('yes'): t('no')}</span>
                     <span style={{display: "block"}}>{t('male_only')}: {shelter.rules.male_only ? t('yes'): t('no')}</span>
                     <br/>
-                    <span style={{display: "block"}}>sanitary_amenities: </span>
-                    <span style={{display: "block"}}>wc: {shelter.sanitary_amenities.wc ? t('yes'): t('no')}</span>
-                    <span style={{display: "block"}}>shower: {shelter.sanitary_amenities.shower ? t('yes'): t('no')}</span>
+                    <span style={{display: "block"}}>{t('sanitary_amenities')}: </span>
+                    <span style={{display: "block"}}>{t('wc')}: {shelter.sanitary_amenities.wc ? t('yes'): t('no')}</span>
+                    <span style={{display: "block"}}>{t('shower')}: {shelter.sanitary_amenities.shower ? t('yes'): t('no')}</span>
                     <br/>
                     <span style={{display: "block"}}><b>{t('holder')}:</b></span>
                     <span style={{display: "block"}}>{shelter.institution.name}</span>

@@ -29,9 +29,9 @@ function createData(filters) {
             data.address = shelter.address.street;
             data.available_beds = 0;
             shelter.beds.forEach(target_group => {
-                 data.available_beds += target_group.num_beds - target_group.num_free_beds;
+                 data.available_beds += target_group.num_free_beds;
              });
-            data.intake_hours = shelter.intake_hours.from +' - '+ shelter.intake_hours.to;
+            data.intake_hours = shelter.opening_hours.from +' - '+ shelter.opening_hours.to;
             data.distance = '4.3km';
             return data;
         });
