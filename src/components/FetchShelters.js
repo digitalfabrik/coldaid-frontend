@@ -1,11 +1,11 @@
-import React from "react";
+//import React from "react";
 import DummyData from "../components/DummyData";
 
 
 //TODO get this from user input
-const region   = 'augsburg';
+const region   = 'berlin';
 const language = 'de-de';
-const base_url = 'http://localhost:8000/api';
+const base_url = ' http://130.149.22.44:8000/api';
 
 let shelters = [];
 
@@ -17,7 +17,7 @@ const filterData = (data, filter) => {
 
             //Filter by string
             if (filter[key] && typeof filter[key] === 'string')
-                if (item[key] === undefined || !item[key].includes(filter[key]))
+                if (item[key] === undefined || !item[key].toLowerCase().includes(filter[key].toLowerCase()))
                     return false;
 
             //Check Boxes
@@ -45,31 +45,22 @@ const filterData = (data, filter) => {
     });*/
 };
 
-const FetchShelter = (filters) => {
+const FetchShelter =  async (filters) => {
     let url = `${base_url}/${region}/${language}/accommodations/`;
 
-    //TODO delete this (development server is currently sending unusable data)
-    shelters = DummyData;
+    // Use this if no backend is available
+    //shelters = DummyData;
 
     if (shelters.length > 0) {
         console.log('Using cached shelters');
         return filterData(shelters, filters);
     }
-    fetch(url)
-        .then((response) => {
-            return response.json();
-        })
-        .then(data => {
-            shelters = data;
-        })
-        .finally(() => {
-            if (shelters.length === 0) {
-                shelters = DummyData;
-            }
-            return filterData(shelters, filters);
-        });
-
-    return filterData(shelters, filters);
+    return await fetch(url).then(response => {
+        return response.json()
+    }).then(data => {
+        shelters = data;
+        return filterData(shelters, filters)
+    });
 };
 
 export default FetchShelter;
