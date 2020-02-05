@@ -19,18 +19,21 @@ class MapPage extends Component {
     constructor(props) {
         super(props);
 
-        const shelters = FetchShelters();
-
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
         this.selectedShelterToString = this.selectedShelterToString.bind(this);
         this.getSumFreeBeds = this.getSumFreeBeds.bind(this);
 
         this.state = {
-            shelters: shelters,
+            shelters: [],
             sidebarOpen: false,
             selectedShelter: {}
 
         }
+    }
+
+     async componentDidMount() {
+        let data = await FetchShelters();
+        this.setState({ shelters: data });
     }
 
     houseIcon = L.icon({

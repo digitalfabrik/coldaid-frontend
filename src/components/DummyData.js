@@ -1,6 +1,6 @@
 const shelters = [
     {
-        "name":               "Not\u00fcbernachtung I",
+        "name":               "Not\u00fcbernachtung Lehrter Straße",
         "current_language":   "de-de",
         "description":        "<ul>\r\n<li>Einlass von 21:00 bis 21:30 Uhr und 23-4 Uhr</li>\r\n<li>125 Schlafpl&auml;tze</li>\r\n<li>soziale Beratung von Mo bis Fr ab 07:00 Uhr</li>\r\n<li>medizinische Betreuung von Mo bis Fr, 21:00 bis 24:00 Uhr</li>\r\n</ul>",
         "short_description":  "Not\u00fcbernachtung I der Berliner Stadtmission",
@@ -132,12 +132,12 @@ const shelters = [
             {
                 "target_group":  "male_only",
                 "num_beds":      20,
-                "num_free_beds": 10
+                "num_free_beds": 0
             },
             {
                 "target_group":  "families",
                 "num_beds":      10,
-                "num_free_beds": 2
+                "num_free_beds": 0
             },
             {
                 "target_group":  "intoxicated",

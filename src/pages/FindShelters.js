@@ -1,3 +1,4 @@
+import { useEffect} from "react";
 import React from "react";
 import FetchShelters from "../components/FetchShelters"
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -17,9 +18,8 @@ import {useTranslation} from 'react-i18next';
 import Filters from "./Filters";
 
 
-function createData(filters) {
-    //console.log(FetchShelters());
-    let allShelters = FetchShelters(filters);
+function parseData(data) {
+    let allShelters = data;
     let parsedData = [];
 
     if(!allShelters === undefined || allShelters.length !== 0){
@@ -198,25 +198,41 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function FindShelters() {
-    const classes = useStyles();
-    const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('distance');
-    const [selected, setSelected] = React.useState([]);
-    const [page, setPage] = React.useState(0);
-    const [dense, setDense] = React.useState(true);
+    const classes                       = useStyles();
+    const [order, setOrder]             = React.useState('asc');
+    const [orderBy, setOrderBy]         = React.useState('distance');
+    const [selected, setSelected]       = React.useState([]);
+    const [page, setPage]               = React.useState(0);
+    const [dense, setDense]             = React.useState(true);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [filters, setFilters]         = React.useState({'animals': false, 'kids_welcome': false});
+    const [data, setData]               = React.useState([]);
 
-    const [filters, setFilters] = React.useState({'animals':false, 'kids_welcome' : false});
-    const onFilterChange = (event) => {
-        setFilters({ ...filters, [event.target.name]: event.target.value });
+    async function getShelters() {
+            let result = await FetchShelters(filters);
+            setData(result);
+    }
+
+    //This effect is called on component mount/unmount
+    useEffect(() => {
+        getShelters();
+    }, []);
+
+    //This effect is called on filters change
+    useEffect(() => {
+        getShelters();
+    }, [filters]);
+
+    const onFilterChange        = (event) => {
+        setFilters({...filters, [event.target.name]: event.target.value});
         console.log(filters);
     };
-    const filterHandleChange = name => event => {
-        setFilters({ ...filters, [name]: event.target.checked });
+
+    const filterHandleChange    = name => event => {
+        setFilters({...filters, [name]: event.target.checked});
     };
 
-    let rows = createData(filters);
-
+    let rows = parseData(data);
 
     const handleRequestSort = (event, property) => {
         const isDesc = orderBy === property && order === 'desc';
@@ -235,7 +251,7 @@ export default function FindShelters() {
 
     const handleClick = (event, name) => {
         const selectedIndex = selected.indexOf(name);
-        let newSelected = [];
+        let newSelected     = [];
 
         if (selectedIndex === -1) {
             newSelected = newSelected.concat(selected, name);
@@ -276,7 +292,7 @@ export default function FindShelters() {
                 <Filters onFilterChange={onFilterChange} filterHandleChange={filterHandleChange} filters={filters}/>
             </div>
             <Paper className={classes.paper}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                <EnhancedTableToolbar numSelected={selected.length}/>
                 <div className={classes.tableWrapper}>
                     <Table
                         className={classes.table}
@@ -298,7 +314,7 @@ export default function FindShelters() {
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
                                     const isItemSelected = isSelected(row.name);
-                                    const labelId = `enhanced-table-checkbox-${index}`;
+                                    const labelId        = `enhanced-table-checkbox-${index}`;
 
                                     return (
                                         <TableRow
@@ -324,8 +340,8 @@ export default function FindShelters() {
                                     );
                                 })}
                             {emptyRows > 0 && (
-                                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                                    <TableCell colSpan={6} />
+                                <TableRow style={{height: (dense ? 33 : 53) * emptyRows}}>
+                                    <TableCell colSpan={6}/>
                                 </TableRow>
                             )}
                         </TableBody>
