@@ -16,11 +16,11 @@ export default function LanguagePicker() {
       case "FR":
         language = "fr";
         break;
-      case "DE":
-        language = "de";
-        break;
       case "RU":
         language = "ru";
+        break;
+      case "DE":
+        language = "de";
         break;
       default:
         language = "en";
@@ -30,8 +30,8 @@ export default function LanguagePicker() {
 
   return (
     <ReactFlagsSelect
-      countries={["GB", "FR", "DE", "RU"]}
-      customLabels={{ GB: "EN-GB", FR: "FR", DE: "DE", RU: "RU" }}
+      countries={["GB", "FR", "RU", "DE"]}
+      customLabels={{ GB: "EN-GB", FR: "FR", RU: "RU", DE: "DE"}}
       defaultCountry="DE"
       onSelect={handleLanguageChange}
     />
