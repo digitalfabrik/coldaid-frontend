@@ -1,9 +1,9 @@
 import React from "react";
-import IntegreatLogo from "../integreateLogo/IntegreatLogo";
+import IntegreatLogo from "../integreatLogo/IntegreatLogo";
 import LanguagePicker from "./LanguagePicker";
 
 import { makeStyles } from "@material-ui/core";
-import StyledNavbar from "./navigation.style";
+import AppBar from "@material-ui/core/AppBar";
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -16,9 +16,9 @@ const useStyles = makeStyles({
 export default function NavigationBar() {
   const { root, logo } = useStyles();
   return (
-    <StyledNavbar className={root} color="default" position="static">
+    <AppBar className={root} color="secondary" position="static">
       <IntegreatLogo style={logo} />
       <LanguagePicker />
-    </StyledNavbar>
+    </AppBar>
   );
 }
