@@ -1,6 +1,10 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
+import { Container, Typography } from "@material-ui/core";
 
 export default function Help() {
-  return <Typography>TODO</Typography>;
+  return (
+    <Container maxWidth="lg">
+      <Typography>TODO</Typography>
+    </Container>
+  )
 }
