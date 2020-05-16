@@ -1,6 +1,12 @@
 import React from "react";
 // import Description from "../components/landingpage/Description";
-import { Container, CssBaseline, Grid } from "@material-ui/core";
+import {
+  Box,
+  Container,
+  CssBaseline,
+  Divider,
+  Grid
+} from "@material-ui/core";
 
 import Features from "../components/feature/Features";
 import AppCarousel from "../components/carousel/AppCarousel";
@@ -12,9 +18,12 @@ export default function Home() {
       <AppCarousel />
       <Container maxWidth="lg">
         <CssBaseline />
-        <Grid item xs={12}>
+        <Box my={4} px={4}>
           <Description />
-        </Grid>
+        </Box>
+
+        <Divider variant={'middle'} />
+
         <Grid item xs={12}>
           <Features />
         </Grid>
