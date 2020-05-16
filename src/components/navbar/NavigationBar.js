@@ -1,9 +1,9 @@
 import React from "react";
-import { StyledNavbar } from "../../styles/components-style";
-import IntegreatLogo from "../IntegreatLogo";
+import IntegreatLogo from "../integreateLogo/IntegreatLogo";
 import LanguagePicker from "./LanguagePicker";
 
 import { makeStyles } from "@material-ui/core";
+import StyledNavbar from "./navigation.style";
 const useStyles = makeStyles({
   root: {
     display: "flex",

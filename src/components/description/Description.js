@@ -1,6 +1,6 @@
 import React from "react";
-import { StyledDescription } from "../../styles/components-style";
 import { useTranslation } from "react-i18next";
+import StyledDescription from "./description.style";
 
 export default function Description() {
   const { t } = useTranslation();

@@ -3,7 +3,7 @@ import Carousel from "react-material-ui-carousel";
 import CarouselItem from "./CarouselItem";
 import { useTranslation } from "react-i18next";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import LandingPageWelcomeImage from "../../../assets/images/landing_page_welcome_home_alt.png";
+import LandingPageWelcomeImage from "../../assets/images/landing_page_welcome_home_alt.png";
 import zIndex from "@material-ui/core/styles/zIndex";
 
 const useStyles = makeStyles({

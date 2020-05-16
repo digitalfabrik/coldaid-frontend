@@ -1,7 +1,7 @@
 import React from "react";
-import Link from "./Link";
-import Logo from "../assets/images/integreat-app-logo.png";
-import { StyledLogo } from "../styles/components-style";
+import Link from "../link/Link";
+import Logo from "../../assets/images/integreat-app-logo.png";
+import StyledLogo from "./integrateLogo.style";
 
 export default function IntegreatLogo({ style }) {
   return (

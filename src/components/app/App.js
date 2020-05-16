@@ -1,37 +1,27 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import GlobalStyles from "../../styles/app-style";
-import Landing from "../../pages/Landing";
+import {Redirect, Route, Switch} from "react-router-dom";
+import GlobalStyles from "./app.style";
+import Home from "../../pages/Home";
 import Navbar from "../../components/navbar/NavigationBar";
 
 import Help from "../../pages/Info";
-import KaeltebusFormular from "../../pages/KaeltebusFormular";
-import KaeltebusLogin from "../../pages/KaeltebusLogin";
-import MapPage from "../../pages/Map";
+import Kaeltebus from "../../pages/Kaeltebus";
 
-import FindShelters from "../../pages/FindShelters";
+import FindShelters from "../../pages/shelterOverview/FindShelters";
+import MapPage from "../../pages/Map";
 
 function App() {
   return (
     <React.Fragment>
-      <GlobalStyles />
-      <Navbar />
+      <GlobalStyles/>
+      <Navbar/>
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={routeProps => <Landing {...routeProps} />}
-        />
-        {/*
-        <Route exact path="/" component={}/>
-        <Route exact path="/" component={}/>
-        <Route exact path="/" component={}/> */}
-        <Route exact path="/map" component={MapPage} />
-        <Route exact path="/help" component={Help} />
-        <Route exact path="/find_shelters" component={FindShelters} />
-        <Route exact path="/kaeltebus_formular" component={KaeltebusFormular} />
-        <Route exact path="/kaeltebus_login" component={KaeltebusLogin} />
-        <Redirect to="/" />
+        <Route exact path="/" render={routeProps => <Home {...routeProps} />}/>
+        <Route exact path="/map" component={MapPage}/>
+        <Route exact path="/help" component={Help}/>
+        <Route exact path="/find_shelters" component={FindShelters}/>
+        <Route exact path="/kaeltebus_formular" component={Kaeltebus}/>
+        <Redirect to="/"/>
       </Switch>
     </React.Fragment>
   );

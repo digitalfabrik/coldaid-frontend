@@ -1,5 +1,5 @@
 import React from "react";
-import FetchShelters from "../components/FetchShelters";
+import FetchShelters from "./FetchShelters";
 import { lighten, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";

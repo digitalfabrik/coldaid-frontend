@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withTranslation} from 'react-i18next';
 import L from 'leaflet';
 import { Map, TileLayer, Tooltip, Marker } from 'react-leaflet';
-import FetchShelters from '../components/FetchShelters';
+import FetchShelters from './shelterOverview/FetchShelters';
 import markerIcon from "../assets/images/marker.png";
 import markerIconGray from "../assets/images/marker_gray.png";
 import userMarker from "../assets/images/userMarker.png";

@@ -1,6 +1,6 @@
 import { useEffect} from "react";
 import React from "react";
-import FetchShelters from "../components/FetchShelters"
+import FetchShelters from "./FetchShelters"
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -15,7 +15,7 @@ import Paper from '@material-ui/core/Paper';
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import {useTranslation} from 'react-i18next';
-import Filters from "./Filters";
+import ShelterFilters from "../../components/ShelterFilter/ShelterFilters";
 
 
 function parseData(data) {
@@ -289,7 +289,7 @@ export default function FindShelters() {
     return (
         <div className={classes.root}>
             <div>
-                <Filters onFilterChange={onFilterChange} filterHandleChange={filterHandleChange} filters={filters}/>
+                <ShelterFilters onFilterChange={onFilterChange} filterHandleChange={filterHandleChange} filters={filters}/>
             </div>
             <Paper className={classes.paper}>
                 <EnhancedTableToolbar numSelected={selected.length}/>

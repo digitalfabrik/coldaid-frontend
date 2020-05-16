@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Filters(props) {
+export default function ShelterFilters(props) {
     const {t} = useTranslation();
 
     const classes = useStyles();

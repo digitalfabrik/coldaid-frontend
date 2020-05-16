@@ -1,5 +1,5 @@
 //import React from "react";
-import DummyData from "../components/DummyData";
+import DummyData from "./DummyData";
 
 
 //TODO get this from user input

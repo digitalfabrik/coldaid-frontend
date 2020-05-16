@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Link from "../../Link";
+import Link from "../link/Link";
 const useStyles = makeStyles({
   root: {
     verticalAlign: "top",
