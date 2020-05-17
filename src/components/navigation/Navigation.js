@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import IntegreatLogo from './integreatLogo/IntegreatLogo'
 import LanguagePicker from './languagePicker/LanguagePicker'
 
-import { makeStyles } from '@material-ui/core'
+import { makeStyles, withStyles } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { useTranslation } from 'react-i18next'
 import MenuItem from '@material-ui/core/MenuItem'
 import { Link } from 'react-router-dom'
-import AddIcon from '@material-ui/icons/Add'
 import MenuIcon from '@material-ui/icons/Menu'
 import MapIcon from '@material-ui/icons/Map'
 import ListIcon from '@material-ui/icons/List'
@@ -16,6 +15,7 @@ import DirectionsBusIcon from '@material-ui/icons/DirectionsBus'
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital'
 import HelpIcon from '@material-ui/icons/Help'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import { APP_ROUTES } from '../app/App'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import Menu from '@material-ui/core/Menu'
@@ -51,13 +51,16 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  action: {
-    margin: theme.spacing(0,0.5),
+  navigationAction: {
+    margin: theme.spacing(0, 0.5),
+    fontWeight: 500,
+  },
+  menuItem: {
+    fontWeight: 500,
   },
   languagePickerAction: {
     alignSelf: 'center',
   },
-  toolbarMixins: theme.mixins.toolbar,
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
@@ -65,11 +68,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 2),
   },
   drawerDivider: {
-    backgroundColor: theme.palette.primary.light
+    backgroundColor: theme.palette.primary.main,
+    height: 2,
   },
   drawerIcons: {
-    minWidth: theme.spacing(5)
-  }
+    minWidth: theme.spacing(5),
+  },
 }))
 
 export default function Navigation() {
@@ -97,51 +101,77 @@ export default function Navigation() {
       <div className={classes.drawerHeader}>
         <IntegreatLogo/>
       </div>
-      <Divider classes={{root: classes.drawerDivider}}/>
+      <Divider classes={{ root: classes.drawerDivider }}/>
       <List>
         <MenuItem component={Link} to={APP_ROUTES.map} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{root: classes.drawerIcons}}>
+          <ListItemIcon classes={{ root: classes.drawerIcons }}>
             <MapIcon/>
           </ListItemIcon>
           <ListItemText primary={t('map_feature_header')}/>
         </MenuItem>
         <MenuItem component={Link} to={APP_ROUTES.shelterOverview} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{root: classes.drawerIcons}}>
+          <ListItemIcon classes={{ root: classes.drawerIcons }}>
             <ListIcon/>
           </ListItemIcon>
           <ListItemText primary={t('view_feature_header')}/>
         </MenuItem>
         <MenuItem component={Link} to={APP_ROUTES.kaeltebus} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{root: classes.drawerIcons}}>
+          <ListItemIcon classes={{ root: classes.drawerIcons }}>
             <DirectionsBusIcon/>
           </ListItemIcon>
           <ListItemText primary={t('kaeltebus_feature_header')}/>
         </MenuItem>
       </List>
-      <Divider classes={{root: classes.drawerDivider}}/>
+      <Divider variant='middle' classes={{ root: classes.drawerDivider }} style={{ height: 1 }}/>
       <List>
         <MenuItem component={Link} to={APP_ROUTES.legalInformation} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{root: classes.drawerIcons}}>
+          <ListItemIcon classes={{ root: classes.drawerIcons }}>
             <AccountBalanceIcon/>
           </ListItemIcon>
           <ListItemText primary={t('legalInformationNavigationText')}/>
         </MenuItem>
         <MenuItem component={Link} to={APP_ROUTES.healthRelatedInformation} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{root: classes.drawerIcons}}>
+          <ListItemIcon classes={{ root: classes.drawerIcons }}>
             <LocalHospitalIcon/>
           </ListItemIcon>
           <ListItemText primary={t('healthRelatedInformationNavigationText')}/>
         </MenuItem>
         <MenuItem component={Link} to={APP_ROUTES.adviceInformation} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{root: classes.drawerIcons}}>
+          <ListItemIcon classes={{ root: classes.drawerIcons }}>
             <HelpIcon/>
           </ListItemIcon>
           <ListItemText primary={t('adviceInformationNavigationText')}/>
         </MenuItem>
       </List>
-      <Divider classes={{root: classes.drawerDivider}}/>
+      <Divider classes={{ root: classes.drawerDivider }}/>
     </div>
   )
+
+  const StyledMenu = withStyles((theme) => ({
+    paper: {
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 0,
+      borderWidth: 0,
+      borderTopWidth: 2,
+      borderStyle: 'solid',
+      borderColor: theme.palette.primary.main,
+      boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
+    },
+  }))(props => (
+    <Menu
+      elevation={0}
+      getContentAnchorEl={null}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      {...props}
+    />
+  ))
 
   return (
     <div>
@@ -162,43 +192,55 @@ export default function Navigation() {
 
           <div className={classes.toolbarRightActions}>
             <Hidden smDown>
-              <MenuItem component={Link} to={APP_ROUTES.map} color="inherit">
+              <MenuItem component={Link}
+                        to={APP_ROUTES.map}
+                        color="inherit"
+                        className={classes.navigationAction}>
                 {t('map_feature_header')}
               </MenuItem>
-              <MenuItem component={Link} to={APP_ROUTES.shelterOverview} color="inherit">
+              <MenuItem component={Link}
+                        to={APP_ROUTES.shelterOverview}
+                        color="inherit"
+                        className={classes.navigationAction}>
                 {t('view_feature_header')}
               </MenuItem>
-              <MenuItem component={Link} to={APP_ROUTES.kaeltebus} color="inherit">
+              <MenuItem component={Link}
+                        to={APP_ROUTES.kaeltebus}
+                        color="inherit"
+                        className={classes.navigationAction}>
                 {t('kaeltebus_feature_header')}
               </MenuItem>
-              <MenuItem color="inherit" onClick={handleClickOnMoreInformation} aria-controls="simple-menu"
-                        aria-haspopup="true">
-                  {t('info_feature_header')}
-                <ListItemIcon>
-                  <AddIcon/>
-                </ListItemIcon>
+              <MenuItem component={'button'} color="inherit"
+                        onClick={handleClickOnMoreInformation}
+                        className={classes.navigationAction}>
+                {t('info_feature_header')}
+                <KeyboardArrowDownIcon/>
               </MenuItem>
-              <Menu
-                id="simple-menu"
+              <StyledMenu
                 anchorEl={anchorMoreInformation}
-                getContentAnchorEl={null}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'center' }}
                 keepMounted
                 open={Boolean(anchorMoreInformation)}
                 onClose={handleCloseMoreInformation}
               >
-                <MenuItem component={Link} to={APP_ROUTES.legalInformation} onClick={handleCloseMoreInformation}>
+                <MenuItem component={Link}
+                          to={APP_ROUTES.legalInformation}
+                          onClick={handleCloseMoreInformation}
+                          className={classes.menuItem}>
                   {t('legalInformationNavigationText')}
                 </MenuItem>
-                <MenuItem component={Link} to={APP_ROUTES.healthRelatedInformation}
-                          onClick={handleCloseMoreInformation}>
+                <MenuItem component={Link}
+                          to={APP_ROUTES.healthRelatedInformation}
+                          onClick={handleCloseMoreInformation}
+                          className={classes.menuItem}>
                   {t('healthRelatedInformationNavigationText')}
                 </MenuItem>
-                <MenuItem component={Link} to={APP_ROUTES.adviceInformation} onClick={handleCloseMoreInformation}>
+                <MenuItem component={Link}
+                          to={APP_ROUTES.adviceInformation}
+                          onClick={handleCloseMoreInformation}
+                          className={classes.menuItem}>
                   {t('adviceInformationNavigationText')}
                 </MenuItem>
-              </Menu>
+              </StyledMenu>
             </Hidden>
             <LanguagePicker className={classes.languagePickerAction}/>
           </div>

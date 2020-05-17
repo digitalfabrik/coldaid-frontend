@@ -19,5 +19,14 @@ export default createMuiTheme({
     body1: {
       fontWeight: 300,
     }
+  },
+  overrides: {
+    MuiSelect: {
+      select: {
+        "&:focus": {
+          backgroundColor: "$labelcolor"
+        }
+      }
+    }
   }
 })
