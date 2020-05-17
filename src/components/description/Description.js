@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import StyledDescription from "./description.style";
+import { Typography } from '@material-ui/core'
 
 export default function Description() {
   const { t } = useTranslation();
-  return <StyledDescription>{t("landingText")}</StyledDescription>;
+  return <Typography>{t("landingText")}</Typography>;
 }
