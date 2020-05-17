@@ -61,7 +61,7 @@ export default function Features() {
       icon: <InfoOutlinedIcon className={icon} />,
       header: translation("info_feature_header"),
       text: translation("info_feature_text"),
-      link: APP_ROUTES.help
+      link: "/needed?"
     }
   ];
   return (

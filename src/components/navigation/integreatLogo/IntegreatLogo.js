@@ -8,6 +8,7 @@ const useStyles = makeStyles({
   link: {
     display: 'flex',
     alignItems: 'center',
+    width: '100%',
   },
 })
 

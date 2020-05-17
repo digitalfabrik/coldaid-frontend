@@ -55,8 +55,11 @@ const resources = {
         wc:                       "WC",
         shower:                   "Shower",
         families:                 "Families",
-        intoxicated:              "Intoxicated"
-        }
+        intoxicated:              "Intoxicated",
+        legalInformationNavigationText: "Legal Informationen",
+        healthRelatedInformationNavigationText: "Health Related Information",
+        adviceInformationNavigationText: "Advice",
+    }
   },
   de: {
     translation: {
@@ -111,7 +114,10 @@ const resources = {
         wc:                       "WC",
         shower:                   "Dusche",
         families:                 "Familien",
-        intoxicated:              "Rauschzustand"
+        intoxicated:              "Rauschzustand",
+        legalInformationNavigationText: "Rechtliche Informationen",
+        healthRelatedInformationNavigationText: "Gesundheit",
+        adviceInformationNavigationText: "Beratung",
     }
   }
 };

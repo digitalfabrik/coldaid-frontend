@@ -15,4 +15,9 @@ export default createMuiTheme({
       contrastText: '#000000',
     },
   },
+  typography: {
+    body1: {
+      fontWeight: 300,
+    }
+  }
 })
