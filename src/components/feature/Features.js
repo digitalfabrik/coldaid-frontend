@@ -9,6 +9,7 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import ContactPhoneIcon from "@material-ui/icons/ContactPhone";
 import Feature from "./Feature";
 import { useTranslation } from "react-i18next";
+import { APP_ROUTES } from '../app/App'
 
 const useStyles = makeStyles({
   root: {
@@ -32,21 +33,21 @@ export default function Features() {
       icon: <MapIcon className={icon} />,
       header: translation("map_feature_header"),
       text: translation("map_feature_text"),
-      link: "/map"
+      link: APP_ROUTES.map
     },
     {
       id: 1,
       icon: <ViewListIcon className={icon} />,
       header: translation("view_feature_header"),
       text: translation("view_feature_text"),
-      link: "/find_shelters"
+      link: APP_ROUTES.shelterOverview
     },
     {
       id: 2,
       icon: <ContactPhoneIcon className={icon} />,
       header: translation("kaeltebus_feature_header"),
       text: translation("kaeltebus_feature_text"),
-      link: "/kaeltebus_formular"
+      link: APP_ROUTES.kaeltebus
     },
     {
       id: 3,
@@ -60,7 +61,7 @@ export default function Features() {
       icon: <InfoOutlinedIcon className={icon} />,
       header: translation("info_feature_header"),
       text: translation("info_feature_text"),
-      link: "/help"
+      link: APP_ROUTES.help
     }
   ];
   return (

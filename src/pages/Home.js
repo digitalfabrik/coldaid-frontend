@@ -9,7 +9,7 @@ import Description from "../components/description/Description";
 export default function Home() {
   return (
     <>
-      <AppCarousel />
+      {/*<AppCarousel />*/}
       <Container maxWidth="lg">
         <CssBaseline />
         <Grid item xs={12}>

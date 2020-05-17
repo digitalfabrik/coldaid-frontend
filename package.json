@@ -15,6 +15,7 @@
     "react-i18next": "^11.4.0",
     "react-leaflet": "^2.7.0",
     "react-material-ui-carousel": "^1.4.5",
+    "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "react-sidebar": "^3.0.2",
