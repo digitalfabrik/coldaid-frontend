@@ -51,7 +51,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   logoAction: {
-    marginLeft: -16,
+    alignSelf: 'stretch',
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: -16,
+    }
   },
   navigationAction: {
     margin: theme.spacing(0, 0.5),

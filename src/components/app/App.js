@@ -17,6 +17,7 @@ import AdviceInformation from '../../pages/AdviceInformation'
 import Contact from '../../pages/Contact'
 import Imprint from '../../pages/Imprint'
 import Privacy from '../../pages/Privacy'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 
 export const APP_ROUTES = {
   home: '/',
@@ -31,12 +32,19 @@ export const APP_ROUTES = {
   privacy: '/privacy',
 }
 
+const useStyles = makeStyles((theme) => ({
+    toolbarFoundation: theme.mixins.toolbar,
+  })
+)
+
 function App() {
+  const classes = useStyles()
   return (
     <React.Fragment>
       <MuiThemeProvider theme={theme}>
         <CssBaseline/>
         <Navbar/>
+        <div className={classes.toolbarFoundation}/>
         <Switch>
           <Route exact path={APP_ROUTES.home} render={routeProps => <Home {...routeProps} />}/>
           <Route exact path={APP_ROUTES.map} component={MapPage}/>
