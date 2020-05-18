@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from '../../../assets/images/integreat-app-logo.png'
 import { makeStyles } from '@material-ui/core'
 import { APP_ROUTES } from '../../app/App'
-import Link from '@material-ui/core/Link'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   link: {
