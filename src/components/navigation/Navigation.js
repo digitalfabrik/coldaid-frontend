@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  logoAction: {
+    marginLeft: -16,
+  },
   navigationAction: {
     margin: theme.spacing(0, 0.5),
     fontWeight: 500,
@@ -57,11 +60,16 @@ const useStyles = makeStyles((theme) => ({
   languagePickerAction: {
     marginLeft: theme.spacing(0.5),
   },
+  drawerWrapper: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
     ...theme.mixins.toolbar,
-    padding: theme.spacing(0, 2),
   },
   drawerDivider: {
     backgroundColor: theme.palette.primary.main,
@@ -93,53 +101,71 @@ export default function Navigation() {
   }
 
   const drawer = (
-    <div>
-      <div className={classes.drawerHeader}>
-        <IntegreatLogo/>
+    <div className={classes.drawerWrapper}>
+      <div>
+        <div className={classes.drawerHeader}>
+          <IntegreatLogo/>
+        </div>
+        <Divider classes={{ root: classes.drawerDivider }}/>
+        <List>
+          <MenuItem component={Link} to={APP_ROUTES.map} onClick={handleDrawerNavigation}>
+            <ListItemIcon classes={{ root: classes.drawerIcons }}>
+              <MapIcon/>
+            </ListItemIcon>
+            <ListItemText primary={t('map_feature_header')}/>
+          </MenuItem>
+          <MenuItem component={Link} to={APP_ROUTES.shelterOverview} onClick={handleDrawerNavigation}>
+            <ListItemIcon classes={{ root: classes.drawerIcons }}>
+              <ListIcon/>
+            </ListItemIcon>
+            <ListItemText primary={t('view_feature_header')}/>
+          </MenuItem>
+          <MenuItem component={Link} to={APP_ROUTES.kaeltebus} onClick={handleDrawerNavigation}>
+            <ListItemIcon classes={{ root: classes.drawerIcons }}>
+              <DirectionsBusIcon/>
+            </ListItemIcon>
+            <ListItemText primary={t('kaeltebus_feature_header')}/>
+          </MenuItem>
+        </List>
+        <Divider variant='middle' classes={{ root: classes.drawerDivider }} style={{ height: 1 }}/>
+        <List>
+          <MenuItem component={Link} to={APP_ROUTES.legalInformation} onClick={handleDrawerNavigation}>
+            <ListItemIcon classes={{ root: classes.drawerIcons }}>
+              <AccountBalanceIcon/>
+            </ListItemIcon>
+            <ListItemText primary={t('legalInformationNavigationText')}/>
+          </MenuItem>
+          <MenuItem component={Link} to={APP_ROUTES.healthRelatedInformation} onClick={handleDrawerNavigation}>
+            <ListItemIcon classes={{ root: classes.drawerIcons }}>
+              <LocalHospitalIcon/>
+            </ListItemIcon>
+            <ListItemText primary={t('healthRelatedInformationNavigationText')}/>
+          </MenuItem>
+          <MenuItem component={Link} to={APP_ROUTES.adviceInformation} onClick={handleDrawerNavigation}>
+            <ListItemIcon classes={{ root: classes.drawerIcons }}>
+              <HelpIcon/>
+            </ListItemIcon>
+            <ListItemText primary={t('adviceInformationNavigationText')}/>
+          </MenuItem>
+        </List>
+        <Divider classes={{ root: classes.drawerDivider }}/>
       </div>
-      <Divider classes={{ root: classes.drawerDivider }}/>
-      <List>
-        <MenuItem component={Link} to={APP_ROUTES.map} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{ root: classes.drawerIcons }}>
-            <MapIcon/>
-          </ListItemIcon>
-          <ListItemText primary={t('map_feature_header')}/>
-        </MenuItem>
-        <MenuItem component={Link} to={APP_ROUTES.shelterOverview} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{ root: classes.drawerIcons }}>
-            <ListIcon/>
-          </ListItemIcon>
-          <ListItemText primary={t('view_feature_header')}/>
-        </MenuItem>
-        <MenuItem component={Link} to={APP_ROUTES.kaeltebus} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{ root: classes.drawerIcons }}>
-            <DirectionsBusIcon/>
-          </ListItemIcon>
-          <ListItemText primary={t('kaeltebus_feature_header')}/>
-        </MenuItem>
-      </List>
-      <Divider variant='middle' classes={{ root: classes.drawerDivider }} style={{ height: 1 }}/>
-      <List>
-        <MenuItem component={Link} to={APP_ROUTES.legalInformation} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{ root: classes.drawerIcons }}>
-            <AccountBalanceIcon/>
-          </ListItemIcon>
-          <ListItemText primary={t('legalInformationNavigationText')}/>
-        </MenuItem>
-        <MenuItem component={Link} to={APP_ROUTES.healthRelatedInformation} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{ root: classes.drawerIcons }}>
-            <LocalHospitalIcon/>
-          </ListItemIcon>
-          <ListItemText primary={t('healthRelatedInformationNavigationText')}/>
-        </MenuItem>
-        <MenuItem component={Link} to={APP_ROUTES.adviceInformation} onClick={handleDrawerNavigation}>
-          <ListItemIcon classes={{ root: classes.drawerIcons }}>
-            <HelpIcon/>
-          </ListItemIcon>
-          <ListItemText primary={t('adviceInformationNavigationText')}/>
-        </MenuItem>
-      </List>
-      <Divider classes={{ root: classes.drawerDivider }}/>
+      <div>
+        <List>
+          <MenuItem component={Link} to={APP_ROUTES.contact} onClick={handleDrawerNavigation}>
+            <ListItemText primary={t('contact.navigationLabel')}
+                          primaryTypographyProps={{ variant: 'caption', color: 'primary' }}/>
+          </MenuItem>
+          <MenuItem component={Link} to={APP_ROUTES.imprint} onClick={handleDrawerNavigation}>
+            <ListItemText primary={t('imprint.navigationLabel')}
+                          primaryTypographyProps={{ variant: 'caption', color: 'primary' }}/>
+          </MenuItem>
+          <MenuItem component={Link} to={APP_ROUTES.privacy} onClick={handleDrawerNavigation}>
+            <ListItemText primary={t('privacy.navigationLabel')}
+                          primaryTypographyProps={{ variant: 'caption', color: 'primary' }}/>
+          </MenuItem>
+        </List>
+      </div>
     </div>
   )
 
@@ -183,7 +209,7 @@ export default function Navigation() {
             >
               <MenuIcon/>
             </IconButton>
-            <IntegreatLogo/>
+            <IntegreatLogo className={classes.logoAction}/>
           </div>
 
           <div className={classes.toolbarRightActions}>

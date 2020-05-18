@@ -3,6 +3,7 @@ import Logo from '../../../assets/images/integreat-app-logo.png'
 import { makeStyles } from '@material-ui/core'
 import { APP_ROUTES } from '../../app/App'
 import { Link } from 'react-router-dom'
+import MenuItem from '@material-ui/core/MenuItem'
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -20,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function IntegreatLogo() {
+export default function IntegreatLogo(props) {
   const classes = useStyles()
   return (
-    <Link to={APP_ROUTES.home} className={classes.link}>
+    <MenuItem component={Link} to={APP_ROUTES.home} className={classes.link} {...props}>
       <img src={Logo} alt="integreat logo" className={classes.logo}/>
-    </Link>
+    </MenuItem>
   )
 }

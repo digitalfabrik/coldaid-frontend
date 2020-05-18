@@ -59,6 +59,15 @@ const resources = {
         legalInformationNavigationText: "Legal Informationen",
         healthRelatedInformationNavigationText: "Health Related Information",
         adviceInformationNavigationText: "Advice",
+      contact: {
+        navigationLabel: 'Contact'
+      },
+      imprint: {
+        navigationLabel: 'Imprint'
+      },
+      privacy: {
+        navigationLabel: 'Privacy'
+      }
     }
   },
   de: {
@@ -118,6 +127,15 @@ const resources = {
         legalInformationNavigationText: "Rechtliche Informationen",
         healthRelatedInformationNavigationText: "Gesundheit",
         adviceInformationNavigationText: "Beratung",
+      contact: {
+          navigationLabel: 'Kontakt'
+      },
+      imprint: {
+        navigationLabel: 'Impressum'
+      },
+      privacy: {
+        navigationLabel: 'Datenschutz'
+      }
     }
   }
 };
@@ -127,8 +145,6 @@ i18n
   .init({
     resources,
     lng: "de",
-
-    keySeparator: false, // we do not use keys in form messages.welcome
 
     interpolation: {
       escapeValue: false // react already safes from xss

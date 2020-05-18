@@ -14,6 +14,9 @@ import FindShelters from '../../pages/shelterOverview/FindShelters'
 import MapPage from '../../pages/Map'
 import HealthRelatedInformation from '../../pages/HealthRelatedInformation'
 import AdviceInformation from '../../pages/AdviceInformation'
+import Contact from '../../pages/Contact'
+import Imprint from '../../pages/Imprint'
+import Privacy from '../../pages/Privacy'
 
 export const APP_ROUTES = {
   home: '/',
@@ -23,6 +26,9 @@ export const APP_ROUTES = {
   legalInformation: '/legal-information',
   healthRelatedInformation: '/health-related-information',
   adviceInformation: '/advice-information',
+  contact: '/contact',
+  imprint: '/imprint',
+  privacy: '/privacy',
 }
 
 function App() {
@@ -39,6 +45,9 @@ function App() {
           <Route exact path={APP_ROUTES.legalInformation} component={LegalInformation}/>
           <Route exact path={APP_ROUTES.healthRelatedInformation} component={HealthRelatedInformation}/>
           <Route exact path={APP_ROUTES.adviceInformation} component={AdviceInformation}/>
+          <Route exact path={APP_ROUTES.contact} component={Contact}/>
+          <Route exact path={APP_ROUTES.imprint} component={Imprint}/>
+          <Route exact path={APP_ROUTES.privacy} component={Privacy}/>
           <Redirect to={APP_ROUTES.home}/>
         </Switch>
       </MuiThemeProvider>
