@@ -171,7 +171,7 @@ export default function Navigation() {
 
   return (
     <div>
-      <AppBar color="secondary">
+      <AppBar color="secondary" position='fixed'>
         <Toolbar className={classes.toolbar}>
 
           <div className={classes.toolbarLeftActions}>
