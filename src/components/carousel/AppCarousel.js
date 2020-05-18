@@ -1,55 +1,44 @@
-import React from "react";
-import Carousel from "react-material-ui-carousel";
-import CarouselItem from "./CarouselItem";
-import { useTranslation } from "react-i18next";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import LandingPageWelcomeImage from "../../assets/images/landing_page_welcome_home_alt.png";
-import zIndex from "@material-ui/core/styles/zIndex";
+import React from 'react'
+import Carousel from 'react-material-ui-carousel'
+import CarouselItem from './CarouselItem'
+import { useTranslation } from 'react-i18next'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import { APP_ROUTES } from '../app/App'
 
 const useStyles = makeStyles({
   root: {
-    marginTop: "3px",
-    zIndex: -99
-  }
-});
+    // marginTop: '3px',
+    // zIndex: -99,
+  },
+})
 
 export default function AppCarousel() {
-  var { t: translation } = useTranslation();
-  const { root } = useStyles();
-  var items = [
+  const {t} = useTranslation()
+
+  const items = [
     {
-      id: 0,
-      header: translation("welcome_header"),
-      text: translation("welcome_text"),
-      src: LandingPageWelcomeImage,
-      alt: "Image1"
+      infoText: t('advice.imageText'),
+      src: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+      alt: 'advice image',
+      to: APP_ROUTES.adviceInformation,
     },
     {
-      id: 1,
-      header: translation("header2"),
-      text: translation("text2"),
-      src:
-        "https://image.freepik.com/free-vector/background-fireworks-new-year_23-2148370606.jpg",
-      alt: "Image2"
+      infoText: t('healthRelatedInformation.imageText'),
+      src: 'https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+      alt: 'health image',
+      to: APP_ROUTES.healthRelatedInformation,
     },
-    {
-      id: 2,
-      header: translation("header3"),
-      text: translation("text3"),
-      src: "https://clipartart.com/images/clipart-lands-department-maps-5.png",
-      alt: "Image3"
-    }
-  ];
+  ]
+
   return (
     <Carousel
-      className={root}
       autoPlay={true}
-      interval={10000}
-      animation={"slide"}
+      indicators={false}
+      animation={'slide'}
     >
-      {items.map(item => {
-        return <CarouselItem key={item.id} item={item} />;
+      {items.map((item,key) => {
+        return <CarouselItem key={key} item={item}/>
       })}
     </Carousel>
-  );
+  )
 }

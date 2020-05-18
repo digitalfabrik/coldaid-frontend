@@ -1,49 +1,57 @@
-import React from "react";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import makeStyles from "@material-ui/core/styles/makeStyles";
+import React from 'react'
+import Paper from '@material-ui/core/Paper'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import MenuItem from '@material-ui/core/MenuItem'
+import Typography from '@material-ui/core/Typography'
+import { Link } from 'react-router-dom'
 
-const useStyles = makeStyles({
-  root: {
-    display: "grid",
-    gridTemplateColumns: "45vw 55vw",
-    gridTemplateRows: "225px 250px",
-    textAlign: "center",
-    height: "475px"
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    width: '100%',
+    height: '600px',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    padding: theme.spacing(4),
+    borderRadius: 0,
+    borderBottomStyle: 'solid',
+    borderBottomWidth: '3px',
+    borderBottomColor: theme.palette.primary.main,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    [theme.breakpoints.down('sm')]: {
+      height: '400px',
+      borderBottomWidth: '2px',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '300px',
+    },
   },
-  title: {
-    gridColumn: "1 / 2",
-    gridRow: "1/2",
-    padding: "1rem",
-    fontSize: "26px",
-    alignSelf: "flex-end"
+  action: {
+    // display: 'inline-block',
+    padding: `${theme.spacing(3)}px ${theme.spacing(5)}px`,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    borderStyle: 'solid',
+    borderWidth: '2px',
+    borderColor: theme.palette.primary.main,
+    '&:hover': {
+      backgroundColor: 'rgba(0,0,0,0.3)',
+    },
   },
-  content: {
-    gridColumn: "1 / 2",
-    alignSelf: "flex-start",
-    gridRow: "2/3",
-    padding: "1rem",
-    fontSize: "26px"
-  },
-  img: {
-    gridColumn: "2 / 3",
-    gridRow: "1/3",
-    height: "475px",
-    width: "55vw",
-    justifySelf: "end"
+  actionText: {
+    fontWeight: 600,
   }
-});
+}))
 
 export default function CarouselItem(props) {
-  const { header, text, src, alt } = props.item;
-  const { root, title, img, content } = useStyles();
+  const classes = useStyles()
+  const { infoText, src, alt, to } = props.item
   return (
-    <Paper className={root}>
-      <h2 className={title}>{header}</h2>
-      <Typography className={content} component={"h2"}>
-        {text}
-      </Typography>
-      <img className={img} src={src} alt={alt}></img>
+    <Paper className={classes.paper} style={{ backgroundImage: `url(${src})`}} alt={alt}>
+      <MenuItem component={Link} to={to} className={classes.action}>
+        <Typography color='secondary' className={classes.actionText}>{infoText}</Typography>
+      </MenuItem>
     </Paper>
-  );
+  )
 }

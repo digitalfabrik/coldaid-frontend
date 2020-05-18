@@ -127,8 +127,14 @@ const resources = {
         legalInformationNavigationText: "Rechtliche Informationen",
         healthRelatedInformationNavigationText: "Gesundheit",
         adviceInformationNavigationText: "Beratung",
+      healthRelatedInformation: {
+        imageText: 'Hier finden Sie Gesundheits Informationen'
+      },
+      advice: {
+        imageText: 'Hier erhalten Sie Beratung'
+      },
       contact: {
-          navigationLabel: 'Kontakt'
+        navigationLabel: 'Kontakt'
       },
       imprint: {
         navigationLabel: 'Impressum'

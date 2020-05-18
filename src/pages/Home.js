@@ -1,5 +1,4 @@
 import React from "react";
-// import Description from "../components/landingpage/Description";
 import {
   Box,
   Container,
@@ -15,7 +14,7 @@ import Description from "../components/description/Description";
 export default function Home() {
   return (
     <>
-      {/*<AppCarousel />*/}
+      <AppCarousel />
       <Container maxWidth="lg">
         <CssBaseline />
         <Box my={4} px={4}>
