@@ -25,8 +25,6 @@ import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
 import Hidden from '@material-ui/core/Hidden'
 import Drawer from '@material-ui/core/Drawer'
-import ListItem from '@material-ui/core/ListItem'
-
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -57,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
   },
   languagePickerAction: {
-    alignSelf: 'center',
+    marginLeft: theme.spacing(0.5),
   },
   drawerHeader: {
     display: 'flex',
@@ -223,16 +221,25 @@ export default function Navigation() {
                 <MenuItem component={Link}
                           to={APP_ROUTES.legalInformation}
                           onClick={handleCloseMoreInformation}>
+                  <ListItemIcon classes={{ root: classes.drawerIcons }}>
+                    <AccountBalanceIcon/>
+                  </ListItemIcon>
                   <ListItemText primary={t('legalInformationNavigationText')}/>
                 </MenuItem>
                 <MenuItem component={Link}
                           to={APP_ROUTES.healthRelatedInformation}
                           onClick={handleCloseMoreInformation}>
+                  <ListItemIcon classes={{ root: classes.drawerIcons }}>
+                    <LocalHospitalIcon/>
+                  </ListItemIcon>
                   <ListItemText primary={t('healthRelatedInformationNavigationText')}/>
                 </MenuItem>
                 <MenuItem component={Link}
                           to={APP_ROUTES.adviceInformation}
                           onClick={handleCloseMoreInformation}>
+                  <ListItemIcon classes={{ root: classes.drawerIcons }}>
+                    <HelpIcon/>
+                  </ListItemIcon>
                   <ListItemText primary={t('adviceInformationNavigationText')}/>
                 </MenuItem>
               </StyledMenu>

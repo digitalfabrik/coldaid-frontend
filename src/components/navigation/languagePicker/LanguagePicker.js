@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import Select from '@material-ui/core/Select'
-import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import { makeStyles } from '@material-ui/core'
+import { makeStyles, withStyles } from '@material-ui/core'
 
 import deFlag from '../../../assets/images/flags/de.svg'
 import enFlag from '../../../assets/images/flags/en.svg'
 import frFlag from '../../../assets/images/flags/fr.svg'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
 
 const DEFAULT_LANGUAGE = { id: 'en', label: 'English', flag: enFlag }
 const SELECTABLE_LANGUAGES = [
@@ -18,14 +18,42 @@ const SELECTABLE_LANGUAGES = [
 ]
 const LANGUAGE_LOCAL_STORAGE_KEY = 'language'
 
-const useStyles = makeStyles({
-  selectedLanguage: {
-    padding: '0 4px 0 8px',
+const StyledMenu = withStyles((theme) => ({
+  paper: {
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderWidth: 0,
+    borderTopWidth: 2,
+    borderStyle: 'solid',
+    borderColor: theme.palette.primary.main,
+    boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
   },
-})
+}))(props => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'right',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'right',
+    }}
+    {...props}
+  />
+))
+
+const useStyles = makeStyles((theme) => ({
+  flagIcon: {
+    minWidth: theme.spacing(5),
+  },
+}))
 
 export default function LanguagePicker(props) {
   const classes = useStyles()
+  const { i18n } = useTranslation()
+  const [language, setLanguage] = useState(DEFAULT_LANGUAGE)
 
   useEffect(() => {
     const languageId = localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) ?? 'en'
@@ -35,8 +63,6 @@ export default function LanguagePicker(props) {
     }
   }, [])
 
-  const { i18n } = useTranslation()
-  const [language, setLanguage] = useState(DEFAULT_LANGUAGE)
   useEffect(() => {
     const changeLanguage = async () => {
       try {
@@ -50,31 +76,45 @@ export default function LanguagePicker(props) {
     changeLanguage()
   }, [i18n, language.id])
 
-  const handleValueChange = (event) => {
-    const languageOption = event.target.value
+  const [anchorLanguageSelection, setAnchorLanguageSelection] = useState(null)
+  const handleClickOnLanguageSelection = (event) => {
+    event.stopPropagation()
+    setAnchorLanguageSelection(event.currentTarget)
+  }
+  const handleCloseLanguageSelection = () => {
+    setAnchorLanguageSelection(null)
+  }
+
+  const handleClickOnLanguage = (languageOption) => {
     setLanguage(languageOption)
+    handleCloseLanguageSelection()
     localStorage.setItem(LANGUAGE_LOCAL_STORAGE_KEY, languageOption.id)
   }
 
-  const renderSelectedValue = (value) => {
-    return <img className={classes.selectedLanguage}
-                alt={`flag of ${value.label}`}
-                src={value.flag} height="24px"/>
-  }
-
   return (
-    <Select value={language}
-            renderValue={renderSelectedValue}
-            onChange={handleValueChange}
-            {...props}>
-      {SELECTABLE_LANGUAGES.map((option, key) =>
-        <ListItem value={option} key={key} button={true}>
-          <ListItemIcon>
-            <img src={option.flag} alt={`flag of ${option.label}`} height="24px"/>
-          </ListItemIcon>
-          <ListItemText primary={option.label}/>
-        </ListItem>,
-      )}
-    </Select>
+    <Fragment>
+      <MenuItem component={'button'} color="inherit"
+                onClick={handleClickOnLanguageSelection}
+                {...props}>
+        <img alt={`flag of ${language.label}`}
+             src={language.flag} height="32px"/>
+      </MenuItem>
+      <StyledMenu
+        anchorEl={anchorLanguageSelection}
+        keepMounted
+        open={Boolean(anchorLanguageSelection)}
+        onClose={handleCloseLanguageSelection}>
+        {SELECTABLE_LANGUAGES.map((option, key) =>
+          <MenuItem className={option.id === language.id ? 'Mui-selected' : ''}
+                    onClick={() => handleClickOnLanguage(option)}
+                    key={key}>
+            <ListItemIcon className={classes.flagIcon}>
+              <img src={option.flag} alt={`flag of ${option.label}`} height="24px"/>
+            </ListItemIcon>
+            <ListItemText primary={option.label}/>
+          </MenuItem>,
+        )}
+      </StyledMenu>
+    </Fragment>
   )
 }
