@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   action: {
-    // display: 'inline-block',
+    maxWidth: '600px',
     padding: `${theme.spacing(3)}px ${theme.spacing(5)}px`,
     backgroundColor: 'rgba(0,0,0,0.3)',
     borderStyle: 'solid',
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   actionText: {
     fontWeight: 600,
+    whiteSpace: 'normal',
   }
 }))
 

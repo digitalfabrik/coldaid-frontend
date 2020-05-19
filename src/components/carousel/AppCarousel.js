@@ -33,8 +33,10 @@ export default function AppCarousel() {
   return (
     <Carousel
       autoPlay={true}
+      interval={6000}
       indicators={false}
-      animation={'slide'}
+      animation={'fade'}
+      timeout={0}
     >
       {items.map((item,key) => {
         return <CarouselItem key={key} item={item}/>
