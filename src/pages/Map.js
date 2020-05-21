@@ -13,6 +13,12 @@ import RemoveIcon from '@material-ui/icons/Remove'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import { useTranslation } from 'react-i18next'
 import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
+import { Hidden } from '@material-ui/core'
+import PlaceIcon from '@material-ui/icons/Place'
+import PhoneIcon from '@material-ui/icons/Phone'
 
 const POSITION_ICON = L.icon({
   iconUrl: userMarker,
@@ -32,6 +38,11 @@ const HOUSE_GRAY_ICON = L.icon({
 const DEFAULT_POSITION = { lat: 52.520008, lng: 13.404954 }
 
 const useStyles = makeStyles((theme) => ({
+  wrapper: {
+    flexGrow: 1,
+    position: 'relative',
+    display: 'flex',
+  },
   map: {
     flexGrow: 1,
   },
@@ -49,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0.5, 0, 0, 0),
   },
   tooltip: {
-    backgroundColor: 'rgba(0,0,0,0.6) !important',
+    backgroundColor: 'rgba(0,0,0,0.8) !important',
     borderWidth: '2px !important',
     borderStyle: 'solid !important',
     borderColor: `${theme.palette.primary.main} !important`,
@@ -57,6 +68,46 @@ const useStyles = makeStyles((theme) => ({
     padding: `${theme.spacing(1)}px !important`,
     maxWidth: '350px',
     overflow: 'hidden',
+  },
+  infoBoxWrapper: {
+    position: 'absolute',
+    zIndex: 1001,
+    padding: theme.spacing(2),
+    top: 0,
+    left: 0,
+    height: '100%',
+  },
+  infoBox: {
+    backgroundColor: '#ffffff',
+    borderRadius: '3px',
+    padding: theme.spacing(2, 3),
+    maxWidth: '600px',
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(2),
+      maxWidth: '100%',
+    },
+    maxHeight: '100%',
+    overflowY: 'auto',
+  },
+  infoBoxHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  infoBoxItemAlignSelfCenter: {
+    alignSelf: 'center',
+  },
+  infoBoxItemGrow: {
+    flexGrow: 1,
+  },
+  infoBoxIconLabelledInfo: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  infoBoxRow: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 }))
 
@@ -69,6 +120,7 @@ export default function MapPage() {
     const getShelters = async () => {
       const response = await fetch(`http://130.149.22.44:8000/api/berlin/de-de/accommodations/`)
       const shelters = await response.json()
+      console.log(shelters)
       setShelters(shelters)
     }
     getShelters()
@@ -124,240 +176,133 @@ export default function MapPage() {
     return time.slice(0, time.lastIndexOf(':'))
   }
 
+  const handleCloseInfoBox = (event) => {
+    event.stopPropagation()
+    setClickedShelter(null)
+  }
+
   return (
-    <Map center={center}
-         zoom={13}
-         zoomControl={false}
-         animate={true}
-         className={classes.map}
-         onLocationfound={handleLocationFound}
-         ref={mapRef}>
-      <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Control position="bottomright" className={classes.controls}>
-        <Fab color="secondary" size="small" className={classes.controlTop} onClick={handleZoomIn}>
-          <AddIcon/>
-        </Fab>
-        <Fab color="secondary" size="small" className={classes.controlCenter} onClick={handleZoomOut}>
-          <RemoveIcon/>
-        </Fab>
-        <Fab color="secondary" size="small" className={classes.controlBottom} onClick={handleLocate}>
-          <LocationOnIcon/>
-        </Fab>
-      </Control>
-      {center !== DEFAULT_POSITION && <Marker position={center} icon={POSITION_ICON}/>}
-      {
-        shelters.map((shelter, key) => (
-          <Marker key={key}
-                  position={[shelter.address.geo.lat, shelter.address.geo.long]}
-                  icon={areBedsAvailable(shelter) ? HOUSE_ICON : HOUSE_GRAY_ICON}
-                  onclick={() => handleClickOnShelter(shelter)}>
-            <Tooltip direction='center' offset={[0, 75]} permanent={false} className={classes.tooltip}>
-              <Typography
-                variant="h6">{shelter.name.length > 32 ? `${shelter.name.slice(0, 32)}...` : shelter.name}</Typography>
-              <Typography
-                variant="subtitle2">{t('intake_hours')}: {timeToString(shelter.opening_hours.from)} - {timeToString(shelter.opening_hours.to)}</Typography>
-              <Typography variant="subtitle2">{t('available_beds')}: {getNumberOfAvailableBeds(shelter)}</Typography>
-            </Tooltip>
-          </Marker>
-        ))
-      }
+    <div className={classes.wrapper}>
+      <Map center={center}
+           zoom={13}
+           zoomControl={false}
+           animate={true}
+           className={classes.map}
+           onLocationfound={handleLocationFound}
+           ref={mapRef}>
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Control position="bottomright" className={classes.controls}>
+          <Fab color="secondary" size="small" className={classes.controlTop} onClick={handleZoomIn}>
+            <AddIcon/>
+          </Fab>
+          <Fab color="secondary" size="small" className={classes.controlCenter} onClick={handleZoomOut}>
+            <RemoveIcon/>
+          </Fab>
+          <Fab color="secondary" size="small" className={classes.controlBottom} onClick={handleLocate}>
+            <LocationOnIcon/>
+          </Fab>
+        </Control>
+        {center !== DEFAULT_POSITION && <Marker position={center} icon={POSITION_ICON}/>}
+        {
+          shelters.map((shelter, key) => (
+            <Marker key={key}
+                    position={[shelter.address.geo.lat, shelter.address.geo.long]}
+                    icon={areBedsAvailable(shelter) ? HOUSE_ICON : HOUSE_GRAY_ICON}
+                    onclick={() => handleClickOnShelter(shelter)}>
+              <Hidden smDown>
+                <Tooltip direction='center' offset={[0, 75]} permanent={false} className={classes.tooltip}>
+                  <Typography
+                    variant="h6">{shelter.name.length > 32 ? `${shelter.name.slice(0, 32)}...` : shelter.name}</Typography>
+                  <Typography
+                    variant="subtitle2">{t('intake_hours')}: {timeToString(shelter.opening_hours.from)} - {timeToString(shelter.opening_hours.to)}</Typography>
+                  <Typography
+                    variant="subtitle2">{t('available_beds')}: {getNumberOfAvailableBeds(shelter)}</Typography>
+                </Tooltip>
+              </Hidden>
+            </Marker>
+          ))
+        }
+      </Map>
       {
         clickedShelter !== null &&
-        <div style={{ position: 'absolute', zIndex: 450 }}>
-          Hallo
+        <div className={classes.infoBoxWrapper}>
+          <Paper elevation={3} className={classes.infoBox}>
+
+            <div className={classes.infoBoxHeader}>
+              <Typography variant='h4'>{clickedShelter.name}</Typography>
+              <IconButton className={classes.infoBoxItemAlignSelfCenter} onClick={handleCloseInfoBox}>
+                <CloseIcon/>
+              </IconButton>
+            </div>
+            <Typography variant='caption'>{clickedShelter.institution.name}</Typography>
+
+            <div className={classes.infoBoxRow}>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxItemGrow}`}>
+                <PlaceIcon/>
+                <div>
+                  <Typography>{clickedShelter.address.street}</Typography>
+                  <Typography>{clickedShelter.address.plz} {clickedShelter.address.city}</Typography>
+                </div>
+              </div>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxItemGrow}`}>
+                <PhoneIcon/>
+                <div>
+                  <Typography>{clickedShelter.phone.home}</Typography>
+                  <Typography>{clickedShelter.phone.mobile}</Typography>
+                </div>
+              </div>
+            </div>
+            <Typography variant='subtitle1'>{t('description')}:</Typography>
+            <Typography variant='body1' dangerouslySetInnerHTML={{ __html: clickedShelter.description }}></Typography>
+
+            <div style={{ padding: '0 5vh', maxWidth: '50vh' }}>
+
+
+              <br/>
+              <span style={{ display: 'block' }}><b>{t('free_beds')}:</b></span>
+              {clickedShelter.beds.map((bed, i) =>
+                <span key={i} style={{ display: 'block' }}>{t(bed.target_group)} : {bed.num_free_beds} </span>,
+              )}
+              <br/>
+              <span style={{ display: 'block' }}><b>{t('intake_hours')}:</b></span>
+              <span
+                style={{ display: 'block' }}>{clickedShelter.opening_hours.from} - {clickedShelter.opening_hours.to}</span>
+              <br/>
+              <span style={{ display: 'block' }}><b>{t('opening_hours')}:</b></span>
+              <span
+                style={{ display: 'block' }}>{clickedShelter.opening_hours.from} - {clickedShelter.opening_hours.to}</span>
+              <br/>
+              <span style={{ display: 'block' }}><b>{t('rules')}:</b></span>
+              <span
+                style={{ display: 'block' }}>{t('kids')}: {clickedShelter.rules.kids_welcome ? t('yes') : t('no')}</span>
+              <span
+                style={{ display: 'block' }}>{t('animals')}: {clickedShelter.rules.animals ? t('yes') : t('no')}</span>
+              <span
+                style={{ display: 'block' }}>{t('female_only')}: {clickedShelter.rules.female_only ? t('yes') : t('no')}</span>
+              <span
+                style={{ display: 'block' }}>{t('families_welcome')}: {clickedShelter.rules.families_welcome ? t('yes') : t('no')}</span>
+              <span
+                style={{ display: 'block' }}>{t('male_only')}: {clickedShelter.rules.male_only ? t('yes') : t('no')}</span>
+              <br/>
+              <span style={{ display: 'block' }}>{t('sanitary_amenities')}: </span>
+              <span
+                style={{ display: 'block' }}>{t('wc')}: {clickedShelter.sanitary_amenities.wc ? t('yes') : t('no')}</span>
+              <span
+                style={{ display: 'block' }}>{t('shower')}: {clickedShelter.sanitary_amenities.shower ? t('yes') : t('no')}</span>
+              <br/>
+              <span style={{ display: 'block' }}><b>{t('languages')}:</b></span>
+              {clickedShelter.spoken_languages.map((language, i) =>
+                <span key={i} style={{ display: 'block' }}>{language.native}</span>,
+              )}
+            </div>
+          </Paper>
         </div>
       }
-
-    </Map>
+    </div>
   )
 }
-
-// class MapPage extends Component {
-//   constructor(props) {
-//     super(props)
-//
-//     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this)
-//     this.selectedShelterToString = this.selectedShelterToString.bind(this)
-//     this.getSumFreeBeds = this.getSumFreeBeds.bind(this)
-//
-//     this.state = {
-//       shelters: [],
-//       sidebarOpen: false,
-//       selectedShelter: {},
-//
-//     }
-//   }
-//
-//   async componentDidMount() {
-//     let data = await FetchShelters()
-//     this.setState({ shelters: data })
-//   }
-//
-//   houseIcon = L.icon({
-//     iconUrl: markerIcon,
-//     iconSize: [50, 50],
-//   })
-//
-//   houseIconGray = L.icon({
-//     iconUrl: markerIconGray,
-//     iconSize: [50, 50],
-//   })
-//
-//   positionIcon = L.icon({
-//     iconUrl: userMarker,
-//     iconSize: [50, 50],
-//   })
-//
-//   onSetSidebarOpen(open) {
-//     this.setState({
-//       sidebarOpen: open,
-//     })
-//   }
-//
-//   selectedShelterToString(t) {
-//     this.t = t
-//     let shelter = this.state.selectedShelter
-//     if (Object.keys(shelter).length === 0) {
-//       return (<b>empty</b>)
-//     } else {
-//       return (
-//         <div style={{ padding: '0 5vh', maxWidth: '50vh' }}>
-//           <h2 style={{ display: 'block' }}>{shelter.name}</h2>
-//
-//           <span style={{ display: 'block' }}><b>{t('address')}:</b></span>
-//           <span style={{ display: 'block' }}>{shelter.address.street} {shelter.address.number}</span>
-//           <span style={{ display: 'block' }}>{shelter.address.additional}</span>
-//           <span style={{ display: 'block' }}>{shelter.address.plz} {shelter.address.city}</span>
-//           <br/>
-//           <span style={{ display: 'block' }}><b>{t('phone')}:</b></span>
-//           <span style={{ display: 'block' }}>{shelter.phone.mobile}</span>
-//           <span style={{ display: 'block' }}>{shelter.phone.home}</span>
-//           <br/>
-//           <span style={{ display: 'block' }}><b>{t('description')}:</b></span>
-//           <span style={{ display: 'block' }} dangerouslySetInnerHTML={{ __html: shelter.description }}></span>
-//           <br/>
-//           <span style={{ display: 'block' }}><b>{t('free_beds')}:</b></span>
-//           {shelter.beds.map((bed, i) =>
-//             <span key={i} style={{ display: 'block' }}>{t(bed.target_group)} : {bed.num_free_beds} </span>,
-//           )}
-//           <br/>
-//           <span style={{ display: 'block' }}><b>{t('intake_hours')}:</b></span>
-//           <span style={{ display: 'block' }}>{shelter.opening_hours.from} - {shelter.opening_hours.to}</span>
-//           <br/>
-//           <span style={{ display: 'block' }}><b>{t('opening_hours')}:</b></span>
-//           <span style={{ display: 'block' }}>{shelter.opening_hours.from} - {shelter.opening_hours.to}</span>
-//           <br/>
-//           <span style={{ display: 'block' }}><b>{t('rules')}:</b></span>
-//           <span style={{ display: 'block' }}>{t('kids')}: {shelter.rules.kids_welcome ? t('yes') : t('no')}</span>
-//           <span style={{ display: 'block' }}>{t('animals')}: {shelter.rules.animals ? t('yes') : t('no')}</span>
-//           <span style={{ display: 'block' }}>{t('female_only')}: {shelter.rules.female_only ? t('yes') : t('no')}</span>
-//           <span
-//             style={{ display: 'block' }}>{t('families_welcome')}: {shelter.rules.families_welcome ? t('yes') : t('no')}</span>
-//           <span style={{ display: 'block' }}>{t('male_only')}: {shelter.rules.male_only ? t('yes') : t('no')}</span>
-//           <br/>
-//           <span style={{ display: 'block' }}>{t('sanitary_amenities')}: </span>
-//           <span style={{ display: 'block' }}>{t('wc')}: {shelter.sanitary_amenities.wc ? t('yes') : t('no')}</span>
-//           <span
-//             style={{ display: 'block' }}>{t('shower')}: {shelter.sanitary_amenities.shower ? t('yes') : t('no')}</span>
-//           <br/>
-//           <span style={{ display: 'block' }}><b>{t('holder')}:</b></span>
-//           <span style={{ display: 'block' }}>{shelter.institution.name}</span>
-//           <br/>
-//           <span style={{ display: 'block' }}><b>{t('languages')}:</b></span>
-//           {shelter.spoken_languages.map((language, i) =>
-//             <span key={i} style={{ display: 'block' }}>{language.native}</span>,
-//           )}
-//         </div>
-//       )
-//     }
-//   }
-//
-//   getToolTipInfo(shelter, t) {
-//     this.t = t
-//     return (
-//       <Tooltip direction='center' offset={[0, 50]} opacity={1} permanent={false}>
-//         <span>
-//           {shelter.name}
-//         </span> <br/>
-//         <span>
-//           {t('intake_hours')}: {shelter.opening_hours.from} - {shelter.opening_hours.to}
-//         </span> <br/>
-//         <span>
-//           {t('beds')}: {this.getSumFreeBeds(shelter.beds)}
-//         </span>
-//       </Tooltip>
-//     )
-//   }
-//
-//   getSumFreeBeds(beds) {
-//     let sumValue = 0
-//     beds.map(
-//       bedType => sumValue += bedType.num_free_beds,
-//     )
-//     return sumValue
-//   }
-//
-//   render() {
-//     const { t } = this.props
-//     let position = [52.52, 13.4]
-//     if (this.props.coords != null && this.props.isGeolocationAvailable && this.props.isGeolocationEnabled) {
-//       position = [this.props.coords.latitude, this.props.coords.longitude]
-//     }
-//
-//     return (
-//       <div>
-//         <Sidebar
-//           sidebar={this.selectedShelterToString(t)}
-//           open={this.state.sidebarOpen}
-//           styles={{ sidebar: { background: 'white' } }}
-//           onSetOpen={this.onSetSidebarOpen}
-//         >
-//           <Map center={position} zoom={12} style={{ height: '90vh', zIndex: '0' }}>
-//             <ZoomControl position="bottomleft"></ZoomControl>
-//             <TileLayer
-//               attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-//               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//             />
-//             <Marker position={position} icon={this.positionIcon}/>
-//             {
-//               this.state.shelters.map((shelter, i) =>
-//                 <Marker onClick={() => {
-//                   this.onSetSidebarOpen(true)
-//                   this.setState({ selectedShelter: shelter })
-//                 }}
-//                         key={i} position={[shelter.address.geo.lat, shelter.address.geo.long]}
-//                         icon={this.getSumFreeBeds(shelter.beds) > 0 ? this.houseIcon : this.houseIconGray}>
-//                   {this.getToolTipInfo(shelter, t)}
-//                 </Marker>,
-//               )
-//             }
-//             <Control position="bottomright" >
-//               <button
-//                 onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
-//               >
-//                 Reset View
-//               </button>
-//             </Control>
-//           </Map>
-//           <div style={{ fontSize: '10px' }}>Icons made by <a href="https://www.flaticon.com/authors/freepik"
-//                                                              title="Freepik">Freepik</a> <a
-//             href="https://www.flaticon.com/authors/mavadee" title="mavadee">mavadee</a> from <a
-//             href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-//         </Sidebar>
-//       </div>
-//     )
-//   }
-// }
-//
-// export default pipe(withTranslation(), geolocated({
-//   positionOptions: {
-//     enableHighAccuracy: true,
-//   },
-//   userDecisionTimeout: 5000,
-// }))(MapPage)
-
 
 
