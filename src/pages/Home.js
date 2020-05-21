@@ -2,13 +2,14 @@ import React from "react";
 import {
   Box,
   CssBaseline,
-  Grid
+  Grid,
+  Hidden
 } from "@material-ui/core";
 
 import Features from "../components/feature/Features";
 import AppCarousel from "../components/carousel/AppCarousel";
 import Description from "../components/description/Description";
-import ContentLimiter from '../components/theme/ContentLimiter.js'
+import ContentLimiter from '../components/theme/ContentLimiter'
 import Divider from '../components/theme/Divider.jsx'
 
 export default function Home() {
@@ -17,9 +18,8 @@ export default function Home() {
       <AppCarousel />
       <ContentLimiter withBoxShadow>
         <CssBaseline />
-        <Box my={4} px={4}>
-          <Description />
-        </Box>
+
+        <Description />
 
         <Divider thickness={2} maxWidth={65} />
 

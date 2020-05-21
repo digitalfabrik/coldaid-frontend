@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
-import ContentLimiter from '../components/theme/ContentLimiter.js'
+import ContentLimiter from '../components/theme/ContentLimiter'
 
 export default function LegalInformation() {
   return (

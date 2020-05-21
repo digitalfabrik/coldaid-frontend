@@ -7,6 +7,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       margin: `${theme.spacing(4)}px auto`,
     },
+    width: '100%',
     maxWidth: props => `${props.maxWidth}%`,
     height: props => `${props.thickness}px`,
     backgroundColor: theme.palette.primary.main,

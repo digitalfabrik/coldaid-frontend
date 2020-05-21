@@ -3,7 +3,7 @@ import { Link, makeStyles } from '@material-ui/core'
 import { Link as RouterLink } from 'react-router-dom'
 
 import { useTranslation } from 'react-i18next'
-import ContentLimiter from '../theme/ContentLimiter.js'
+import ContentLimiter from '../theme/ContentLimiter'
 
 import { APP_ROUTES } from '../app/App'
 
@@ -37,36 +37,38 @@ const Footer = () => {
 
   return (
     <footer className={classes.footer}>
-      <ContentLimiter className={classes.footerLimiter}>
-        <div className={classes.links}>
-          <Link
-            className={classes.link}
-            color="inherit"
-            variant="body2"
-            component={RouterLink}
-            to={APP_ROUTES.contact}>
-              {t('contact.navigationLabel')}
-          </Link>
-        </div>
+      <ContentLimiter>
+        <div className={classes.footerLimiter}>
+          <div className={classes.links}>
+            <Link
+              className={classes.link}
+              color="inherit"
+              variant="body2"
+              component={RouterLink}
+              to={APP_ROUTES.contact}>
+                {t('contact.navigationLabel')}
+            </Link>
+          </div>
 
-        <div className={classes.links}>
-          <Link
-            className={classes.link}
-            color="inherit"
-            variant="body2"
-            component={RouterLink}
-            to={APP_ROUTES.imprint}>
-              {t('imprint.navigationLabel')}
-          </Link>
+          <div className={classes.links}>
+            <Link
+              className={classes.link}
+              color="inherit"
+              variant="body2"
+              component={RouterLink}
+              to={APP_ROUTES.imprint}>
+                {t('imprint.navigationLabel')}
+            </Link>
 
-          <Link
-            className={classes.link}
-            color="inherit"
-            variant="body2"
-            component={RouterLink}
-            to={APP_ROUTES.privacy}>
-              {t('privacy.navigationLabel')}
-          </Link>
+            <Link
+              className={classes.link}
+              color="inherit"
+              variant="body2"
+              component={RouterLink}
+              to={APP_ROUTES.privacy}>
+                {t('privacy.navigationLabel')}
+            </Link>
+          </div>
         </div>
       </ContentLimiter>
     </footer>
