@@ -1,10 +1,11 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import ContentLimiter from '../components/theme/ContentLimiter.js'
 
 export default function LegalInformation() {
   return (
-    <Container maxWidth="lg">
+    <ContentLimiter withBoxShadow>
       <Typography>TODO</Typography>
-    </Container>
+    </ContentLimiter>
   )
 }

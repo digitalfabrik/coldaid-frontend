@@ -21,7 +21,7 @@ import clsx from "clsx";
 
 import FetchShelters from "./FetchShelters"
 import ShelterFilters from "../../components/ShelterFilter/ShelterFilters";
-
+import ContentLimiter from '../../components/theme/ContentLimiter.js'
 
 function parseData(data) {
   let allShelters = data;
@@ -45,7 +45,6 @@ function parseData(data) {
   return parsedData;
 
 }
-
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -292,7 +291,7 @@ export default function FindShelters() {
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
-    <Container maxWidth="lg">
+    <ContentLimiter withBoxShadow>
       <div className={classes.root}>
         <div>
           <ShelterFilters onFilterChange={onFilterChange} filterHandleChange={filterHandleChange} filters={filters} />
@@ -364,7 +363,7 @@ export default function FindShelters() {
           />
         </Paper>
       </div>
-    </Container>
+    </ContentLimiter>
   );
 }
 
