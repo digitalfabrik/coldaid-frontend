@@ -21,7 +21,7 @@ import clsx from "clsx";
 
 import FetchShelters from "./FetchShelters"
 import ShelterFilters from "../../components/ShelterFilter/ShelterFilters";
-import ContentLimiter from '../../components/theme/ContentLimiter.js'
+import ContentLimiter from '../../components/theme/ContentLimiter'
 
 function parseData(data) {
   let allShelters = data;

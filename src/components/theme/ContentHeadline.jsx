@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, makeStyles } from '@material-ui/core'
+import { Hidden, Typography, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   headline: {
@@ -15,9 +15,19 @@ const ContentHeadline = props => {
   const classes = useStyles()
 
   return (
-    <Typography className={classes.headline} variant={"h2"} align="center">
-      {props.children}
-    </Typography>
+    <>
+      <Hidden smDown>
+        <Typography className={classes.headline} variant={"h2"} align="center">
+          {props.children}
+        </Typography>
+      </Hidden>
+
+      <Hidden mdUp>
+        <Typography className={classes.headline} variant={"h4"} component={"h2"} align="center">
+          {props.children}
+        </Typography>
+      </Hidden>
+    </>
   )
 }
 
