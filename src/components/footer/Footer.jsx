@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, makeStyles, Typography } from '@material-ui/core'
+import { Link, makeStyles } from '@material-ui/core'
 import { Link as RouterLink } from 'react-router-dom'
 
 import { useTranslation } from 'react-i18next'

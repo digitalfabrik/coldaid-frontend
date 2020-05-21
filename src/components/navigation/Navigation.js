@@ -157,15 +157,15 @@ export default function Navigation() {
         <List>
           <MenuItem component={Link} to={APP_ROUTES.contact} onClick={handleDrawerNavigation}>
             <ListItemText primary={t('contact.navigationLabel')}
-                          primaryTypographyProps={{ variant: 'caption', color: 'primary' }}/>
+                          primaryTypographyProps={{ variant: 'caption' }}/>
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.imprint} onClick={handleDrawerNavigation}>
             <ListItemText primary={t('imprint.navigationLabel')}
-                          primaryTypographyProps={{ variant: 'caption', color: 'primary' }}/>
+                          primaryTypographyProps={{ variant: 'caption' }}/>
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.privacy} onClick={handleDrawerNavigation}>
             <ListItemText primary={t('privacy.navigationLabel')}
-                          primaryTypographyProps={{ variant: 'caption', color: 'primary' }}/>
+                          primaryTypographyProps={{ variant: 'caption' }}/>
           </MenuItem>
         </List>
       </div>

@@ -2,18 +2,10 @@ import React from 'react'
 import Carousel from 'react-material-ui-carousel'
 import CarouselItem from './CarouselItem'
 import { useTranslation } from 'react-i18next'
-import makeStyles from '@material-ui/core/styles/makeStyles'
 import { APP_ROUTES } from '../app/App'
 
-const useStyles = makeStyles({
-  root: {
-    // marginTop: '3px',
-    // zIndex: -99,
-  },
-})
-
 export default function AppCarousel() {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   const items = [
     {
@@ -38,7 +30,7 @@ export default function AppCarousel() {
       animation={'fade'}
       timeout={0}
     >
-      {items.map((item,key) => {
+      {items.map((item, key) => {
         return <CarouselItem key={key} item={item}/>
       })}
     </Carousel>

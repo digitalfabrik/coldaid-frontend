@@ -1,42 +1,177 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Map, Marker, TileLayer, ZoomControl } from 'react-leaflet'
+import { Map, Marker, TileLayer, Tooltip } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import userMarker from '../assets/images/userMarker.png'
+import houseIcon from '../assets/images/marker.png'
+import houseGrayIcon from '../assets/images/marker_gray.png'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import Control from 'react-leaflet-control'
+import Fab from '@material-ui/core/Fab'
+import AddIcon from '@material-ui/icons/Add'
+import RemoveIcon from '@material-ui/icons/Remove'
+import LocationOnIcon from '@material-ui/icons/LocationOn'
+import { useTranslation } from 'react-i18next'
+import Typography from '@material-ui/core/Typography'
 
 const POSITION_ICON = L.icon({
   iconUrl: userMarker,
   iconSize: [50, 50],
 })
 
+const HOUSE_ICON = L.icon({
+  iconUrl: houseIcon,
+  iconSize: [50, 50],
+})
+
+const HOUSE_GRAY_ICON = L.icon({
+  iconUrl: houseGrayIcon,
+  iconSize: [50, 50],
+})
+
+const DEFAULT_POSITION = { lat: 52.520008, lng: 13.404954 }
+
+const useStyles = makeStyles((theme) => ({
+  map: {
+    flexGrow: 1,
+  },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  controlTop: {
+    margin: theme.spacing(0, 0, 0.5, 0),
+  },
+  controlCenter: {
+    margin: theme.spacing(0.5, 0),
+  },
+  controlBottom: {
+    margin: theme.spacing(0.5, 0, 0, 0),
+  },
+  tooltip: {
+    backgroundColor: 'rgba(0,0,0,0.6) !important',
+    borderWidth: '2px !important',
+    borderStyle: 'solid !important',
+    borderColor: `${theme.palette.primary.main} !important`,
+    color: '#fff !important',
+    padding: `${theme.spacing(1)}px !important`,
+    maxWidth: '350px',
+    overflow: 'hidden',
+  },
+}))
+
 export default function MapPage() {
-  const [position, setPosition] = useState({ lat: 52.52, lng: 13.4 })
+  const classes = useStyles()
+  const { t } = useTranslation()
 
+  const [shelters, setShelters] = useState([])
+  useEffect(() => {
+    const getShelters = async () => {
+      const response = await fetch(`http://130.149.22.44:8000/api/berlin/de-de/accommodations/`)
+      const shelters = await response.json()
+      setShelters(shelters)
+    }
+    getShelters()
+  }, [])
+
+  const [clickedShelter, setClickedShelter] = useState(null)
+
+  const handleClickOnShelter = (shelter) => {
+    setClickedShelter(shelter)
+  }
+
+  const [center, setCenter] = useState(DEFAULT_POSITION)
   const mapRef = useRef()
-
   useEffect(() => {
     const map = mapRef.current
     if (map) {
-      map.leafletElement.locate({watch: true, enableHighAccuracy: true})
+      map.leafletElement.locate({ watch: true, enableHighAccuracy: true })
     }
   }, [mapRef])
 
-  const handleLocationFound = (e) => {
-    setPosition(e.latlng)
+  const handleLocationFound = (event) => {
+    const latLng = event.latlng
+    setCenter(latLng)
+  }
+
+  const handleZoomIn = () => {
+    const map = mapRef.current
+    if (map) {
+      map.leafletElement.zoomIn()
+    }
+  }
+
+  const handleZoomOut = () => {
+    const map = mapRef.current
+    if (map) {
+      map.leafletElement.zoomOut()
+    }
+  }
+
+  const handleLocate = () => {
+    mapRef.current.leafletElement.flyTo(center)
+  }
+
+  const getNumberOfAvailableBeds = (shelter) => {
+    return shelter.beds.reduce((acc, cur) => acc + cur.num_free_beds, 0)
+  }
+
+  const areBedsAvailable = (shelter) => {
+    return getNumberOfAvailableBeds(shelter) > 0
+  }
+
+  const timeToString = (time) => {
+    return time.slice(0, time.lastIndexOf(':'))
   }
 
   return (
-    <div style={{ height: '500px', width: '100%', position: 'relative' }}>
-      <Map center={position} zoom={13} zoomControl={false} style={{ height: '100%' }}
-           onLocationfound={handleLocationFound} ref={mapRef}>
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <ZoomControl position="bottomright"/>
-        <Marker position={position} icon={POSITION_ICON}/>
-      </Map>
-    </div>
+    <Map center={center}
+         zoom={13}
+         zoomControl={false}
+         animate={true}
+         className={classes.map}
+         onLocationfound={handleLocationFound}
+         ref={mapRef}>
+      <TileLayer
+        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Control position="bottomright" className={classes.controls}>
+        <Fab color="secondary" size="small" className={classes.controlTop} onClick={handleZoomIn}>
+          <AddIcon/>
+        </Fab>
+        <Fab color="secondary" size="small" className={classes.controlCenter} onClick={handleZoomOut}>
+          <RemoveIcon/>
+        </Fab>
+        <Fab color="secondary" size="small" className={classes.controlBottom} onClick={handleLocate}>
+          <LocationOnIcon/>
+        </Fab>
+      </Control>
+      {center !== DEFAULT_POSITION && <Marker position={center} icon={POSITION_ICON}/>}
+      {
+        shelters.map((shelter, key) => (
+          <Marker key={key}
+                  position={[shelter.address.geo.lat, shelter.address.geo.long]}
+                  icon={areBedsAvailable(shelter) ? HOUSE_ICON : HOUSE_GRAY_ICON}
+                  onclick={() => handleClickOnShelter(shelter)}>
+            <Tooltip direction='center' offset={[0, 75]} permanent={false} className={classes.tooltip}>
+              <Typography
+                variant="h6">{shelter.name.length > 32 ? `${shelter.name.slice(0, 32)}...` : shelter.name}</Typography>
+              <Typography
+                variant="subtitle2">{t('intake_hours')}: {timeToString(shelter.opening_hours.from)} - {timeToString(shelter.opening_hours.to)}</Typography>
+              <Typography variant="subtitle2">{t('available_beds')}: {getNumberOfAvailableBeds(shelter)}</Typography>
+            </Tooltip>
+          </Marker>
+        ))
+      }
+      {
+        clickedShelter !== null &&
+        <div style={{ position: 'absolute', zIndex: 450 }}>
+          Hallo
+        </div>
+      }
+
+    </Map>
   )
 }
 
