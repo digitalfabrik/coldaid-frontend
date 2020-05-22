@@ -1,10 +1,11 @@
-import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import React from 'react'
+import { Typography } from '@material-ui/core'
+import ContentLimiter from '../components/theme/ContentLimiter'
 
 export default function AdviceInformation() {
   return (
-    <Container maxWidth="lg">
+    <ContentLimiter withBoxShadow>
       <Typography>TODO</Typography>
-    </Container>
+    </ContentLimiter>
   )
 }
