@@ -1,9 +1,6 @@
 import React from "react";
 import {
-  Box,
   CssBaseline,
-  Grid,
-  Hidden
 } from "@material-ui/core";
 
 import Features from "../components/feature/Features";
@@ -23,9 +20,7 @@ export default function Home() {
 
         <Divider thickness={2} maxWidth={65} />
 
-        <Grid item xs={12}>
-          <Features />
-        </Grid>
+        <Features />
       </ContentLimiter>
     </>
   );
