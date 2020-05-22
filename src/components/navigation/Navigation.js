@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: 'stretch',
     [theme.breakpoints.down('sm')]: {
       marginLeft: -16,
-    }
+    },
   },
   navigationAction: {
     margin: theme.spacing(0, 0.5),
@@ -80,6 +80,9 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerIcons: {
     minWidth: theme.spacing(5),
+  },
+  drawerCaption: {
+    minHeight: theme.spacing(4),
   },
 }))
 
@@ -155,15 +158,21 @@ export default function Navigation() {
       </div>
       <div>
         <List>
-          <MenuItem component={Link} to={APP_ROUTES.contact} onClick={handleDrawerNavigation}>
+          <MenuItem component={Link} to={APP_ROUTES.contact}
+                    onClick={handleDrawerNavigation}
+                    className={classes.drawerCaption}>
             <ListItemText primary={t('contact.navigationLabel')}
                           primaryTypographyProps={{ variant: 'caption' }}/>
           </MenuItem>
-          <MenuItem component={Link} to={APP_ROUTES.imprint} onClick={handleDrawerNavigation}>
+          <MenuItem component={Link} to={APP_ROUTES.imprint}
+                    onClick={handleDrawerNavigation}
+                    className={classes.drawerCaption}>
             <ListItemText primary={t('imprint.navigationLabel')}
                           primaryTypographyProps={{ variant: 'caption' }}/>
           </MenuItem>
-          <MenuItem component={Link} to={APP_ROUTES.privacy} onClick={handleDrawerNavigation}>
+          <MenuItem component={Link} to={APP_ROUTES.privacy}
+                    onClick={handleDrawerNavigation}
+                    className={classes.drawerCaption}>
             <ListItemText primary={t('privacy.navigationLabel')}
                           primaryTypographyProps={{ variant: 'caption' }}/>
           </MenuItem>
