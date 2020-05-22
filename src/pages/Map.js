@@ -19,6 +19,13 @@ import CloseIcon from '@material-ui/icons/Close'
 import { Hidden } from '@material-ui/core'
 import PlaceIcon from '@material-ui/icons/Place'
 import PhoneIcon from '@material-ui/icons/Phone'
+import HotelIcon from '@material-ui/icons/Hotel'
+import AccessTimeIcon from '@material-ui/icons/AccessTime'
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
+import CheckIcon from '@material-ui/icons/Check'
+import BathtubIcon from '@material-ui/icons/Bathtub'
+import LanguageIcon from '@material-ui/icons/Language'
+import DescriptionIcon from '@material-ui/icons/Description'
 
 const POSITION_ICON = L.icon({
   iconUrl: userMarker,
@@ -81,33 +88,70 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#ffffff',
     borderRadius: '3px',
     padding: theme.spacing(2, 3),
-    maxWidth: '600px',
-    [theme.breakpoints.down('sm')]: {
+    width: '600px',
+    [theme.breakpoints.between('xs', 'md')]: {
       padding: theme.spacing(2),
-      maxWidth: '100%',
+      width: '500px',
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: 'auto',
     },
     maxHeight: '100%',
     overflowY: 'auto',
   },
   infoBoxHeader: {
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'space-between',
   },
-  infoBoxItemAlignSelfCenter: {
-    alignSelf: 'center',
+  infoBoxCloseIcon: {
+    alignSelf: 'flex-start',
+    marginLeft: theme.spacing(1),
   },
-  infoBoxItemGrow: {
+  infoBoxRowItem: {
     flexGrow: 1,
+    flexBasis: '225px',
+    padding: theme.spacing(0, 1),
+    [theme.breakpoints.down('xs')]: {
+      flexBasis: '250px',
+      '&:not(:first-child)': {
+        marginTop: theme.spacing(2),
+      },
+    },
   },
   infoBoxIconLabelledInfo: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+  },
+  infoBoxIcon: {
+    marginRight: theme.spacing(2),
+    paddingTop: theme.spacing(0.25),
+    alignSelf: 'flex-start',
   },
   infoBoxRow: {
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    alignContent: 'flex-start',
+    flexWrap: 'wrap',
+    margin: theme.spacing(2, 0),
+  },
+  infoBoxRowAlignItemsStart: {
+    alignItems: 'flex-start',
+  },
+  infoBoxLanguages: {
+    margin: 0,
+    paddingLeft: theme.spacing(2.5),
+  },
+  infoBoxDescription: {
+    '& a': {
+      color: theme.palette.primary.main,
+    },
+    '& p': {
+      margin: 0,
+    },
+    '& ul': {
+      margin: 0,
+      paddingLeft: theme.spacing(2.5),
+    },
   },
 }))
 
@@ -120,7 +164,6 @@ export default function MapPage() {
     const getShelters = async () => {
       const response = await fetch(`http://130.149.22.44:8000/api/berlin/de-de/accommodations/`)
       const shelters = await response.json()
-      console.log(shelters)
       setShelters(shelters)
     }
     getShelters()
@@ -232,71 +275,147 @@ export default function MapPage() {
           <Paper elevation={3} className={classes.infoBox}>
 
             <div className={classes.infoBoxHeader}>
-              <Typography variant='h4'>{clickedShelter.name}</Typography>
-              <IconButton className={classes.infoBoxItemAlignSelfCenter} onClick={handleCloseInfoBox}>
+              <div>
+                <Typography variant='h5'>{clickedShelter.name}</Typography>
+                <Typography variant='caption'>{clickedShelter.institution.name}</Typography>
+              </div>
+              <IconButton className={classes.infoBoxCloseIcon} onClick={handleCloseInfoBox}>
                 <CloseIcon/>
               </IconButton>
             </div>
-            <Typography variant='caption'>{clickedShelter.institution.name}</Typography>
 
             <div className={classes.infoBoxRow}>
-              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxItemGrow}`}>
-                <PlaceIcon/>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxRowItem}`}>
+                <PlaceIcon className={classes.infoBoxIcon}/>
                 <div>
                   <Typography>{clickedShelter.address.street}</Typography>
                   <Typography>{clickedShelter.address.plz} {clickedShelter.address.city}</Typography>
                 </div>
               </div>
-              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxItemGrow}`}>
-                <PhoneIcon/>
+              {
+                (clickedShelter.phone.mobile || clickedShelter.phone.home) &&
+                <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxRowItem}`}>
+                  <PhoneIcon className={classes.infoBoxIcon}/>
+                  <div>
+                    <Typography>{clickedShelter.phone.home}</Typography>
+                    <Typography>{clickedShelter.phone.mobile}</Typography>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <div className={classes.infoBoxRow}>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxRowItem}`}>
+                <HotelIcon className={classes.infoBoxIcon}/>
                 <div>
-                  <Typography>{clickedShelter.phone.home}</Typography>
-                  <Typography>{clickedShelter.phone.mobile}</Typography>
+                  <Typography variant='subtitle1'>{t('free_beds')}:</Typography>
+                  {clickedShelter.beds.map((bedType, key) =>
+                    <Typography variant='body1'
+                                key={key}>{t(bedType.target_group)} : {bedType.num_free_beds}</Typography>,
+                  )}
                 </div>
               </div>
             </div>
-            <Typography variant='subtitle1'>{t('description')}:</Typography>
-            <Typography variant='body1' dangerouslySetInnerHTML={{ __html: clickedShelter.description }}></Typography>
 
-            <div style={{ padding: '0 5vh', maxWidth: '50vh' }}>
+            <div className={`${classes.infoBoxRow} ${classes.infoBoxRowAlignItemsStart}`}>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxRowItem}`}>
+                <AccessTimeIcon className={classes.infoBoxIcon}/>
+                <div>
+                  <Typography variant='subtitle1'>{t('intake_hours')}:</Typography>
+                  <Typography variant='body1'>
+                    {timeToString(clickedShelter.intake_hours.from)} - {timeToString(clickedShelter.intake_hours.to)}
+                  </Typography>
+                </div>
+              </div>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxRowItem}`}>
+                <AccessTimeIcon className={classes.infoBoxIcon}/>
+                <div>
+                  <Typography variant='subtitle1'>{t('opening_hours')}:</Typography>
+                  <Typography variant='body1'>
+                    {timeToString(clickedShelter.opening_hours.from)} - {timeToString(clickedShelter.opening_hours.to)}
+                  </Typography>
+                </div>
+              </div>
+            </div>
 
+            <div className={`${classes.infoBoxRow} ${classes.infoBoxRowAlignItemsStart}`}>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxRowItem}`}>
+                <AccountBalanceIcon className={classes.infoBoxIcon}/>
+                <div>
+                  <Typography variant='subtitle1'>{t('rules')}:</Typography>
+                  <div className={classes.infoBoxIconLabelledInfo}>
+                    {clickedShelter.rules.animals ? <CheckIcon className={classes.infoBoxIcon}/> :
+                      <CloseIcon className={classes.infoBoxIcon}/>}
+                    <Typography variant='body1'>{t('animals')}</Typography>
+                  </div>
+                  <div className={classes.infoBoxIconLabelledInfo}>
+                    {clickedShelter.rules.families_welcome ? <CheckIcon className={classes.infoBoxIcon}/> :
+                      <CloseIcon className={classes.infoBoxIcon}/>}
+                    <Typography variant='body1'>{t('families_welcome')}</Typography>
+                  </div>
+                  <div className={classes.infoBoxIconLabelledInfo}>
+                    {clickedShelter.rules.female_only ? <CheckIcon className={classes.infoBoxIcon}/> :
+                      <CloseIcon className={classes.infoBoxIcon}/>}
+                    <Typography variant='body1'>{t('female_only')}</Typography>
+                  </div>
+                  <div className={classes.infoBoxIconLabelledInfo}>
+                    {clickedShelter.rules.kids_welcome ? <CheckIcon className={classes.infoBoxIcon}/> :
+                      <CloseIcon className={classes.infoBoxIcon}/>}
+                    <Typography variant='body1'>{t('kids')}</Typography>
+                  </div>
+                  <div className={classes.infoBoxIconLabelledInfo}>
+                    {clickedShelter.rules.male_only ? <CheckIcon className={classes.infoBoxIcon}/> :
+                      <CloseIcon className={classes.infoBoxIcon}/>}
+                    <Typography variant='body1'>{t('male_only')}</Typography>
+                  </div>
+                  <div className={classes.infoBoxIconLabelledInfo}>
+                    {clickedShelter.rules.shelter_seeking_person_intoxicated ?
+                      <CheckIcon className={classes.infoBoxIcon}/> : <CloseIcon className={classes.infoBoxIcon}/>}
+                    <Typography variant='body1'>{t('intoxicated')}</Typography>
+                  </div>
+                </div>
+              </div>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxRowItem}`}>
+                <BathtubIcon className={classes.infoBoxIcon}/>
+                <div>
+                  <Typography variant='subtitle1'>{t('sanitary_amenities')}:</Typography>
+                  <div className={classes.infoBoxIconLabelledInfo}>
+                    {clickedShelter.sanitary_amenities.wc ? <CheckIcon className={classes.infoBoxIcon}/> :
+                      <CloseIcon className={classes.infoBoxIcon}/>}
+                    <Typography variant='body1'>{t('wc')}</Typography>
+                  </div>
+                  <div className={classes.infoBoxIconLabelledInfo}>
+                    {clickedShelter.sanitary_amenities.shower ? <CheckIcon className={classes.infoBoxIcon}/> :
+                      <CloseIcon className={classes.infoBoxIcon}/>}
+                    <Typography variant='body1'>{t('shower')}</Typography>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-              <br/>
-              <span style={{ display: 'block' }}><b>{t('free_beds')}:</b></span>
-              {clickedShelter.beds.map((bed, i) =>
-                <span key={i} style={{ display: 'block' }}>{t(bed.target_group)} : {bed.num_free_beds} </span>,
-              )}
-              <br/>
-              <span style={{ display: 'block' }}><b>{t('intake_hours')}:</b></span>
-              <span
-                style={{ display: 'block' }}>{clickedShelter.opening_hours.from} - {clickedShelter.opening_hours.to}</span>
-              <br/>
-              <span style={{ display: 'block' }}><b>{t('opening_hours')}:</b></span>
-              <span
-                style={{ display: 'block' }}>{clickedShelter.opening_hours.from} - {clickedShelter.opening_hours.to}</span>
-              <br/>
-              <span style={{ display: 'block' }}><b>{t('rules')}:</b></span>
-              <span
-                style={{ display: 'block' }}>{t('kids')}: {clickedShelter.rules.kids_welcome ? t('yes') : t('no')}</span>
-              <span
-                style={{ display: 'block' }}>{t('animals')}: {clickedShelter.rules.animals ? t('yes') : t('no')}</span>
-              <span
-                style={{ display: 'block' }}>{t('female_only')}: {clickedShelter.rules.female_only ? t('yes') : t('no')}</span>
-              <span
-                style={{ display: 'block' }}>{t('families_welcome')}: {clickedShelter.rules.families_welcome ? t('yes') : t('no')}</span>
-              <span
-                style={{ display: 'block' }}>{t('male_only')}: {clickedShelter.rules.male_only ? t('yes') : t('no')}</span>
-              <br/>
-              <span style={{ display: 'block' }}>{t('sanitary_amenities')}: </span>
-              <span
-                style={{ display: 'block' }}>{t('wc')}: {clickedShelter.sanitary_amenities.wc ? t('yes') : t('no')}</span>
-              <span
-                style={{ display: 'block' }}>{t('shower')}: {clickedShelter.sanitary_amenities.shower ? t('yes') : t('no')}</span>
-              <br/>
-              <span style={{ display: 'block' }}><b>{t('languages')}:</b></span>
-              {clickedShelter.spoken_languages.map((language, i) =>
-                <span key={i} style={{ display: 'block' }}>{language.native}</span>,
-              )}
+            <div className={classes.infoBoxRow}>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxRowItem}`}>
+                <LanguageIcon className={classes.infoBoxIcon}/>
+                <div>
+                  <Typography variant='subtitle1'>{t('languages')}:</Typography>
+                  <ul className={classes.infoBoxLanguages}>
+                    {clickedShelter.spoken_languages.map((language, key) =>
+                      <Typography component='li' key={key} variant='body1'>{language.translated}</Typography>,
+                    )}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className={classes.infoBoxRow}>
+              <div className={`${classes.infoBoxIconLabelledInfo} ${classes.infoBoxRowItem}`}>
+                <DescriptionIcon className={classes.infoBoxIcon}/>
+                <div>
+                  <Typography variant='subtitle1'>{t('description')}:</Typography>
+                  <Typography variant='body1' className={classes.infoBoxDescription}
+                              dangerouslySetInnerHTML={{ __html: clickedShelter.description }}/>
+                </div>
+              </div>
             </div>
           </Paper>
         </div>
