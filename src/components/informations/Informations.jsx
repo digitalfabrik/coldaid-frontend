@@ -9,7 +9,7 @@ import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 
 import { useTranslation } from "react-i18next";
 
-import Feature from "./Feature";
+import Feature from "../feature/Feature";
 import { APP_ROUTES } from '../app/App'
 import ContentHeadline from '../theme/ContentHeadline.jsx'
 
@@ -23,53 +23,39 @@ const useStyles = makeStyles({
   }
 });
 
-const Features = () => {
+const Informations = () => {
   const { t } = useTranslation();
   const { featureContainer, root, icon } = useStyles();
 
-  const features = [
-    {
-      icon: <MapIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("map_feature_header"),
-      text: t("map_feature_text"),
-      link: APP_ROUTES.map
-    },
-    {
-      icon: <ViewListIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("view_feature_header"),
-      text: t("view_feature_text"),
-      link: APP_ROUTES.shelterOverview
-    },
-    {
-      icon: <DirectionsBusIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("kaeltebus_feature_header"),
-      text: t("kaeltebus_feature_text"),
-      link: APP_ROUTES.kaeltebus
-    }
-  ]
-  const information = [
+  const informations = [
     {
       icon: <AirportShuttleIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("kaeltebus_feature_header"),
+      header: t("legalInformationNavigationText"),
       text: t("kaeltebus_feature_text"),
-      link: "/kaeltebus_login"
+      link: APP_ROUTES.legalInformation
     },
     {
       icon: <InfoOutlinedIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("info_feature_header"),
+      header: t("healthRelatedInformationNavigationText"),
       text: t("info_feature_text"),
-      link: "/needed?"
+      link: APP_ROUTES.healthRelatedInformation
+    },
+    {
+      icon: <InfoOutlinedIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
+      header: t("adviceInformationNavigationText"),
+      text: t("info_feature_text"),
+      link: APP_ROUTES.adviceInformation
     }
   ]
 
   return (
     <>
       <ContentHeadline>
-        {t("features_header")}
+        {t("home.headline")}
       </ContentHeadline>
 
       <div className={featureContainer}>
-        {features.map((feature, idx) => {
+        {informations.map((feature, idx) => {
           return <Feature key={idx} feature={feature} />;
         })}
       </div>
@@ -77,4 +63,4 @@ const Features = () => {
   );
 }
 
-export default Features
+export default Informations

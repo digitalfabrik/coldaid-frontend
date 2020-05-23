@@ -15,6 +15,7 @@ const SELECTABLE_LANGUAGES = [
   { id: 'de', label: 'Deutsch', flag: deFlag },
   DEFAULT_LANGUAGE,
   { id: 'fr', label: 'Français', flag: frFlag },
+  { id: 'ru', label: 'Russian', flag: deFlag },
 ]
 const LANGUAGE_LOCAL_STORAGE_KEY = 'language'
 
@@ -94,10 +95,10 @@ export default function LanguagePicker(props) {
   return (
     <Fragment>
       <MenuItem component={'button'} color="inherit"
-                onClick={handleClickOnLanguageSelection}
-                {...props}>
+        onClick={handleClickOnLanguageSelection}
+        {...props}>
         <img alt={`flag of ${language.label}`}
-             src={language.flag} height="32px"/>
+          src={language.flag} height="32px" />
       </MenuItem>
       <StyledMenu
         anchorEl={anchorLanguageSelection}
@@ -106,12 +107,12 @@ export default function LanguagePicker(props) {
         onClose={handleCloseLanguageSelection}>
         {SELECTABLE_LANGUAGES.map((option, key) =>
           <MenuItem className={option.id === language.id ? 'Mui-selected' : ''}
-                    onClick={() => handleClickOnLanguage(option)}
-                    key={key}>
+            onClick={() => handleClickOnLanguage(option)}
+            key={key}>
             <ListItemIcon className={classes.flagIcon}>
-              <img src={option.flag} alt={`flag of ${option.label}`} height="24px"/>
+              <img src={option.flag} alt={`flag of ${option.label}`} height="24px" />
             </ListItemIcon>
-            <ListItemText primary={option.label}/>
+            <ListItemText primary={option.label} />
           </MenuItem>,
         )}
       </StyledMenu>

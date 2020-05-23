@@ -44,5 +44,20 @@
   "wc": "WC",
   "shower": "Shower",
   "families": "Families",
-  "intoxicated": "Intoxicated"
+  "intoxicated": "Intoxicated",
+  "legalInformationNavigationText": "Legal Informationen",
+  "healthRelatedInformationNavigationText": "Health Related Information",
+  "adviceInformationNavigationText": "Advice",
+  "map": {
+    "imageText": "Get an overview"
+  },
+  "contact": {
+    "navigationLabel": "Contact"
+  },
+  "imprint": {
+    "navigationLabel": "Imprint"
+  },
+  "privacy": {
+    "navigationLabel": "Privacy"
+  }
 }

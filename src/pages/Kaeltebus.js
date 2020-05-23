@@ -1,10 +1,12 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+
+import ContentLimiter from '../components/theme/ContentLimiter'
 
 export default function Kaeltebus() {
   return (
-    <Container maxWidth="lg">
+    <ContentLimiter withBoxShadow>
       <Typography>TODO</Typography>
-    </Container>
+    </ContentLimiter>
   )
 }

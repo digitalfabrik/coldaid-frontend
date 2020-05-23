@@ -1,32 +1,32 @@
 import React from "react";
 import {
-  Box,
-  Container,
   CssBaseline,
-  Divider,
-  Grid
 } from "@material-ui/core";
 
 import Features from "../components/feature/Features";
+import Informations from '../components/informations/Informations'
 import AppCarousel from "../components/carousel/AppCarousel";
 import Description from "../components/description/Description";
+import ContentLimiter from '../components/theme/ContentLimiter'
+import Divider from '../components/theme/Divider.jsx'
 
 export default function Home() {
   return (
     <>
       <AppCarousel />
-      <Container maxWidth="lg">
+      <ContentLimiter withBoxShadow>
         <CssBaseline />
-        <Box my={4} px={4}>
-          <Description />
-        </Box>
 
-        <Divider variant={'middle'} />
+        <Description />
 
-        <Grid item xs={12}>
-          <Features />
-        </Grid>
-      </Container>
+        <Divider thickness={2} maxWidth={65} />
+
+        <Features />
+
+        <Divider thickness={2} maxWidth={65} />
+
+        <Informations />
+      </ContentLimiter>
     </>
   );
 }
