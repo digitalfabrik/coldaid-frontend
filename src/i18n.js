@@ -130,6 +130,9 @@ const resources = {
       legalInformationNavigationText: 'Rechtliche Informationen',
       healthRelatedInformationNavigationText: 'Gesundheit',
       adviceInformationNavigationText: 'Beratung',
+      home: {
+        headline: 'Informationen'
+      },
       map: {
         imageText: 'Verschaffen Sie sich einen Überblick',
       },

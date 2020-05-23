@@ -4,6 +4,7 @@ import {
 } from "@material-ui/core";
 
 import Features from "../components/feature/Features";
+import Informations from '../components/informations/Informations'
 import AppCarousel from "../components/carousel/AppCarousel";
 import Description from "../components/description/Description";
 import ContentLimiter from '../components/theme/ContentLimiter'
@@ -21,6 +22,10 @@ export default function Home() {
         <Divider thickness={2} maxWidth={65} />
 
         <Features />
+
+        <Divider thickness={2} maxWidth={65} />
+
+        <Informations />
       </ContentLimiter>
     </>
   );
