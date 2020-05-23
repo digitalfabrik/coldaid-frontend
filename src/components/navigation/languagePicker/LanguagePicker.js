@@ -11,12 +11,12 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 
-const DEFAULT_LANGUAGE = { id: 'en', label: 'English', flag: enFlag }
+const DEFAULT_LANGUAGE = { code: 'en-gb', label: 'English', flag: enFlag }
 const SELECTABLE_LANGUAGES = [
-  { id: 'de', label: 'Deutsch', flag: deFlag },
+  { code: 'de-de', label: 'Deutsch', flag: deFlag },
   DEFAULT_LANGUAGE,
-  { id: 'fr', label: 'Français', flag: frFlag },
-  { id: 'ru', label: 'Russian', flag: ruFlag },
+  { code: 'fr-fr', label: 'Français', flag: frFlag },
+  { code: 'ru-ru', label: 'Russian', flag: ruFlag },
 ]
 const LANGUAGE_LOCAL_STORAGE_KEY = 'language'
 
@@ -58,9 +58,9 @@ export default function LanguagePicker(props) {
   const [language, setLanguage] = useState(DEFAULT_LANGUAGE)
 
   useEffect(() => {
-    const languageId = localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) ?? 'en'
-    const languageOption = SELECTABLE_LANGUAGES.find((option) => option.id === languageId) ?? DEFAULT_LANGUAGE
-    if (languageOption.id !== DEFAULT_LANGUAGE.id) {
+    const languageCode = localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) ?? 'en-gb'
+    const languageOption = SELECTABLE_LANGUAGES.find((option) => option.code === languageCode) ?? DEFAULT_LANGUAGE
+    if (languageOption.code !== DEFAULT_LANGUAGE.code) {
       setLanguage(languageOption)
     }
   }, [])
@@ -69,14 +69,14 @@ export default function LanguagePicker(props) {
     const changeLanguage = async () => {
       try {
         await i18n.init()
-        await i18n.changeLanguage(language.id)
+        await i18n.changeLanguage(language.code)
       } catch (error) {
         //TODO handle error
         console.log(error)
       }
     }
     changeLanguage()
-  }, [i18n, language.id])
+  }, [i18n, language.code])
 
   const [anchorLanguageSelection, setAnchorLanguageSelection] = useState(null)
   const handleClickOnLanguageSelection = (event) => {
@@ -90,7 +90,7 @@ export default function LanguagePicker(props) {
   const handleClickOnLanguage = (languageOption) => {
     setLanguage(languageOption)
     handleCloseLanguageSelection()
-    localStorage.setItem(LANGUAGE_LOCAL_STORAGE_KEY, languageOption.id)
+    localStorage.setItem(LANGUAGE_LOCAL_STORAGE_KEY, languageOption.code)
   }
 
   return (
@@ -107,7 +107,7 @@ export default function LanguagePicker(props) {
         open={Boolean(anchorLanguageSelection)}
         onClose={handleCloseLanguageSelection}>
         {SELECTABLE_LANGUAGES.map((option, key) =>
-          <MenuItem className={option.id === language.id ? 'Mui-selected' : ''}
+          <MenuItem className={option.code === language.code ? 'Mui-selected' : ''}
             onClick={() => handleClickOnLanguage(option)}
             key={key}>
             <ListItemIcon className={classes.flagIcon}>
