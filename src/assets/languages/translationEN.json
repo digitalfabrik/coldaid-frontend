@@ -3,19 +3,10 @@
   "longitude": "Longitude",
   "welcome_header": "Welcome!",
   "welcome_text": "Find the right shelter for tonight!",
-  "header2": "Happy New Year!",
-  "text2": "It's 2020!",
   "header3": "Find Shelters!",
   "text3": "With our Map!",
-  "map_feature_header": "Map",
-  "map_feature_text": "Search for a shelter on the map.",
-  "view_feature_header": "View",
-  "view_feature_text": "Search for a shelter in the list.",
-  "kaeltebus_feature_header": "Kältebus",
-  "kaeltebus_feature_text": "Find the closest Bus.",
   "info_feature_header": "More Information",
   "info_feature_text": "More Information about the project and how you can contribute.",
-  "features_header": "Discover our Features!",
   "landingText": "This Project of the TU-Berlin aims to link shelters for homeless with our digital age. On our website you can find a place for the homeless. At present, the shelters can be displayed on a map or in a list. \n \n Furthermore, we cooperate in close relationship with the Kältebusof the Stadtmission Berlin, who pick up people which don't have the strength to make it to a shelter on their own.",
   "shelters": "Shelters",
   "name": "Name",
@@ -45,9 +36,43 @@
   "shower": "Shower",
   "families": "Families",
   "intoxicated": "Intoxicated",
-  "legalInformationNavigationText": "Legal Informationen",
-  "healthRelatedInformationNavigationText": "Health Related Information",
-  "adviceInformationNavigationText": "Advice",
+  "navigation": {
+    "legalInformation": "Legal Informations",
+    "healthInformation": "Health Related Information",
+    "adviceInformation": "Advice"
+  },
+  "home": {
+    "featuresSection": {
+      "headline": "Discover our Features!",
+      "map": {
+        "headline": "Map",
+        "description": "Search for a shelter on the map."
+      },
+      "shelterOverview": {
+        "headline": "View",
+        "description": "Search for a shelter in the list."
+      },
+      "kaeltebus": {
+        "headline": "Kältebus",
+        "description": "Find the closest Bus."
+      }
+    },
+    "informationsSection": {
+      "headline": "Informations",
+      "legal": {
+        "headline": "Legal Informations",
+        "description": "In Kooperation mit der Stadtmission Berlin kann der Kältebus für obdachlose Personen gerufen werden. Hier können Sie weitere Informationen finden."
+      },
+      "health": {
+        "headline": "Health",
+        "description": "Translation will follow..."
+      },
+      "advice": {
+        "headline": "Advice",
+        "description": "Translation will follow..."
+      }
+    }
+  },
   "map": {
     "imageText": "Get an overview"
   },

@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ListItemText from '@material-ui/core/ListItemText'
 import { makeStyles, withStyles } from '@material-ui/core'
+import { connect } from 'unistore/react'
 
 import deFlag from '../../../assets/images/flags/de.svg'
 import enFlag from '../../../assets/images/flags/en.svg'
@@ -11,7 +12,9 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 
+import { setTestValue } from '../../../store/actions'
 const DEFAULT_LANGUAGE = { code: 'en-gb', label: 'English', flag: enFlag }
+
 const SELECTABLE_LANGUAGES = [
   { code: 'de-de', label: 'Deutsch', flag: deFlag },
   DEFAULT_LANGUAGE,
@@ -52,7 +55,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function LanguagePicker(props) {
+function LanguagePicker(props) {
+  const { testvalue, setTestValue } = props
+
   const classes = useStyles()
   const { i18n } = useTranslation()
   const [language, setLanguage] = useState(DEFAULT_LANGUAGE)
@@ -95,6 +100,8 @@ export default function LanguagePicker(props) {
 
   return (
     <Fragment>
+      <button onClick={() => setTestValue(testvalue + 1)}>TEST</button>
+      <div>{testvalue}</div>
       <MenuItem component={'button'} color="inherit"
         onClick={handleClickOnLanguageSelection}
         {...props}>
@@ -120,3 +127,10 @@ export default function LanguagePicker(props) {
     </Fragment>
   )
 }
+
+const mapStateToProps = ['testvalue'] // could be a function or an array
+const actions = {
+  setTestValue
+}
+
+export default connect(mapStateToProps, actions)(LanguagePicker)

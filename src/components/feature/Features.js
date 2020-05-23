@@ -30,42 +30,28 @@ const Features = () => {
   const features = [
     {
       icon: <MapIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("map_feature_header"),
-      text: t("map_feature_text"),
+      header: t("home.featuresSection.map.headline"),
+      text: t("home.featuresSection.map.description"),
       link: APP_ROUTES.map
     },
     {
       icon: <ViewListIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("view_feature_header"),
-      text: t("view_feature_text"),
+      header: t("home.featuresSection.shelterOverview.headline"),
+      text: t("home.featuresSection.shelterOverview.description"),
       link: APP_ROUTES.shelterOverview
     },
     {
       icon: <DirectionsBusIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("kaeltebus_feature_header"),
-      text: t("kaeltebus_feature_text"),
+      header: t("home.featuresSection.kaeltebus.headline"),
+      text: t("home.featuresSection.map.description"),
       link: APP_ROUTES.kaeltebus
-    }
-  ]
-  const information = [
-    {
-      icon: <AirportShuttleIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("kaeltebus_feature_header"),
-      text: t("kaeltebus_feature_text"),
-      link: "/kaeltebus_login"
-    },
-    {
-      icon: <InfoOutlinedIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("info_feature_header"),
-      text: t("info_feature_text"),
-      link: "/needed?"
     }
   ]
 
   return (
     <>
       <ContentHeadline>
-        {t("features_header")}
+        {t("home.featuresSection.headline")}
       </ContentHeadline>
 
       <div className={featureContainer}>

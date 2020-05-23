@@ -1,6 +1,10 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { Hidden, CssBaseline, MuiThemeProvider } from '@material-ui/core'
+import { Provider } from 'unistore/react'
+
+import store from '../../store/store'
+
 import theme from './theme'
 
 import Home from '../../pages/Home'
@@ -41,28 +45,30 @@ function App() {
   const classes = useStyles()
   return (
     <React.Fragment>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navbar />
-        <div className={classes.toolbarFoundation} />
-        <Switch>
-          <Route exact path={APP_ROUTES.home} render={routeProps => <Home {...routeProps} />} />
-          <Route exact path={APP_ROUTES.map} component={MapPage} />
-          <Route exact path={APP_ROUTES.shelterOverview} component={FindShelters} />
-          <Route exact path={APP_ROUTES.kaeltebus} component={Kaeltebus} />
-          <Route exact path={APP_ROUTES.legalInformation} component={LegalInformation} />
-          <Route exact path={APP_ROUTES.healthRelatedInformation} component={HealthRelatedInformation} />
-          <Route exact path={APP_ROUTES.adviceInformation} component={AdviceInformation} />
-          <Route exact path={APP_ROUTES.contact} component={Contact} />
-          <Route exact path={APP_ROUTES.imprint} component={Imprint} />
-          <Route exact path={APP_ROUTES.privacy} component={Privacy} />
-          <Redirect to={APP_ROUTES.home} />
-        </Switch>
+      <Provider store={store}>
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          <Navbar />
+          <div className={classes.toolbarFoundation} />
+          <Switch>
+            <Route exact path={APP_ROUTES.home} render={routeProps => <Home {...routeProps} />} />
+            <Route exact path={APP_ROUTES.map} component={MapPage} />
+            <Route exact path={APP_ROUTES.shelterOverview} component={FindShelters} />
+            <Route exact path={APP_ROUTES.kaeltebus} component={Kaeltebus} />
+            <Route exact path={APP_ROUTES.legalInformation} component={LegalInformation} />
+            <Route exact path={APP_ROUTES.healthRelatedInformation} component={HealthRelatedInformation} />
+            <Route exact path={APP_ROUTES.adviceInformation} component={AdviceInformation} />
+            <Route exact path={APP_ROUTES.contact} component={Contact} />
+            <Route exact path={APP_ROUTES.imprint} component={Imprint} />
+            <Route exact path={APP_ROUTES.privacy} component={Privacy} />
+            <Redirect to={APP_ROUTES.home} />
+          </Switch>
 
-        <Hidden smDown>
-          <Footer />
-        </Hidden>
-      </MuiThemeProvider>
+          <Hidden smDown>
+            <Footer />
+          </Hidden>
+        </MuiThemeProvider>
+      </Provider>
     </React.Fragment>
   )
 }
