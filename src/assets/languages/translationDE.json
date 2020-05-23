@@ -5,11 +5,6 @@
   "welcome_text":             "Finden Sie die richtige Notunterkunft für heute Nacht!",
   "header3":                  "Unterkünfte finden!",
   "text3":                    "Mit Hilfe unserer Karte!",
-  "view_feature_header":      "Übersicht",
-  "view_feature_text":        "Auflistung aller Notunterkünfte und spezifische Suche um die passende Notunterkunft zu finden.",
-  "kaeltebus_feature_header": "Kältebus",
-  "kaeltebus_feature_text":   "In Kooperation mit der Stadtmission Berlin kann der Kältebus für obdachlose Personen gerufen werden. Hier können Sie weitere Informationen finden.",
-  "landingText":              "Dieses Projekt der TU-Berlin hat sich zum Ziel gesetzt, Obdachlosenheime mit unserer digitalen Welt zu verknüpfen. Mit unserer Website können Sie einfach Unterkünfte für Personen ausfindig machen, die einen Schlafplatz benötigen. Zurzeit können diese auf einer Karte oder in einer Liste angezeigt werden. \n \n Außerdem arbeiten wir in enger Zusammenarbeit mit dem Kältebus der Stadtmission Berlin, die Personen helfen, welche aus eigener Kraft den Weg in eine Unterkunft nicht mehr aufbringen können.",
   "shelters":                 "Unterkünfte",
   "name":                     "Name",
   "available_beds":           "Verfügbare Betten",
@@ -39,11 +34,16 @@
   "families":                 "Familien",
   "intoxicated":              "Rauschzustand",
   "navigation": {
+    "map": "Karte",
+    "shelterOverview": "Übersicht",
+    "kaeltebus": "Kältebus",
+    "moreInformation": "Mehr Informationen",
     "legalInformation": "Rechtliche Informationen",
     "healthInformation": "Gesundheit",
     "adviceInformation": "Beratung"
   },
   "home": {
+    "introduction": "Dieses Projekt der TU-Berlin hat sich zum Ziel gesetzt, Obdachlosenheime mit unserer digitalen Welt zu verknüpfen. Mit unserer Website können Sie einfach Unterkünfte für Personen ausfindig machen, die einen Schlafplatz benötigen. Zurzeit können diese auf einer Karte oder in einer Liste angezeigt werden. \n \n Außerdem arbeiten wir in enger Zusammenarbeit mit dem Kältebus der Stadtmission Berlin, die Personen helfen, welche aus eigener Kraft den Weg in eine Unterkunft nicht mehr aufbringen können.",
     "featuresSection": {
       "headline": "Entdecke unsere Features!",
       "map": {

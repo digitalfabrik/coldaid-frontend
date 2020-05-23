@@ -5,9 +5,6 @@
   "welcome_text": "Find the right shelter for tonight!",
   "header3": "Find Shelters!",
   "text3": "With our Map!",
-  "info_feature_header": "More Information",
-  "info_feature_text": "More Information about the project and how you can contribute.",
-  "landingText": "This Project of the TU-Berlin aims to link shelters for homeless with our digital age. On our website you can find a place for the homeless. At present, the shelters can be displayed on a map or in a list. \n \n Furthermore, we cooperate in close relationship with the Kältebusof the Stadtmission Berlin, who pick up people which don't have the strength to make it to a shelter on their own.",
   "shelters": "Shelters",
   "name": "Name",
   "available_beds": "Available Beds",
@@ -37,11 +34,16 @@
   "families": "Families",
   "intoxicated": "Intoxicated",
   "navigation": {
+    "map": "Map",
+    "shelterOverview": "Overview",
+    "kaeltebus": "Kältebus",
+    "moreInformation": "More Information",
     "legalInformation": "Legal Informations",
     "healthInformation": "Health Related Information",
     "adviceInformation": "Advice"
   },
   "home": {
+    "introduction": "This Project of the TU-Berlin aims to link shelters for homeless with our digital age. On our website you can find a place for the homeless. At present, the shelters can be displayed on a map or in a list. \n \n Furthermore, we cooperate in close relationship with the Kältebusof the Stadtmission Berlin, who pick up people which don't have the strength to make it to a shelter on their own.",
     "featuresSection": {
       "headline": "Discover our Features!",
       "map": {

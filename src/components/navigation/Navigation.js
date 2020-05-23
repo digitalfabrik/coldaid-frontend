@@ -118,19 +118,19 @@ export default function Navigation() {
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
               <MapIcon />
             </ListItemIcon>
-            <ListItemText primary={t('map_feature_header')} />
+            <ListItemText primary={t('navigation.map')} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.shelterOverview} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
               <ListIcon />
             </ListItemIcon>
-            <ListItemText primary={t('view_feature_header')} />
+            <ListItemText primary={t('navigation.shelterOverview')} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.kaeltebus} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
               <DirectionsBusIcon />
             </ListItemIcon>
-            <ListItemText primary={t('kaeltebus_feature_header')} />
+            <ListItemText primary={t('navigation.kaeltebus')} />
           </MenuItem>
         </List>
         <Divider variant='middle' classes={{ root: classes.drawerDivider }} style={{ height: 1 }} />
@@ -230,24 +230,24 @@ export default function Navigation() {
                 to={APP_ROUTES.map}
                 color="inherit"
                 className={classes.navigationAction}>
-                {t('map_feature_header')}
+                {t('navigation.map')}
               </MenuItem>
               <MenuItem component={Link}
                 to={APP_ROUTES.shelterOverview}
                 color="inherit"
                 className={classes.navigationAction}>
-                {t('view_feature_header')}
+                {t('navigation.shelterOverview')}
               </MenuItem>
               <MenuItem component={Link}
                 to={APP_ROUTES.kaeltebus}
                 color="inherit"
                 className={classes.navigationAction}>
-                {t('kaeltebus_feature_header')}
+                {t('navigation.kaeltebus')}
               </MenuItem>
               <MenuItem component={'button'} color="inherit"
                 onClick={handleClickOnMoreInformation}
                 className={classes.navigationAction}>
-                {t('info_feature_header')}
+                {t('navigation.moreInformation')}
                 <KeyboardArrowDownIcon />
               </MenuItem>
               <StyledMenu
