@@ -6,6 +6,7 @@ import { makeStyles, withStyles } from '@material-ui/core'
 import deFlag from '../../../assets/images/flags/de.svg'
 import enFlag from '../../../assets/images/flags/en.svg'
 import frFlag from '../../../assets/images/flags/fr.svg'
+import ruFlag from '../../../assets/images/flags/ru.svg'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
@@ -15,7 +16,7 @@ const SELECTABLE_LANGUAGES = [
   { id: 'de', label: 'Deutsch', flag: deFlag },
   DEFAULT_LANGUAGE,
   { id: 'fr', label: 'Français', flag: frFlag },
-  { id: 'ru', label: 'Russian', flag: deFlag },
+  { id: 'ru', label: 'Russian', flag: ruFlag },
 ]
 const LANGUAGE_LOCAL_STORAGE_KEY = 'language'
 
