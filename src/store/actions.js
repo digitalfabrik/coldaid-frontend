@@ -1,22 +1,48 @@
-import store, { initialState } from './store'
+import store from './store'
 
-export const resetState = state => initialState
+export const LANGUAGE_LOCAL_STORAGE_KEY = 'language'
+const BASE_API = 'http://130.149.22.44:8000/api'
+const API = {
+  shelters: 'accommodations/'
+}
 
-export const setTestValue = (state, newValue) => ({ testvalue: newValue })
+export const setLanguage = async (state, newValue) => {
+  localStorage.setItem(LANGUAGE_LOCAL_STORAGE_KEY, newValue)
+  return { language: newValue }
+}
 
-// async actions
-export const loadData = async state => {
-  store.setState({ isLoading: true })
+export const loadShelters = async state => {
+  return await loadData(state, 'shelters', API.shelters)
+}
 
+async function loadData(state, storeKey, path) {
+  incrementPendingRequests()
   try {
-    const res = await fetch(`someUrl`)
-    const data = await res.json()
+    const response = await fetch(`${BASE_API}/${state.region}/${state.language}/${path}`)
+    const data = await response.json()
+    return { [storeKey]: data }
+  } catch (error) {
+    console.error(error)
+  } finally {
+    decrementPendingRequests()
+  }
+}
 
-    return {
-      dataInState: data,
-      isLoading: false
-    }
-  } catch (err) {
-    console.error(err)
+const incrementPendingRequests = () => {
+  store.setState({
+    pendingRequests: store.getState().pendingRequests + 1,
+    isLoading: true,
+  })
+}
+
+const decrementPendingRequests = () => {
+  const newPendingRequests = store.getState().pendingRequests - 1
+  if (newPendingRequests <= 0) {
+    store.setState({
+      pendingRequests: 0,
+      isLoading: false,
+    })
+  } else {
+    store.setState({ pendingRequests: newPendingRequests })
   }
 }

@@ -1,15 +1,17 @@
 import createStore from 'unistore'
-import devtools from 'unistore/devtools'
+import { LANGUAGE_LOCAL_STORAGE_KEY } from './actions'
+import { DEFAULT_LANGUAGE } from '../components/navigation/languagePicker/LanguagePicker'
 
 export const initialState = {
-  testvalue: 1
+  language: localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) ?? DEFAULT_LANGUAGE.code,
+  region: 'berlin',
+  pendingRequests: 0,
+  isLoading: false,
+  shelters: [],
 }
 
 const createUnistore = () => {
-  const store = devtools(createStore(initialState))
-
-  // store.subscribe(state => console.log(state)) // log on every state update
-  return store
+  return createStore(initialState)
 }
 
 const store = createUnistore()

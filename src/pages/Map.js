@@ -26,6 +26,10 @@ import CheckIcon from '@material-ui/icons/Check'
 import BathtubIcon from '@material-ui/icons/Bathtub'
 import LanguageIcon from '@material-ui/icons/Language'
 import DescriptionIcon from '@material-ui/icons/Description'
+import { loadShelters } from '../store/actions'
+import { connect } from 'unistore/react'
+import Snackbar from '@material-ui/core/Snackbar'
+import SnackbarContent from '@material-ui/core/SnackbarContent'
 
 const POSITION_ICON = L.icon({
   iconUrl: userMarker,
@@ -153,23 +157,31 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: theme.spacing(2.5),
     },
   },
+  snackbarContent: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.text.primary,
+  },
+  snackbarAnchor: {
+    [theme.breakpoints.up('md')]: {
+      bottom: theme.spacing(10.5),
+    },
+  },
 }))
 
-export default function MapPage() {
+function MapPage(props) {
+  const { shelters, language, loadShelters } = props
+
   const classes = useStyles()
   const { t } = useTranslation()
 
-  const [shelters, setShelters] = useState([])
   useEffect(() => {
-    const getShelters = async () => {
-      const response = await fetch(`http://130.149.22.44:8000/api/berlin/de-de/accommodations/`)
-      const shelters = await response.json()
-      setShelters(shelters)
-    }
-    getShelters()
-  }, [])
+    loadShelters()
+  }, [loadShelters, language])
 
   const [clickedShelter, setClickedShelter] = useState(null)
+  useEffect(() => {
+    setClickedShelter(null)
+  }, [language])
 
   const handleClickOnShelter = (shelter) => {
     setClickedShelter(shelter)
@@ -181,6 +193,7 @@ export default function MapPage() {
     const map = mapRef.current
     if (map) {
       map.leafletElement.locate({ watch: true, enableHighAccuracy: true })
+      map.leafletElement.on('locationerror', handleLocationError)
     }
   }, [mapRef])
 
@@ -222,6 +235,14 @@ export default function MapPage() {
   const handleCloseInfoBox = (event) => {
     event.stopPropagation()
     setClickedShelter(null)
+  }
+
+  const [openErrorSnackbar, setOpenErrorSnackbar] = useState(false)
+  const handleLocationError = () => {
+    setOpenErrorSnackbar(true)
+  }
+  const handleCloseLocationError = (event, reason) => {
+    setOpenErrorSnackbar(false)
   }
 
   return (
@@ -269,6 +290,18 @@ export default function MapPage() {
           ))
         }
       </Map>
+      {openErrorSnackbar &&
+      <Snackbar style={{ zIndex: 1000 }}
+                classes={{ anchorOriginBottomCenter: classes.snackbarAnchor }}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                open={openErrorSnackbar}
+                onClose={handleCloseLocationError}
+                autoHideDuration={5000}
+      ><SnackbarContent classes={{ root: classes.snackbarContent }} message={t('map.locationError')}/>
+      </Snackbar>}
       {
         clickedShelter !== null &&
         <div className={classes.infoBoxWrapper}>
@@ -424,4 +457,9 @@ export default function MapPage() {
   )
 }
 
+const mapStateToProps = ['shelters', 'language']
+const actions = {
+  loadShelters,
+}
 
+export default connect(mapStateToProps, actions)(MapPage)

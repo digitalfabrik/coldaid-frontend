@@ -76,7 +76,8 @@
     }
   },
   "map": {
-    "imageText": "Verschaffen Sie sich einen Überblick"
+    "imageText": "Verschaffen Sie sich einen Überblick",
+    "locationError": "Fehler bei der Standortlokalisierung"
   },
   "overview": {
     "imageText": "Finden Sie die passende Notunterkunft"
