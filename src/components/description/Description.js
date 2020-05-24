@@ -4,5 +4,5 @@ import ContentText from '../theme/ContentText.jsx'
 
 export default function Description() {
   const { t } = useTranslation();
-  return <ContentText>{t("landingText")}</ContentText>;
+  return <ContentText>{t("home.introduction")}</ContentText>;
 }

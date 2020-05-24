@@ -122,51 +122,51 @@ function Navigation(props) {
     <div className={classes.drawerWrapper}>
       <div>
         <div className={classes.drawerHeader}>
-          <IntegreatLogo/>
+          <IntegreatLogo />
         </div>
-        <Divider classes={{ root: classes.drawerDivider }}/>
+        <Divider classes={{ root: classes.drawerDivider }} />
         <List>
           <MenuItem component={Link} to={APP_ROUTES.map} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
-              <MapIcon/>
+              <MapIcon />
             </ListItemIcon>
-            <ListItemText primary={t('map_feature_header')}/>
+            <ListItemText primary={t('map_feature_header')} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.shelterOverview} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
-              <ListIcon/>
+              <ListIcon />
             </ListItemIcon>
-            <ListItemText primary={t('view_feature_header')}/>
+            <ListItemText primary={t('view_feature_header')} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.kaeltebus} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
-              <DirectionsBusIcon/>
+              <DirectionsBusIcon />
             </ListItemIcon>
-            <ListItemText primary={t('kaeltebus_feature_header')}/>
+            <ListItemText primary={t('kaeltebus_feature_header')} />
           </MenuItem>
         </List>
-        <Divider variant='middle' classes={{ root: classes.drawerDivider }} style={{ height: 1 }}/>
+        <Divider variant='middle' classes={{ root: classes.drawerDivider }} style={{ height: 1 }} />
         <List>
           <MenuItem component={Link} to={APP_ROUTES.legalInformation} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
-              <AccountBalanceIcon/>
+              <AccountBalanceIcon />
             </ListItemIcon>
-            <ListItemText primary={t('navigation.legalInformation')}/>
+            <ListItemText primary={t('navigation.legalInformation')} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.healthRelatedInformation} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
-              <LocalHospitalIcon/>
+              <LocalHospitalIcon />
             </ListItemIcon>
-            <ListItemText primary={t('navigation.healthInformation')}/>
+            <ListItemText primary={t('navigation.healthInformation')} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.adviceInformation} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
-              <HelpIcon/>
+              <HelpIcon />
             </ListItemIcon>
-            <ListItemText primary={t('navigation.adviceInformation')}/>
+            <ListItemText primary={t('navigation.adviceInformation')} />
           </MenuItem>
         </List>
-        <Divider classes={{ root: classes.drawerDivider }}/>
+        <Divider classes={{ root: classes.drawerDivider }} />
       </div>
       <div>
         <List>
