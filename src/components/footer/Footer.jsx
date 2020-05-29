@@ -46,7 +46,7 @@ const Footer = () => {
               variant="body2"
               component={RouterLink}
               to={APP_ROUTES.contact}>
-                {t('contact.navigationLabel')}
+                {t('navigation.legalInformation')}
             </Link>
           </div>
 
@@ -57,7 +57,7 @@ const Footer = () => {
               variant="body2"
               component={RouterLink}
               to={APP_ROUTES.imprint}>
-                {t('imprint.navigationLabel')}
+                {t('navigation.healthInformation')}
             </Link>
 
             <Link
@@ -66,7 +66,7 @@ const Footer = () => {
               variant="body2"
               component={RouterLink}
               to={APP_ROUTES.privacy}>
-                {t('privacy.navigationLabel')}
+                {t('navigation.adviceInformation')}
             </Link>
           </div>
         </div>

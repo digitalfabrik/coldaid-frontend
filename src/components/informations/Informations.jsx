@@ -30,20 +30,20 @@ const Informations = () => {
   const informations = [
     {
       icon: <AirportShuttleIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("legalInformationNavigationText"),
-      text: t("kaeltebus_feature_text"),
+      header: t("home.informationsSection.legal.headline"),
+      text: t("home.informationsSection.legal.description"),
       link: APP_ROUTES.legalInformation
     },
     {
       icon: <InfoOutlinedIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("healthRelatedInformationNavigationText"),
-      text: t("info_feature_text"),
+      header: t("home.informationsSection.health.headline"),
+      text: t("home.informationsSection.health.description"),
       link: APP_ROUTES.healthRelatedInformation
     },
     {
       icon: <InfoOutlinedIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
-      header: t("adviceInformationNavigationText"),
-      text: t("info_feature_text"),
+      header: t("home.informationsSection.advice.headline"),
+      text: t("home.informationsSection.advice.description"),
       link: APP_ROUTES.adviceInformation
     }
   ]
@@ -51,7 +51,7 @@ const Informations = () => {
   return (
     <>
       <ContentHeadline>
-        {t("home.headline")}
+        {t("home.informationsSection.headline")}
       </ContentHeadline>
 
       <div className={featureContainer}>

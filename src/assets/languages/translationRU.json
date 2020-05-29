@@ -3,20 +3,8 @@
   "longitude": "долгота",
   "welcome_header": "Добро пожаловать!",
   "welcome_text": "Найди подходящий приют на сегодня!",
-  "header2": "С Новым годом!",
-  "text2": "Сейчас 2020 год!",
   "header3": "Найдите приюты!",
   "text3": "С нашей Картой!",
-  "map_feature_header": "Карта",
-  "map_feature_text": "Ищите убежище на карте.",
-  "view_feature_header": "Посмотреть",
-  "view_feature_text": "Ищите приют в списке.",
-  "kaeltebus_feature_header": "Kältebus",
-  "kaeltebus_feature_text": "Найди ближайший автобус.",
-  "info_feature_header": "Дополнительная информация",
-  "info_feature_text": "Дополнительная информация о проекте и о том, как вы можете внести свой вклад.",
-  "features_header": "Откройте для себя наши особенности!",
-  "landingText": "Этот проект TU-Berlin направлен на то, чтобы связать приюты для бездомных с нашей цифровой эрой. На нашем сайте Вы можете найти место для бездомных. В настоящее время приюты могут быть отображены на карте или в списке. \n \n Кроме того, мы тесно сотрудничаем с Kältebusof the Stadtmission Berlin, которые подбирают людей, у которых нет сил самостоятельно добраться до приюта.",
   "shelters": "Приюты",
   "name": "Имя",
   "available_beds": "Доступные кровати",
@@ -44,5 +32,47 @@
   "wc": "WC",
   "shower": "душ",
   "families": "Семьи",
-  "intoxicated": "в состоянии опьянения"
+  "intoxicated": "в состоянии опьянения",
+  "navigation": {
+    "map": "Карта",
+    "shelterOverview": "Посмотреть",
+    "kaeltebus": "Kältebus",
+    "moreInformation": "Дополнительная информация",
+    "legalInformation": "Rechtliche Informationen",
+    "healthInformation": "Gesundheit",
+    "adviceInformation": "Beratung"
+  },
+  "home": {
+    "introduction": "Этот проект TU-Berlin направлен на то, чтобы связать приюты для бездомных с нашей цифровой эрой. На нашем сайте Вы можете найти место для бездомных. В настоящее время приюты могут быть отображены на карте или в списке. \n \n Кроме того, мы тесно сотрудничаем с Kältebusof the Stadtmission Berlin, которые подбирают людей, у которых нет сил самостоятельно добраться до приюта.",
+    "featuresSection": {
+      "headline": "Откройте для себя наши особенности!",
+      "map": {
+        "headline": "Карта",
+        "description": "Ищите убежище на карте."
+      },
+      "shelterOverview": {
+        "headline": "Посмотреть",
+        "description": "Ищите приют в списке."
+      },
+      "kaeltebus": {
+        "headline": "Kältebus",
+        "description": "Найди ближайший автобус."
+      }
+    },
+    "informationsSection": {
+      "headline": "Informationen",
+      "legal": {
+        "headline": "Rechtliches",
+        "description": "In Kooperation mit der Stadtmission Berlin kann der Kältebus für obdachlose Personen gerufen werden. Hier können Sie weitere Informationen finden."
+      },
+      "health": {
+        "headline": "Gesundheit",
+        "description": "Übersetzung folgt..."
+      },
+      "advice": {
+        "headline": "Beratung",
+        "description": "Übersetzung folgt..."
+      }
+    }
+  }
 }
