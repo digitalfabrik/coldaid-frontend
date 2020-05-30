@@ -1,11 +1,9 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core'
 
-import MapIcon from "@material-ui/icons/Map";
-import ViewListIcon from "@material-ui/icons/ViewList";
 import AirportShuttleIcon from "@material-ui/icons/AirportShuttle";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
+import HealingIcon from '@material-ui/icons/Healing'
+import AssistantIcon from '@material-ui/icons/Assistant'
 
 import { useTranslation } from "react-i18next";
 
@@ -35,13 +33,13 @@ const Informations = () => {
       link: APP_ROUTES.legalInformation
     },
     {
-      icon: <InfoOutlinedIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
+      icon: <HealingIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
       header: t("home.informationsSection.health.headline"),
       text: t("home.informationsSection.health.description"),
       link: APP_ROUTES.healthRelatedInformation
     },
     {
-      icon: <InfoOutlinedIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
+      icon: <AssistantIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
       header: t("home.informationsSection.advice.headline"),
       text: t("home.informationsSection.advice.description"),
       link: APP_ROUTES.adviceInformation
