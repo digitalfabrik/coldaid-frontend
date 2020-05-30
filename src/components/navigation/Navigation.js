@@ -171,22 +171,22 @@ function Navigation(props) {
       <div>
         <List>
           <MenuItem component={Link} to={APP_ROUTES.contact}
-                    onClick={handleDrawerNavigation}
-                    className={classes.drawerCaption}>
+            onClick={handleDrawerNavigation}
+            className={classes.drawerCaption}>
             <ListItemText primary={t('contact.navigationLabel')}
-                          primaryTypographyProps={{ variant: 'caption' }}/>
+              primaryTypographyProps={{ variant: 'caption' }} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.imprint}
-                    onClick={handleDrawerNavigation}
-                    className={classes.drawerCaption}>
+            onClick={handleDrawerNavigation}
+            className={classes.drawerCaption}>
             <ListItemText primary={t('imprint.navigationLabel')}
-                          primaryTypographyProps={{ variant: 'caption' }}/>
+              primaryTypographyProps={{ variant: 'caption' }} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.privacy}
-                    onClick={handleDrawerNavigation}
-                    className={classes.drawerCaption}>
+            onClick={handleDrawerNavigation}
+            className={classes.drawerCaption}>
             <ListItemText primary={t('privacy.navigationLabel')}
-                          primaryTypographyProps={{ variant: 'caption' }}/>
+              primaryTypographyProps={{ variant: 'caption' }} />
           </MenuItem>
         </List>
       </div>
@@ -232,36 +232,36 @@ function Navigation(props) {
                 onClick={handleDrawerToggle}
                 className={classes.menuButtonAction}
               >
-                <MenuIcon/>
+                <MenuIcon />
               </IconButton>
-              <IntegreatLogo className={classes.logoAction}/>
+              <IntegreatLogo className={classes.logoAction} />
             </div>
 
             <div className={classes.toolbarRightActions}>
               <Hidden smDown>
                 <MenuItem component={Link}
-                          to={APP_ROUTES.map}
-                          color="inherit"
-                          className={classes.navigationAction}>
-                  {t('map_feature_header')}
+                  to={APP_ROUTES.map}
+                  color="inherit"
+                  className={classes.navigationAction}>
+                  {t('navigation.map')}
                 </MenuItem>
                 <MenuItem component={Link}
-                          to={APP_ROUTES.shelterOverview}
-                          color="inherit"
-                          className={classes.navigationAction}>
-                  {t('view_feature_header')}
+                  to={APP_ROUTES.shelterOverview}
+                  color="inherit"
+                  className={classes.navigationAction}>
+                  {t('navigation.shelterOverview')}
                 </MenuItem>
                 <MenuItem component={Link}
-                          to={APP_ROUTES.kaeltebus}
-                          color="inherit"
-                          className={classes.navigationAction}>
-                  {t('kaeltebus_feature_header')}
+                  to={APP_ROUTES.kaeltebus}
+                  color="inherit"
+                  className={classes.navigationAction}>
+                  {t('navigation.kaeltebus')}
                 </MenuItem>
                 <MenuItem component={'button'} color="inherit"
-                          onClick={handleClickOnMoreInformation}
-                          className={classes.navigationAction}>
-                  {t('info_feature_header')}
-                  <KeyboardArrowDownIcon/>
+                  onClick={handleClickOnMoreInformation}
+                  className={classes.navigationAction}>
+                  {t('navigation.moreInformation')}
+                  <KeyboardArrowDownIcon />
                 </MenuItem>
                 <StyledMenu
                   anchorEl={anchorMoreInformation}
@@ -270,35 +270,35 @@ function Navigation(props) {
                   onClose={handleCloseMoreInformation}
                 >
                   <MenuItem component={Link}
-                            to={APP_ROUTES.legalInformation}
-                            onClick={handleCloseMoreInformation}>
+                    to={APP_ROUTES.legalInformation}
+                    onClick={handleCloseMoreInformation}>
                     <ListItemIcon classes={{ root: classes.drawerIcons }}>
-                      <AccountBalanceIcon/>
+                      <AccountBalanceIcon />
                     </ListItemIcon>
-                    <ListItemText primary={t('navigation.legalInformation')}/>
+                    <ListItemText primary={t('navigation.legalInformation')} />
                   </MenuItem>
                   <MenuItem component={Link}
-                            to={APP_ROUTES.healthRelatedInformation}
-                            onClick={handleCloseMoreInformation}>
+                    to={APP_ROUTES.healthRelatedInformation}
+                    onClick={handleCloseMoreInformation}>
                     <ListItemIcon classes={{ root: classes.drawerIcons }}>
-                      <LocalHospitalIcon/>
+                      <LocalHospitalIcon />
                     </ListItemIcon>
-                    <ListItemText primary={t('navigation.healthInformation')}/>
+                    <ListItemText primary={t('navigation.healthInformation')} />
                   </MenuItem>
                   <MenuItem component={Link}
-                            to={APP_ROUTES.adviceInformation}
-                            onClick={handleCloseMoreInformation}>
+                    to={APP_ROUTES.adviceInformation}
+                    onClick={handleCloseMoreInformation}>
                     <ListItemIcon classes={{ root: classes.drawerIcons }}>
-                      <HelpIcon/>
+                      <HelpIcon />
                     </ListItemIcon>
-                    <ListItemText primary={t('navigation.adviceInformation')}/>
+                    <ListItemText primary={t('navigation.adviceInformation')} />
                   </MenuItem>
                 </StyledMenu>
               </Hidden>
-              <LanguagePicker className={classes.languagePickerAction}/>
+              <LanguagePicker className={classes.languagePickerAction} />
             </div>
           </Toolbar>
-          {isLoading && <LinearProgress className={classes.toolbarProgressbar}/>}
+          {isLoading && <LinearProgress className={classes.toolbarProgressbar} />}
         </div>
       </AppBar>
       <nav className={classes.drawer}>
