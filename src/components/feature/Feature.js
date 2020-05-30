@@ -5,6 +5,10 @@ import Link from "../link/Link";
 
 const useStyles = makeStyles(theme => ({
   root: {
+    minWidth: `${theme.spacing(35)}px`,
+    [theme.breakpoints.down('sm')]: {
+      minWidth: `unset`,
+    },
     verticalAlign: "top",
     padding: "1rem",
     display: "inline-block",

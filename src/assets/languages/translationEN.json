@@ -63,7 +63,7 @@
       "headline": "Informations",
       "legal": {
         "headline": "Legal Informations",
-        "description": "In Kooperation mit der Stadtmission Berlin kann der Kältebus für obdachlose Personen gerufen werden. Hier können Sie weitere Informationen finden."
+        "description": "In cooperation with the Stadtmission Berlin the cold bus for homeless people can be called. Here you can find further information."
       },
       "health": {
         "headline": "Health",
@@ -76,7 +76,23 @@
     }
   },
   "map": {
-    "imageText": "Get an overview"
+    "imageText": "Get an overview",
+    "locationError": "Fehler bei der Standortlokalisierung"
+  },
+  "overview": {
+    "imageText": "Find a Shelter"
+  },
+  "kaeltebus": {
+    "imageText": "Call the \"Kältebus\""
+  },
+  "legal": {
+    "imageText": "Here you find legal related information"
+  },
+  "healthRelatedInformation": {
+    "imageText": "Here you find health related information"
+  },
+  "advice": {
+    "imageText": "For consultation check here"
   },
   "contact": {
     "navigationLabel": "Contact"

@@ -38,9 +38,9 @@
     "shelterOverview": "Посмотреть",
     "kaeltebus": "Kältebus",
     "moreInformation": "Дополнительная информация",
-    "legalInformation": "Rechtliche Informationen",
-    "healthInformation": "Gesundheit",
-    "adviceInformation": "Beratung"
+    "legalInformation": "Юридическая информация",
+    "healthInformation": "Здравоохранение",
+    "adviceInformation": "Совет"
   },
   "home": {
     "introduction": "Этот проект TU-Berlin направлен на то, чтобы связать приюты для бездомных с нашей цифровой эрой. На нашем сайте Вы можете найти место для бездомных. В настоящее время приюты могут быть отображены на карте или в списке. \n \n Кроме того, мы тесно сотрудничаем с Kältebusof the Stadtmission Berlin, которые подбирают людей, у которых нет сил самостоятельно добраться до приюта.",
@@ -62,17 +62,45 @@
     "informationsSection": {
       "headline": "Informationen",
       "legal": {
-        "headline": "Rechtliches",
-        "description": "In Kooperation mit der Stadtmission Berlin kann der Kältebus für obdachlose Personen gerufen werden. Hier können Sie weitere Informationen finden."
+        "headline": "Юридическая информация",
+        "description": "В сотрудничестве с Stadtmission Berlin можно назвать холодный автобус для бездомных. Здесь вы можете найти дополнительную информацию."
       },
       "health": {
-        "headline": "Gesundheit",
-        "description": "Übersetzung folgt..."
+        "headline": "Здравоохранение",
+        "description": "Перевод следует..."
       },
       "advice": {
-        "headline": "Beratung",
-        "description": "Übersetzung folgt..."
+        "headline": "Совет",
+        "description": "Перевод следует..."
       }
     }
+  },
+  "map": {
+    "imageText": "Получить обзор",
+    "locationError": "Ошибки в локализации местоположения"
+  },
+  "overview": {
+    "imageText": "Найти подходящее место для экстренного размещения"
+  },
+  "kaeltebus": {
+    "imageText": "Вызовите холодный автобус"
+  },
+  "legal": {
+    "imageText": "Здесь Вы найдете юридическую информацию"
+  },
+  "healthRelatedInformation": {
+    "imageText": "Здесь вы найдете информацию о здоровье"
+  },
+  "advice": {
+    "imageText": "Здесь ты получишь совет"
+  },
+  "contact": {
+    "navigationLabel": "Контактная информация"
+  },
+  "imprint": {
+    "navigationLabel": "Вывод"
+  },
+  "privacy": {
+    "navigationLabel": "Защита данных"
   }
 }
