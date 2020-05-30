@@ -8,6 +8,8 @@ export const initialState = {
   pendingRequests: 0,
   isLoading: false,
   shelters: [],
+  adviceInformation: { data: null, loadingError: false },
+
 }
 
 const createUnistore = () => {
