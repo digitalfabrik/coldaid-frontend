@@ -20,6 +20,16 @@ export const loadAdviceInformation = async state => {
   return await loadData(state, 'adviceInformation', null, 'http://localhost:8000/api/augsburg/de-de/page/?url=augsburg/de-de/willkommen/kontakt-zu-app-team-augsburg' )
 }
 
+export const loadHealthRelatedInformation = async state => {
+  // TODO switch from path to url if backend api is ready fore it
+  return await loadData(state, 'healthRelatedInformation', null, 'http://localhost:8000/api/augsburg/de-de/page/?url=augsburg/de-de/willkommen/uber-die-app-integreat-augsburg' )
+}
+
+export const loadLegalInformation = async state => {
+  // TODO switch from path to url if backend api is ready fore it
+  return await loadData(state, 'legalInformation', null, 'http://localhost:8000/api/augsburg/de-de/page/?url=augsburg/de-de/willkommen/wissenswertes-uber-augsburg' )
+}
+
 export const createResetErrorState = storeKey => state => {
   return { [storeKey]: { ...state[storeKey], loadingError: false }
 

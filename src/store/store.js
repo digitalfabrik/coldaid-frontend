@@ -9,6 +9,8 @@ export const initialState = {
   isLoading: false,
   shelters: [],
   adviceInformation: { data: null, loadingError: false },
+  healthRelatedInformation: { data: null, loadingError: false },
+  legalInformation: { data: null, loadingError: false },
 
 }
 

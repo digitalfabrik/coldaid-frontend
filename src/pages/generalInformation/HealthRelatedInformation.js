@@ -1,45 +1,63 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import ContentLimiter from '../../components/theme/ContentLimiter'
+import {connect} from "unistore/react";
+import {createResetErrorState, loadHealthRelatedInformation} from "../../store/actions";
+import {useTranslation} from "react-i18next";
+import ServerError from "../../components/serverError/serverError";
+import ContentText from "../../components/theme/ContentText";
 
-const test_url = 'http://localhost:8000/api/augsburg/de-de/page/?url=augsburg/de-de/willkommen/uber-die-app-integreat-augsburg';
-const base_url = 'http://130.149.22.44:8000/api/';
 
-const errorMessage = 'Der Server ist zur Zeit nicht verfügbar. Probieren Sie es später noch einmal!';
+function HealthRelatedInformation(props) {
+  const { healthRelatedInformation, loadHealthRelatedInformation, resetErrorState } = props;
+  const { t } = useTranslation();
 
-export default function HealthRelatedInformation() {
+  useEffect(() => {
+    loadHealthRelatedInformation()
+  }, [])
 
-  const [information, setInformation] = useState([])
+  useEffect(() => {
+    return () => {
+      resetErrorState()
+    }
+  }, [])
 
   const displayDate = () => {
-    if (information.modified_gmt != null) {
-      return <div>Letzte Änderung: {new Date(information.modified_gmt).toLocaleDateString()}</div>
+    if (healthRelatedInformation.data && healthRelatedInformation.data.modified_gmt) {
+      return <ContentText>{t("informationPages.last_changed")} {new Date(healthRelatedInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
     } else {
       return null;
     }
   }
 
-  useEffect(() => {
-    const getInformation = async () => {
-      let information = {};
-      const response =  await fetch(test_url).catch(error => information.content = errorMessage);
-      if (response.ok) {
-        information = await response.json();
-      }
-      setInformation(information);
-    }
-    getInformation()
-  }, [])
-
-
   return (
     <ContentLimiter withBoxShadow>
-      <h1>{information.title}</h1>
-      <div style={{whiteSpace: "pre-wrap"}}>{information.content}</div>
-      <br/>
-      {displayDate()}
+      {
+        healthRelatedInformation.data ?
+          <>
+            <h1 style={{textAlign: "center"}}>{healthRelatedInformation.data.title}</h1>
+            <div style={{ whiteSpace: 'pre-wrap' }}>
+              <ContentText>{healthRelatedInformation.data.content}</ContentText>
+            </div>
+            {displayDate()}
+          </>
+          :
+          healthRelatedInformation.loadingError ?
+            <ServerError/>
+            :
+            <div></div>
+      }
     </ContentLimiter>
   )
+
 }
+
+  const mapStateToProps = ['healthRelatedInformation']
+  const actions = {
+    loadHealthRelatedInformation,
+    resetErrorState: createResetErrorState('healthRelatedInformation'),
+  }
+
+  export default connect(mapStateToProps, actions)(HealthRelatedInformation)
 
 
 
