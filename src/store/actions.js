@@ -15,18 +15,32 @@ export const loadShelters = async state => {
   return await loadData(state, 'shelters', API.shelters)
 }
 
-async function loadData(state, storeKey, path) {
+export const loadAdviceInformation = async state => {
+  // TODO switch from path to url if backend api is ready fore it
+  return await loadData(state, 'adviceInformation', null, 'http://localhost:8000/api/augsburg/de-de/page/?url=augsburg/de-de/willkommen/kontakt-zu-app-team-augsburg' )
+}
+
+export const createResetErrorState = storeKey => state => {
+  return { [storeKey]: { ...state[storeKey], loadingError: false }
+
+  }
+}
+
+async function loadData(state, storeKey, path, url) {
   incrementPendingRequests()
   try {
-    const response = await fetch(`${BASE_API}/${state.region}/${state.language}/${path}`)
+    const response = await fetch(url ?? `${BASE_API}/${state.region}/${state.language}/${path}`)
     const data = await response.json()
-    return { [storeKey]: data }
+    return { [storeKey]: { data, loadingError: false } }
   } catch (error) {
-    console.error(error)
+    const upToDateStateData = store.getState()[storeKey].data
+    return { [storeKey]: { data: upToDateStateData, loadingError: true } }
   } finally {
     decrementPendingRequests()
   }
 }
+
+
 
 const incrementPendingRequests = () => {
   store.setState({
