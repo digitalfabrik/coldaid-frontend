@@ -1,48 +1,106 @@
 {
-    "latitude":                 "Breite",
-    "longitude":                "Höhe",
-    "welcome_header":           "Willkommen!",
-    "welcome_text":             "Finden Sie die richtige Notunterkunft für heute Nacht!",
-    "header2":                  "Frohes Neues!",
-    "text2":                    "Es ist 2020!",
-    "header3":                  "Unterkünfte finden!",
-    "text3":                    "Mit Hilfe unserer Karte!",
-    "map_feature_header":       "Karte",
-    "map_feature_text":         "Überblick und hilfreiche Ansicht der gesamten Notunterkünfte Berlins, um offene Einrichtungen zu finden.",
-    "view_feature_header":      "Übersicht",
-    "view_feature_text":        "Auflistung aller Notunterkünfte und spezifische Suche um die passende Notunterkunft zu finden.",
-    "kaeltebus_feature_header": "Kältebus",
-    "kaeltebus_feature_text":   "In Kooperation mit der Stadtmission Berlin kann der Kältebus für obdachlose Personen gerufen werden. Hier können Sie weitere Informationen finden.",
-    "info_feature_header":      "Mehr Informationen",
-    "info_feature_text":        "Erfahren Sie mehr über das Projekt und wie Sie dazu beitragen können.",
-    "features_header":          "Entdecke unsere Features!",
-    "landingText":              "Dieses Projekt der TU-Berlin hat sich zum Ziel gesetzt, Obdachlosenheime mit unserer digitalen Welt zu verknüpfen. Mit unserer Website können Sie einfach Unterkünfte für Personen ausfindig machen, die einen Schlafplatz benötigen. Zurzeit können diese auf einer Karte oder in einer Liste angezeigt werden. \n \n Außerdem arbeiten wir in enger Zusammenarbeit mit dem Kältebus der Stadtmission Berlin, die Personen helfen, welche aus eigener Kraft den Weg in eine Unterkunft nicht mehr aufbringen können.",
-    "shelters":                 "Unterkünfte",
-    "name":                     "Name",
-    "available_beds":           "Verfügbare Betten",
-    "distance":                 "Distanz",
-    "address":                  "Adresse",
-    "phone":                    "Telefon",
-    "email":                    "E-Mail",
-    "description":              "Beschreibung",
-    "free_beds":                "Freie Betten",
-    "intake_hours":             "Aufnahmezeiten",
-    "opening_hours":            "Öffnungszeiten",
-    "rules":                    "Regeln",
-    "kids":                     "Kinder",
-    "animals":                  "Tiere",
-    "female_only":              "Nur Frauen",
-    "families_welcome":         "Familien willkommen",
-    "male_only":                "Nur Männer",
-    "holder":                   "Träger",
-    "languages":                "Sprachen",
-    "yes":                      "Ja",
-    "no":                       "Nein",
-    "beds":                     "Betten",
-    "selected":                 "ausgewählt",
-    "sanitary_amenities":       "Sanitäreinrichtungen",
-    "wc":                       "WC",
-    "shower":                   "Dusche",
-    "families":                 "Familien",
-    "intoxicated":              "Rauschzustand"
+  "latitude":                 "Breite",
+  "longitude":                "Höhe",
+  "welcome_header":           "Willkommen!",
+  "welcome_text":             "Finden Sie die richtige Notunterkunft für heute Nacht!",
+  "header3":                  "Unterkünfte finden!",
+  "text3":                    "Mit Hilfe unserer Karte!",
+  "shelters":                 "Unterkünfte",
+  "name":                     "Name",
+  "available_beds":           "Verfügbare Betten",
+  "distance":                 "Distanz",
+  "address":                  "Adresse",
+  "phone":                    "Telefon",
+  "email":                    "E-Mail",
+  "description":              "Beschreibung",
+  "free_beds":                "Freie Betten",
+  "intake_hours":             "Aufnahmezeiten",
+  "opening_hours":            "Öffnungszeiten",
+  "rules":                    "Regeln",
+  "kids":                     "Kinder",
+  "animals":                  "Tiere",
+  "female_only":              "Nur Frauen",
+  "families_welcome":         "Familien willkommen",
+  "male_only":                "Nur Männer",
+  "holder":                   "Träger",
+  "languages":                "Sprachen",
+  "yes":                      "Ja",
+  "no":                       "Nein",
+  "beds":                     "Betten",
+  "selected":                 "ausgewählt",
+  "sanitary_amenities":       "Sanitäreinrichtungen",
+  "wc":                       "WC",
+  "shower":                   "Dusche",
+  "families":                 "Familien",
+  "intoxicated":              "Rauschzustand",
+  "navigation": {
+    "map": "Karte",
+    "shelterOverview": "Übersicht",
+    "kaeltebus": "Kältebus",
+    "moreInformation": "Mehr Informationen",
+    "legalInformation": "Rechtliche Informationen",
+    "healthInformation": "Gesundheit",
+    "adviceInformation": "Beratung"
+  },
+  "home": {
+    "introduction": "Dieses Projekt der TU-Berlin hat sich zum Ziel gesetzt, Obdachlosenheime mit unserer digitalen Welt zu verknüpfen. Mit unserer Website können Sie einfach Unterkünfte für Personen ausfindig machen, die einen Schlafplatz benötigen. Zurzeit können diese auf einer Karte oder in einer Liste angezeigt werden. \n \n Außerdem arbeiten wir in enger Zusammenarbeit mit dem Kältebus der Stadtmission Berlin, die Personen helfen, welche aus eigener Kraft den Weg in eine Unterkunft nicht mehr aufbringen können.",
+    "featuresSection": {
+      "headline": "Entdecke unsere Features!",
+      "map": {
+        "headline": "Karte",
+        "description": "Überblick und hilfreiche Ansicht der gesamten Notunterkünfte Berlins, um offene Einrichtungen zu finden."
+      },
+      "shelterOverview": {
+        "headline": "Übersicht",
+        "description": "Auflistung aller Notunterkünfte und spezifische Suche um die passende Notunterkunft zu finden."
+      },
+      "kaeltebus": {
+        "headline": "Kältebus",
+        "description": "In Kooperation mit der Stadtmission Berlin kann der Kältebus für obdachlose Personen gerufen werden. Hier können Sie weitere Informationen finden."
+      }
+    },
+    "informationsSection": {
+      "headline": "Informationen",
+      "legal": {
+        "headline": "Rechtliches",
+        "description": "In Kooperation mit der Stadtmission Berlin kann der Kältebus für obdachlose Personen gerufen werden. Hier können Sie weitere Informationen finden."
+      },
+      "health": {
+        "headline": "Gesundheit",
+        "description": "Übersetzung folgt..."
+      },
+      "advice": {
+        "headline": "Beratung",
+        "description": "Übersetzung folgt..."
+      }
+    }
+  },
+  "map": {
+    "imageText": "Verschaffen Sie sich einen Überblick",
+    "locationError": "Fehler bei der Standortlokalisierung"
+  },
+  "overview": {
+    "imageText": "Finden Sie die passende Notunterkunft"
+  },
+  "kaeltebus": {
+    "imageText": "Rufen Sie den Kältebus"
+  },
+  "legal": {
+    "imageText": "Hier finden Sie rechtliche Informationen"
+  },
+  "healthRelatedInformation": {
+    "imageText": "Hier finden Sie Gesundheits Informationen"
+  },
+  "advice": {
+    "imageText": "Hier erhalten Sie Beratung"
+  },
+  "contact": {
+    "navigationLabel": "Kontakt"
+  },
+  "imprint": {
+    "navigationLabel": "Impressum"
+  },
+  "privacy": {
+    "navigationLabel": "Datenschutz"
+  }
 }
