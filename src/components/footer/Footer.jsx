@@ -45,7 +45,7 @@ const Footer = () => {
               color="inherit"
               variant="body2"
               component={RouterLink}
-              to={APP_ROUTES.contact}>
+              to={APP_ROUTES.legalInformation}>
                 {t('navigation.legalInformation')}
             </Link>
           </div>
@@ -56,7 +56,7 @@ const Footer = () => {
               color="inherit"
               variant="body2"
               component={RouterLink}
-              to={APP_ROUTES.imprint}>
+              to={APP_ROUTES.healthRelatedInformation}>
                 {t('navigation.healthInformation')}
             </Link>
 
@@ -65,7 +65,7 @@ const Footer = () => {
               color="inherit"
               variant="body2"
               component={RouterLink}
-              to={APP_ROUTES.privacy}>
+              to={APP_ROUTES.adviceInformation}>
                 {t('navigation.adviceInformation')}
             </Link>
           </div>
