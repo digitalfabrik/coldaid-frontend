@@ -26,7 +26,7 @@ import CheckIcon from '@material-ui/icons/Check'
 import BathtubIcon from '@material-ui/icons/Bathtub'
 import LanguageIcon from '@material-ui/icons/Language'
 import DescriptionIcon from '@material-ui/icons/Description'
-import { loadShelters } from '../store/actions'
+import { createResetErrorState, loadShelters } from '../store/actions'
 import { connect } from 'unistore/react'
 import Snackbar from '@material-ui/core/Snackbar'
 import SnackbarContent from '@material-ui/core/SnackbarContent'
@@ -169,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function MapPage(props) {
-  const { shelters, language, loadShelters } = props
+  const { shelters, language, loadShelters, resetErrorState } = props
 
   const classes = useStyles()
   const { t } = useTranslation()
@@ -177,6 +177,12 @@ function MapPage(props) {
   useEffect(() => {
     loadShelters()
   }, [loadShelters, language])
+
+  useEffect(() => {
+    return () => {
+      resetErrorState()
+    }
+  }, [resetErrorState])
 
   const [clickedShelter, setClickedShelter] = useState(null)
   useEffect(() => {
@@ -271,7 +277,7 @@ function MapPage(props) {
         </Control>
         {center !== DEFAULT_POSITION && <Marker position={center} icon={POSITION_ICON}/>}
         {
-          shelters.map((shelter, key) => (
+          shelters.data.map((shelter, key) => (
             <Marker key={key}
                     position={[shelter.address.geo.lat, shelter.address.geo.long]}
                     icon={areBedsAvailable(shelter) ? HOUSE_ICON : HOUSE_GRAY_ICON}
@@ -460,6 +466,7 @@ function MapPage(props) {
 const mapStateToProps = ['shelters', 'language']
 const actions = {
   loadShelters,
+  resetErrorState: createResetErrorState('shelters')
 }
 
 export default connect(mapStateToProps, actions)(MapPage)

@@ -7,8 +7,8 @@ export const initialState = {
   region: 'berlin',
   pendingRequests: 0,
   isLoading: false,
-  shelters: [],
-  adviceInformation: { data: null, loadingError: false },
+  shelters: { data: [], loadingError: false, isRequestPending: false },
+  adviceInformation: { data: null, loadingError: false, isRequestPending: false },
 
 }
 

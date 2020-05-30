@@ -40,7 +40,7 @@ function AdviceInformation(props) {
           adviceInformation.loadingError ?
             <div>{errorMessage}</div>
             :
-            null
+            <div></div>
       }
     </ContentLimiter>
   )

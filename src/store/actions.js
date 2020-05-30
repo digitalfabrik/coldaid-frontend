@@ -3,8 +3,9 @@ import store from './store'
 export const LANGUAGE_LOCAL_STORAGE_KEY = 'language'
 const BASE_API = 'http://130.149.22.44:8000/api'
 const API = {
-  shelters: 'accommodations/'
+  shelters: 'accommodations/',
 }
+const requestIndex = 0
 
 export const setLanguage = async (state, newValue) => {
   localStorage.setItem(LANGUAGE_LOCAL_STORAGE_KEY, newValue)
@@ -17,46 +18,55 @@ export const loadShelters = async state => {
 
 export const loadAdviceInformation = async state => {
   // TODO switch from path to url if backend api is ready fore it
-  return await loadData(state, 'adviceInformation', null, 'http://localhost:8000/api/augsburg/de-de/page/?url=augsburg/de-de/willkommen/kontakt-zu-app-team-augsburg' )
+  return await loadData(state, 'adviceInformation', null, 'http://localhost:8000/api/augsburg/de-de/page/?url=augsburg/de-de/willkommen/kontakt-zu-app-team-augsburg')
 }
 
 export const createResetErrorState = storeKey => state => {
-  return { [storeKey]: { ...state[storeKey], loadingError: false }
-
-  }
+  updateLoadingState(storeKey, false, true)
 }
 
 async function loadData(state, storeKey, path, url) {
-  incrementPendingRequests()
+  updateLoadingState(storeKey, true)
   try {
-    const response = await fetch(url ?? `${BASE_API}/${state.region}/${state.language}/${path}`)
-    const data = await response.json()
-    return { [storeKey]: { data, loadingError: false } }
+    // const response = await fetch(url ?? `${BASE_API}/${state.region}/${state.language}/${path}`)
+    // const data = await response.json()
+    // const upToDateState = store.getState()
+
+    throw Error('hallo')
+    // store.setState({
+    //   [storeKey]: { ...upToDateState[storeKey], data, loadingError: false }
+    // })
   } catch (error) {
-    const upToDateStateData = store.getState()[storeKey].data
-    return { [storeKey]: { data: upToDateStateData, loadingError: true } }
+    console.log(error)
+    const upToDateState = store.getState()
+    if (!upToDateState[storeKey].isRequestPending) {
+      store.setState({
+        [storeKey]: { ...upToDateState[storeKey], loadingError: true }
+      })
+    }
   } finally {
-    decrementPendingRequests()
+    updateLoadingState(storeKey, false)
   }
 }
 
-
-
-const incrementPendingRequests = () => {
+const updateLoadingState = (storeKey, isRequestPending, resetError) => {
+  console.log(resetError)
+  let isLoading = isRequestPending
+  const upToDateState = store.getState()
+  console.log(resetError ? false : upToDateState[storeKey].loadingError)
+  if (!isRequestPending) {
+    for (let [key, storeItem] of Object.entries(upToDateState)) {
+      if (key !== storeKey && storeItem.hasOwnProperty('isRequestPending')) {
+        isLoading = isLoading || storeItem.isRequestPending
+      }
+    }
+  }
   store.setState({
-    pendingRequests: store.getState().pendingRequests + 1,
-    isLoading: true,
+    isLoading: isLoading,
+    [storeKey]: {
+      ...upToDateState[storeKey],
+      loadingError: resetError ? false : upToDateState[storeKey].loadingError,
+      isRequestPending: isRequestPending,
+    },
   })
-}
-
-const decrementPendingRequests = () => {
-  const newPendingRequests = store.getState().pendingRequests - 1
-  if (newPendingRequests <= 0) {
-    store.setState({
-      pendingRequests: 0,
-      isLoading: false,
-    })
-  } else {
-    store.setState({ pendingRequests: newPendingRequests })
-  }
 }
