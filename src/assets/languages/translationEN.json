@@ -102,5 +102,12 @@
   },
   "privacy": {
     "navigationLabel": "Privacy"
+  },
+  "serverError": {
+    "headline": "Oops! Something went wrong.",
+    "description": "This page could not load data. Please try again later."
+  },
+  "informationPages": {
+    "last_changed": "Last changed:"
   }
 }

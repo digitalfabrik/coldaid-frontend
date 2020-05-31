@@ -102,5 +102,12 @@
   },
   "privacy": {
     "navigationLabel": "Datenschutz"
+  },
+  "serverError": {
+    "headline": "Oops! Etwas ist schiefgelaufen.",
+    "description": "Die Seite konnte keine Daten laden. Bitte versuchen Sie es später noch einmal."
+  },
+  "informationPages": {
+    "last_changed": "Letzte Änderung:"
   }
 }
