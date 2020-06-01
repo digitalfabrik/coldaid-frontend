@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react'
 import ContentLimiter from '../../components/theme/ContentLimiter'
 import { connect } from 'unistore/react'
-import { createResetErrorState, loadAdviceInformation } from '../../store/actions'
+import { loadAdviceInformation } from '../../store/actions'
+import { resetRequest } from '../../store/loadData'
+import { storeKeys } from '../../store/store'
 
 const errorMessage = 'Der Server ist zur Zeit nicht verfügbar. Probieren Sie es später noch einmal!'
 
 function AdviceInformation(props) {
-  const { adviceInformation, loadAdviceInformation, resetErrorState } = props
+  const { adviceInformation, language, loadAdviceInformation } = props
 
   useEffect(() => {
     loadAdviceInformation()
-  }, [])
+  }, [loadAdviceInformation, language])
 
   useEffect(() => {
-    return () => {
-      resetErrorState()
-    }
+    return () => resetRequest('adviceInformation')
   }, [])
 
   const displayDate = () => {
@@ -29,7 +29,7 @@ function AdviceInformation(props) {
   return (
     <ContentLimiter withBoxShadow>
       {
-        adviceInformation.data ?
+        adviceInformation.data && !adviceInformation.loadingError ?
           <>
             <h1>{adviceInformation.data.title}</h1>
             <div style={{ whiteSpace: 'pre-wrap' }}>{adviceInformation.data.content}</div>
@@ -46,10 +46,9 @@ function AdviceInformation(props) {
   )
 }
 
-const mapStateToProps = ['adviceInformation']
+const mapStateToProps = [storeKeys.adviceInformation, storeKeys.language]
 const actions = {
   loadAdviceInformation,
-  resetErrorState: createResetErrorState('adviceInformation'),
 }
 
 export default connect(mapStateToProps, actions)(AdviceInformation)
