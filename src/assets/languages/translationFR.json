@@ -103,5 +103,12 @@
   },
   "privacy": {
     "navigationLabel": "Protection des données"
+  },
+  "serverError": {
+    "headline": "Oups ! Quelque chose a mal tourné.",
+    "description": "Cette page n'a pas pu charger de données. Veuillez réessayer plus tard."
+  },
+  "informationPages": {
+    "last_changed": "Dernière modification:"
   }
 }

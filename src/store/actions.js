@@ -17,10 +17,27 @@ export const loadShelters = async state => {
 }
 
 export const loadAdviceInformation = async state => {
-  // TODO switch from path to url if backend api is live
+  // TODO switch from url to path if backend api is live
   return await loadData(
     state,
     storeKeys.adviceInformation,
     null,
-    `http://localhost:8000/api/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/kontakt-zu-app-team-augsburg`)
+    `${BASE_API}/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/kontakt-zu-app-team-augsburg`)
 }
+
+export const loadHealthRelatedInformation = async state => {
+  // TODO switch from url to path if backend api is ready for it
+  return await loadData(state,
+    storeKeys.healthRelatedInformation,
+    null,
+    `${BASE_API}/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/uber-die-app-integreat-augsburg`)
+}
+
+export const loadLegalInformation = async state => {
+  // TODO switch from url to path if backend api is ready for it
+  return await loadData(state,
+    storeKeys.legalInformation,
+    null,
+    `${BASE_API}/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/wissenswertes-uber-augsburg`)
+}
+

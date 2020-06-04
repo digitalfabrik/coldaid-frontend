@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react'
-import ContentLimiter from '../../components/theme/ContentLimiter'
+import { useTranslation } from "react-i18next"
 import { connect } from 'unistore/react'
+
+import ContentLimiter from '../../components/theme/ContentLimiter'
+import ContentText from '../../components/theme/ContentText'
+import ServerError from '../../components/serverError/serverError'
+
 import { loadAdviceInformation } from '../../store/actions'
 import { resetRequest } from '../../store/loadData'
 import { storeKeys } from '../../store/store'
 
-const errorMessage = 'Der Server ist zur Zeit nicht verfügbar. Probieren Sie es später noch einmal!'
 
 function AdviceInformation(props) {
   const { adviceInformation, language, loadAdviceInformation } = props
+  const { t } = useTranslation()
 
   useEffect(() => {
     loadAdviceInformation()
@@ -20,7 +25,7 @@ function AdviceInformation(props) {
 
   const displayDate = () => {
     if (adviceInformation.data && adviceInformation.data.modified_gmt) {
-      return <div>Letzte Änderung: {new Date(adviceInformation.data.modified_gmt).toLocaleDateString()}</div>
+      return <ContentText>{t("informationPages.last_changed")} {new Date(adviceInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
     } else {
       return null
     }
@@ -31,14 +36,15 @@ function AdviceInformation(props) {
       {
         adviceInformation.data && !adviceInformation.loadingError ?
           <>
-            <h1>{adviceInformation.data.title}</h1>
-            <div style={{ whiteSpace: 'pre-wrap' }}>{adviceInformation.data.content}</div>
-            <br/>
+            <h1 style={{ textAlign: "center" }}>{adviceInformation.data.title}</h1>
+            <div style={{ whiteSpace: 'pre-wrap' }}>
+              <ContentText>{adviceInformation.data.content}</ContentText>
+            </div>
             {displayDate()}
           </>
           :
           adviceInformation.loadingError ?
-            <div>{errorMessage}</div>
+            <ServerError />
             :
             <div></div>
       }
