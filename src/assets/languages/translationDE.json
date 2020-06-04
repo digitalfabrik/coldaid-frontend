@@ -81,6 +81,7 @@
     "serverError": "Fehler beim Abrufen der Daten"
   },
   "overview": {
+    "pageHeadline": "Übersicht",
     "imageText": "Finden Sie die passende Notunterkunft"
   },
   "kaeltebus": {

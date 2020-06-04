@@ -14,7 +14,7 @@ import Footer from '../footer/Footer.jsx'
 import LegalInformation from '../../pages/generalInformation/LegalInformation'
 import Kaeltebus from '../../pages/Kaeltebus'
 
-import FindShelters from '../../pages/shelterOverview/FindShelters'
+import Overview from '../../pages/shelterOverview/Overview.jsx'
 import MapPage from '../../pages/Map'
 import HealthRelatedInformation from '../../pages/generalInformation/HealthRelatedInformation'
 import AdviceInformation from '../../pages/generalInformation/AdviceInformation'
@@ -54,7 +54,7 @@ function App() {
           <Switch>
             <Route exact path={APP_ROUTES.home} render={routeProps => <Home {...routeProps} />} />
             <Route exact path={APP_ROUTES.map} component={MapPage} />
-            <Route exact path={APP_ROUTES.shelterOverview} component={FindShelters} />
+            <Route exact path={APP_ROUTES.shelterOverview} component={Overview} />
             <Route exact path={APP_ROUTES.kaeltebus} component={Kaeltebus} />
             <Route exact path={APP_ROUTES.legalInformation} component={LegalInformation} />
             <Route exact path={APP_ROUTES.healthRelatedInformation} component={HealthRelatedInformation} />
