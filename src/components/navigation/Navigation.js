@@ -130,19 +130,19 @@ function Navigation(props) {
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
               <MapIcon />
             </ListItemIcon>
-            <ListItemText primary={t('map_feature_header')} />
+            <ListItemText primary={t('navigation.map')} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.shelterOverview} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
               <ListIcon />
             </ListItemIcon>
-            <ListItemText primary={t('view_feature_header')} />
+            <ListItemText primary={t('navigation.shelterOverview')} />
           </MenuItem>
           <MenuItem component={Link} to={APP_ROUTES.kaeltebus} onClick={handleDrawerNavigation}>
             <ListItemIcon classes={{ root: classes.drawerIcons }}>
               <DirectionsBusIcon />
             </ListItemIcon>
-            <ListItemText primary={t('kaeltebus_feature_header')} />
+            <ListItemText primary={t('navigation.kaeltebus')} />
           </MenuItem>
         </List>
         <Divider variant='middle' classes={{ root: classes.drawerDivider }} style={{ height: 1 }} />
