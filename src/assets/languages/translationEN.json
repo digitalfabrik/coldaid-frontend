@@ -84,7 +84,32 @@
     "imageText": "Find a Shelter"
   },
   "kaeltebus": {
-    "imageText": "Call the \"Kältebus\""
+    "imageText": "Call the \"Kältebus\"",
+    "header": "Kältebus-Request",
+    "subheaderIndigentPerson": "Information about the indigent person",
+    "nameLabel": "Name",
+    "genderLabel": "Gender",
+    "maleLabel": "Male",
+    "femaleLabel": "Female",
+    "diversLabel": "Divers",
+    "addressLabel": "Address",
+    "zipLabel": "Postcode",
+    "medicalCareLabel": "Medical care necessary",
+    "warmingLabel": "Does the person have anything warming on them?",
+    "sleepingMatLabel": "Sleeping mat",
+    "blanketLabel": "Blanket",
+    "jacketLabel": "Jacket",
+    "sleepingBagLabel": "Sleeping bag",
+    "otherInformationLabel": "Other information",
+    "childrenLabel": "Accompanied by children",
+    "petsLabel": "Accompanied by pets",
+    "wheelchairUser": "Wheelchair user",
+    "numberOfBagsLabel": "Number of bags",
+    "numberOfOtherNeedyPeopleLabel": "Number of other needy people",
+    "subheaderRequestPerson": "Information about requesting Person",
+    "nameRequestingPersonLabel": "Name",
+    "phoneNumberLabel": "Callback number",
+    "submitButton": "Send"
   },
   "legal": {
     "imageText": "Here you find legal related information"

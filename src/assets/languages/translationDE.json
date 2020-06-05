@@ -84,7 +84,32 @@
     "imageText": "Finden Sie die passende Notunterkunft"
   },
   "kaeltebus": {
-    "imageText": "Rufen Sie den Kältebus"
+    "imageText": "Rufen Sie den Kältebus",
+    "header": "Kältebusanfrage",
+    "subheaderIndigentPerson": "Angaben über notbedürftige Person",
+    "nameLabel": "Name",
+    "genderLabel": "Geschlecht",
+    "maleLabel": "Männlich",
+    "femaleLabel": "Weiblich",
+    "diversLabel": "Divers",
+    "addressLabel": "Adresse",
+    "zipLabel": "Postleitzahl",
+    "medicalCareLabel": "Ärztliche Versorgung notwendig",
+    "warmingLabel": "Hat die Person etwas wärmendes bei sich?",
+    "sleepingMatLabel": "Isomatte",
+    "blanketLabel": "Decke",
+    "jacketLabel": "Jacke",
+    "sleepingBagLabel": "Schlafsack",
+    "otherInformationLabel": "Weitere Angaben",
+    "childrenLabel": "Kinder dabei",
+    "petsLabel": "Haustiere dabei",
+    "wheelchairUser": "Rollstuhlfahrer",
+    "numberOfBagsLabel": "Anzahl an Taschen",
+    "numberOfOtherNeedyPeopleLabel": "Anzahl weiterer notbedürftiger",
+    "subheaderRequestPerson": "Angaben über Anfragesteller",
+    "nameRequestingPersonLabel": "Name",
+    "phoneNumberLabel": "Rückrufnummer",
+    "submitButton": "Senden"
   },
   "legal": {
     "imageText": "Hier finden Sie rechtliche Informationen"
