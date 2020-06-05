@@ -183,7 +183,7 @@ function MapPage(props) {
   }, [loadShelters, language])
 
   useEffect(() => {
-    return () => resetRequest('shelters')
+    return () => resetRequest(storeKeys.shelters)
   }, [])
 
   useEffect(() => {

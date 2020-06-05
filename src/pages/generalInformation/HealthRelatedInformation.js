@@ -7,14 +7,20 @@ import ContentText from "../../components/theme/ContentText";
 import ServerError from "../../components/serverError/serverError";
 
 import { loadHealthRelatedInformation } from "../../store/actions";
+import { resetRequest } from '../../store/loadData'
+import { storeKeys } from '../../store/store'
 
 function HealthRelatedInformation(props) {
-  const { healthRelatedInformation, loadHealthRelatedInformation } = props;
+  const { healthRelatedInformation, language, loadHealthRelatedInformation } = props;
   const { t } = useTranslation();
 
   useEffect(() => {
     loadHealthRelatedInformation()
-  }, [loadHealthRelatedInformation])
+  }, [loadHealthRelatedInformation, language])
+
+  useEffect(() => {
+    return () => resetRequest(storeKeys.healthRelatedInformation)
+  }, [])
 
   const displayDate = () => {
     if (healthRelatedInformation.data && healthRelatedInformation.data.modified_gmt) {
@@ -27,7 +33,7 @@ function HealthRelatedInformation(props) {
   return (
     <ContentLimiter withBoxShadow>
       {
-        healthRelatedInformation.data ?
+        healthRelatedInformation.data && !healthRelatedInformation.loadingError ?
           <>
             <h1 style={{ textAlign: "center" }}>{healthRelatedInformation.data.title}</h1>
             <div style={{ whiteSpace: 'pre-wrap' }}>
@@ -46,7 +52,7 @@ function HealthRelatedInformation(props) {
 
 }
 
-const mapStateToProps = ['healthRelatedInformation']
+const mapStateToProps = [storeKeys.healthRelatedInformation, storeKeys.language]
 const actions = {
   loadHealthRelatedInformation
 }

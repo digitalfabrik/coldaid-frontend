@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next'
 import { connect } from 'unistore/react'
 
 import ContentLimiter from '../../components/theme/ContentLimiter'
@@ -20,12 +20,12 @@ function AdviceInformation(props) {
   }, [loadAdviceInformation, language])
 
   useEffect(() => {
-    return () => resetRequest('adviceInformation')
+    return () => resetRequest(storeKeys.adviceInformation)
   }, [])
 
   const displayDate = () => {
     if (adviceInformation.data && adviceInformation.data.modified_gmt) {
-      return <ContentText>{t("informationPages.last_changed")} {new Date(adviceInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
+      return <ContentText>{t('informationPages.last_changed')} {new Date(adviceInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
     } else {
       return null
     }
@@ -36,7 +36,7 @@ function AdviceInformation(props) {
       {
         adviceInformation.data && !adviceInformation.loadingError ?
           <>
-            <h1 style={{ textAlign: "center" }}>{adviceInformation.data.title}</h1>
+            <h1 style={{ textAlign: 'center' }}>{adviceInformation.data.title}</h1>
             <div style={{ whiteSpace: 'pre-wrap' }}>
               <ContentText>{adviceInformation.data.content}</ContentText>
             </div>
@@ -44,7 +44,7 @@ function AdviceInformation(props) {
           </>
           :
           adviceInformation.loadingError ?
-            <ServerError />
+            <ServerError/>
             :
             <div></div>
       }

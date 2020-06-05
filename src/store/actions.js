@@ -22,7 +22,7 @@ export const loadAdviceInformation = async state => {
     state,
     storeKeys.adviceInformation,
     null,
-    `${BASE_API}/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/kontakt-zu-app-team-augsburg`)
+    `http://localhost:8000/api/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/kontakt-zu-app-team-augsburg`)
 }
 
 export const loadHealthRelatedInformation = async state => {
@@ -30,7 +30,7 @@ export const loadHealthRelatedInformation = async state => {
   return await loadData(state,
     storeKeys.healthRelatedInformation,
     null,
-    `${BASE_API}/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/uber-die-app-integreat-augsburg`)
+    `http://localhost:8000/api/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/uber-die-app-integreat-augsburg`)
 }
 
 export const loadLegalInformation = async state => {
@@ -38,6 +38,6 @@ export const loadLegalInformation = async state => {
   return await loadData(state,
     storeKeys.legalInformation,
     null,
-    `${BASE_API}/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/wissenswertes-uber-augsburg`)
+    `http://localhost:8000/api/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/wissenswertes-uber-augsburg`)
 }
 
