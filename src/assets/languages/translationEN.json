@@ -77,7 +77,8 @@
   },
   "map": {
     "imageText": "Get an overview",
-    "locationError": "Fehler bei der Standortlokalisierung"
+    "locationError": "Localization error",
+    "serverError": "Error while retrieving data"
   },
   "overview": {
     "imageText": "Find a Shelter"

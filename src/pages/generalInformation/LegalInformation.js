@@ -1,31 +1,32 @@
-import React, { useEffect} from 'react'
-import ContentLimiter from '../../components/theme/ContentLimiter'
-import {createResetErrorState, loadLegalInformation} from "../../store/actions";
-import {connect} from "unistore/react";
-import {useTranslation} from "react-i18next";
-import ServerError from "../../components/serverError/serverError";
-import ContentText from "../../components/theme/ContentText";
+import React, { useEffect } from 'react'
+import { connect } from 'unistore/react'
+import { useTranslation } from 'react-i18next'
 
+import ContentLimiter from '../../components/theme/ContentLimiter'
+import ContentText from '../../components/theme/ContentText'
+import ServerError from '../../components/serverError/serverError'
+
+import { loadLegalInformation } from '../../store/actions'
+import { resetRequest } from '../../store/loadData'
+import { storeKeys } from '../../store/store'
 
 function LegalInformation(props) {
-  const { legalInformation, loadLegalInformation, resetErrorState } = props;
-  const { t } = useTranslation();
+  const { legalInformation, language, loadLegalInformation } = props
+  const { t } = useTranslation()
 
   useEffect(() => {
     loadLegalInformation()
-  }, [])
+  }, [loadLegalInformation, language])
 
   useEffect(() => {
-    return () => {
-      resetErrorState()
-    }
+    return () => resetRequest(storeKeys.legalInformation)
   }, [])
 
   const displayDate = () => {
     if (legalInformation.data && legalInformation.data.modified_gmt) {
-      return <ContentText>{t("informationPages.last_changed")} {new Date(legalInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
+      return <ContentText>{t('informationPages.last_changed')} {new Date(legalInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
     } else {
-      return null;
+      return null
     }
   }
 
@@ -33,9 +34,9 @@ function LegalInformation(props) {
   return (
     <ContentLimiter withBoxShadow>
       {
-        legalInformation.data ?
+        legalInformation.data && !legalInformation.loadingError ?
           <>
-            <h1 style={{textAlign: "center"}}>{legalInformation.data.title}</h1>
+            <h1 style={{ textAlign: 'center' }}>{legalInformation.data.title}</h1>
             <div style={{ whiteSpace: 'pre-wrap' }}>
               <ContentText>{legalInformation.data.content}</ContentText>
             </div>
@@ -51,10 +52,9 @@ function LegalInformation(props) {
   )
 }
 
-const mapStateToProps = ['legalInformation']
+const mapStateToProps = [storeKeys.legalInformation, storeKeys.language]
 const actions = {
   loadLegalInformation,
-  resetErrorState: createResetErrorState('legalInformation'),
 }
 
 export default connect(mapStateToProps, actions)(LegalInformation)

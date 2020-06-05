@@ -30,6 +30,8 @@ import { loadShelters } from '../store/actions'
 import { connect } from 'unistore/react'
 import Snackbar from '@material-ui/core/Snackbar'
 import SnackbarContent from '@material-ui/core/SnackbarContent'
+import { resetRequest } from '../store/loadData'
+import { storeKeys } from '../store/store'
 
 const POSITION_ICON = L.icon({
   iconUrl: userMarker,
@@ -160,6 +162,8 @@ const useStyles = makeStyles((theme) => ({
   snackbarContent: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.primary,
+    minWidth: 'auto',
+    maxWidth: '300px',
   },
   snackbarAnchor: {
     [theme.breakpoints.up('md')]: {
@@ -177,6 +181,16 @@ function MapPage(props) {
   useEffect(() => {
     loadShelters()
   }, [loadShelters, language])
+
+  useEffect(() => {
+    return () => resetRequest(storeKeys.shelters)
+  }, [])
+
+  useEffect(() => {
+    if (shelters.loadingError) {
+      handleServerError()
+    }
+  }, [shelters])
 
   const [clickedShelter, setClickedShelter] = useState(null)
   useEffect(() => {
@@ -245,6 +259,14 @@ function MapPage(props) {
     setOpenErrorSnackbar(false)
   }
 
+  const [openServerErrorSnackbar, setOpenServerErrorSnackbar] = useState(false)
+  const handleServerError = () => {
+    setOpenServerErrorSnackbar(true)
+  }
+  const handleCloseServerError = (event, reason) => {
+    setOpenServerErrorSnackbar(false)
+  }
+
   return (
     <div className={classes.wrapper}>
       <Map center={center}
@@ -271,7 +293,7 @@ function MapPage(props) {
         </Control>
         {center !== DEFAULT_POSITION && <Marker position={center} icon={POSITION_ICON}/>}
         {
-          shelters.map((shelter, key) => (
+          shelters.data.map((shelter, key) => (
             <Marker key={key}
                     position={[shelter.address.geo.lat, shelter.address.geo.long]}
                     icon={areBedsAvailable(shelter) ? HOUSE_ICON : HOUSE_GRAY_ICON}
@@ -301,6 +323,18 @@ function MapPage(props) {
                 onClose={handleCloseLocationError}
                 autoHideDuration={5000}
       ><SnackbarContent classes={{ root: classes.snackbarContent }} message={t('map.locationError')}/>
+      </Snackbar>}
+      {openServerErrorSnackbar &&
+      <Snackbar style={{ zIndex: 1000 }}
+                classes={{ anchorOriginBottomCenter: classes.snackbarAnchor }}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                open={openServerErrorSnackbar}
+                onClose={handleCloseServerError}
+                autoHideDuration={5000}
+      ><SnackbarContent classes={{ root: classes.snackbarContent }} message={t('map.serverError')}/>
       </Snackbar>}
       {
         clickedShelter !== null &&
@@ -457,7 +491,7 @@ function MapPage(props) {
   )
 }
 
-const mapStateToProps = ['shelters', 'language']
+const mapStateToProps = [storeKeys.shelters, storeKeys.language]
 const actions = {
   loadShelters,
 }

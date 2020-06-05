@@ -1,29 +1,31 @@
 import React, { useEffect } from 'react'
-import ContentLimiter from '../../components/theme/ContentLimiter'
+import { useTranslation } from 'react-i18next'
 import { connect } from 'unistore/react'
-import { createResetErrorState, loadAdviceInformation } from '../../store/actions'
-import {useTranslation} from "react-i18next";
-import ServerError from "../../components/serverError/serverError";
-import ContentText from "../../components/theme/ContentText";
+
+import ContentLimiter from '../../components/theme/ContentLimiter'
+import ContentText from '../../components/theme/ContentText'
+import ServerError from '../../components/serverError/serverError'
+
+import { loadAdviceInformation } from '../../store/actions'
+import { resetRequest } from '../../store/loadData'
+import { storeKeys } from '../../store/store'
 
 
 function AdviceInformation(props) {
-  const { adviceInformation, loadAdviceInformation, resetErrorState } = props;
-  const { t } = useTranslation();
+  const { adviceInformation, language, loadAdviceInformation } = props
+  const { t } = useTranslation()
 
   useEffect(() => {
     loadAdviceInformation()
-  }, [])
+  }, [loadAdviceInformation, language])
 
   useEffect(() => {
-    return () => {
-      resetErrorState()
-    }
+    return () => resetRequest(storeKeys.adviceInformation)
   }, [])
 
   const displayDate = () => {
     if (adviceInformation.data && adviceInformation.data.modified_gmt) {
-      return <ContentText>{t("informationPages.last_changed")} {new Date(adviceInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
+      return <ContentText>{t('informationPages.last_changed')} {new Date(adviceInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
     } else {
       return null
     }
@@ -32,9 +34,9 @@ function AdviceInformation(props) {
   return (
     <ContentLimiter withBoxShadow>
       {
-        adviceInformation.data ?
+        adviceInformation.data && !adviceInformation.loadingError ?
           <>
-            <h1 style={{textAlign: "center"}}>{adviceInformation.data.title}</h1>
+            <h1 style={{ textAlign: 'center' }}>{adviceInformation.data.title}</h1>
             <div style={{ whiteSpace: 'pre-wrap' }}>
               <ContentText>{adviceInformation.data.content}</ContentText>
             </div>
@@ -50,10 +52,9 @@ function AdviceInformation(props) {
   )
 }
 
-const mapStateToProps = ['adviceInformation']
+const mapStateToProps = [storeKeys.adviceInformation, storeKeys.language]
 const actions = {
   loadAdviceInformation,
-  resetErrorState: createResetErrorState('adviceInformation'),
 }
 
 export default connect(mapStateToProps, actions)(AdviceInformation)

@@ -1,24 +1,25 @@
-import React, {useEffect} from 'react'
-import ContentLimiter from '../../components/theme/ContentLimiter'
-import {connect} from "unistore/react";
-import {createResetErrorState, loadHealthRelatedInformation} from "../../store/actions";
-import {useTranslation} from "react-i18next";
-import ServerError from "../../components/serverError/serverError";
-import ContentText from "../../components/theme/ContentText";
+import React, { useEffect } from 'react'
+import { connect } from "unistore/react";
+import { useTranslation } from "react-i18next";
 
+import ContentLimiter from '../../components/theme/ContentLimiter'
+import ContentText from "../../components/theme/ContentText";
+import ServerError from "../../components/serverError/serverError";
+
+import { loadHealthRelatedInformation } from "../../store/actions";
+import { resetRequest } from '../../store/loadData'
+import { storeKeys } from '../../store/store'
 
 function HealthRelatedInformation(props) {
-  const { healthRelatedInformation, loadHealthRelatedInformation, resetErrorState } = props;
+  const { healthRelatedInformation, language, loadHealthRelatedInformation } = props;
   const { t } = useTranslation();
 
   useEffect(() => {
     loadHealthRelatedInformation()
-  }, [])
+  }, [loadHealthRelatedInformation, language])
 
   useEffect(() => {
-    return () => {
-      resetErrorState()
-    }
+    return () => resetRequest(storeKeys.healthRelatedInformation)
   }, [])
 
   const displayDate = () => {
@@ -32,9 +33,9 @@ function HealthRelatedInformation(props) {
   return (
     <ContentLimiter withBoxShadow>
       {
-        healthRelatedInformation.data ?
+        healthRelatedInformation.data && !healthRelatedInformation.loadingError ?
           <>
-            <h1 style={{textAlign: "center"}}>{healthRelatedInformation.data.title}</h1>
+            <h1 style={{ textAlign: "center" }}>{healthRelatedInformation.data.title}</h1>
             <div style={{ whiteSpace: 'pre-wrap' }}>
               <ContentText>{healthRelatedInformation.data.content}</ContentText>
             </div>
@@ -42,7 +43,7 @@ function HealthRelatedInformation(props) {
           </>
           :
           healthRelatedInformation.loadingError ?
-            <ServerError/>
+            <ServerError />
             :
             <div></div>
       }
@@ -51,13 +52,12 @@ function HealthRelatedInformation(props) {
 
 }
 
-  const mapStateToProps = ['healthRelatedInformation']
-  const actions = {
-    loadHealthRelatedInformation,
-    resetErrorState: createResetErrorState('healthRelatedInformation'),
-  }
+const mapStateToProps = [storeKeys.healthRelatedInformation, storeKeys.language]
+const actions = {
+  loadHealthRelatedInformation
+}
 
-  export default connect(mapStateToProps, actions)(HealthRelatedInformation)
+export default connect(mapStateToProps, actions)(HealthRelatedInformation)
 
 
 
