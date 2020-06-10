@@ -48,30 +48,30 @@
       "headline": "Discover our Features!",
       "map": {
         "headline": "Map",
-        "description": "Search for a shelter on the map."
+        "description": "Overview and helpful view of all emergency accommodation in Berlin to find open facilities"
       },
       "shelterOverview": {
-        "headline": "View",
-        "description": "Search for a shelter in the list."
+        "headline": "Overview",
+        "description": "Listing of all emergency accommodation and specific search to find the right emergency accommodation"
       },
       "kaeltebus": {
         "headline": "Kältebus",
-        "description": "Find the closest Bus."
+        "description": "In cooperation with the Stadtmission Berlin the Kältebus for homeless people can be called. Here you can find further information"
       }
     },
     "informationsSection": {
       "headline": "Informations",
       "legal": {
         "headline": "Legal Informations",
-        "description": "In cooperation with the Stadtmission Berlin the cold bus for homeless people can be called. Here you can find further information."
+        "description": "Collection of legal information and first contact points"
       },
       "health": {
         "headline": "Health",
-        "description": "Translation will follow..."
+        "description": "Health information and contact points for health advice"
       },
       "advice": {
         "headline": "Advice",
-        "description": "Translation will follow..."
+        "description": "Answers to frequently asked questions and contact points for individual consultations"
       }
     }
   },
@@ -84,7 +84,7 @@
     "imageText": "Find a Shelter"
   },
   "kaeltebus": {
-    "imageText": "Call the \"Kältebus\"",
+    "imageText": "Call the Kältebus",
     "header": "Kältebus-Request",
     "subheaderIndigentPerson": "Information about the indigent person",
     "nameLabel": "Name",

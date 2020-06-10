@@ -94,7 +94,7 @@ const resetOnAbort = (storeKey, requestId) => {
 export const updateLoadingState = () => {
   const state = store.getState()
   let isLoading = false
-  for (let [_, storeItem] of Object.entries(state)) {
+  for (let [, storeItem] of Object.entries(state)) {
     if (storeItem.hasOwnProperty('pendingRequestsId')) {
       isLoading = isLoading || storeItem.pendingRequestsId !== null
     }

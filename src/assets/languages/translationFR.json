@@ -5,7 +5,6 @@
   "welcome_text": "Trouvez le bon abri pour cette nuit !",
   "header3": "Trouvez des abris !",
   "text3": "Avec notre carte !",
-  "features_header": "Découvrez nos rubriques!",
   "shelters": "Abris",
   "name": "Nom",
   "available_beds": "Lits disponibles",
@@ -44,41 +43,42 @@
     "adviceInformation": "Conseils"
   },
   "home": {
-    "introduction": "Ce projet de la TU-Berlin vise à relier les refuges pour sans-abri à notre ère numérique. \n \n Sur notre site web, vous pouvez trouver une place pour les sans-abri. Actuellement, les refuges peuvent être affichés sur une carte ou dans une liste. /n /n En outre, nous coopérons étroitement avec le Kältebus de la Stadtmission Berlin, qui recueille les personnes qui n'ont pas la force de se rendre d'elles-mêmes dans un refuge.",
+    "introduction": "Ce projet de la TU-Berlin vise à relier les refuges pour sans-abri à notre ère numérique. \n \n Sur notre site web, vous pouvez trouver une place pour les sans-abri. Actuellement, les refuges peuvent être affichés sur une carte ou dans une liste. \n \n En outre, nous coopérons étroitement avec le Kältebus de la Stadtmission Berlin, qui recueille les personnes qui n'ont pas la force de se rendre d'elles-mêmes dans un refuge.",
     "featuresSection": {
       "headline": "Découvrez nos rubriques!",
       "map": {
         "headline": "Carte",
-        "description": "Recherchez un abri sur la carte."
+        "description": "Vue d'ensemble et vue utile de tous les hébergements d'urgence à Berlin pour trouver des installations ouvertes"
       },
       "shelterOverview": {
         "headline": "Voir",
-        "description": "Recherchez un refuge dans la liste."
+        "description": "Liste de tous les hébergements d'urgence et recherche spécifique pour trouver le bon hébergement d'urgence"
       },
       "kaeltebus": {
         "headline": "Kältebus",
-        "description": "Trouvez le bus le plus proche."
+        "description": "En coopération avec la Stadtmission Berlin, on peut appeler le Kältebus pour les sans-abri. Vous trouverez ici de plus amples informations"
       }
     },
     "informationsSection": {
       "headline": "Informations",
       "legal": {
         "headline": "Informations juridiques",
-        "description": "En coopération avec la Stadtmission Berlin, on peut appeler le bus froid pour les sans-abri. Vous trouverez ici de plus amples informations."
+        "description": "Collecte d'informations juridiques et premiers points de contact"
       },
       "health": {
         "headline": "Santé",
-        "description": "La traduction suit..."
+        "description": "Informations sur la santé et points de contact pour les conseils en matière de santé"
       },
       "advice": {
         "headline": "Conseils",
-        "description": "La traduction suit..."
+        "description": "Réponses aux questions fréquemment posées et points de contact pour les consultations individuelles"
       }
     }
   },
   "map": {
     "imageText": "Obtenir une vue d'ensemble",
-    "locationError": "Erreurs dans la localisation du lieu"
+    "locationError": "Erreurs dans la localisation du lieu",
+    "serverError": "Erreur d'extraction des données"
   },
   "overview": {
     "imageText": "Trouver le bon hébergement d'urgence"
@@ -117,10 +117,10 @@
     "errorMessage": "Kältebus demande a échoué. Veuillez réessayer."
   },
   "legal": {
-    "imageText": "Hier finden Sie rechtliche Informationen"
+    "imageText": "Vous trouverez ici des informations juridiques"
   },
   "healthRelatedInformation": {
-    "imageText": "Vous trouverez ici des informations juridiques"
+    "imageText": "Vous trouverez ici des informations sur la santé"
   },
   "advice": {
     "imageText": "Vous trouverez ici des conseils"
@@ -135,7 +135,7 @@
     "navigationLabel": "Protection des données"
   },
   "serverError": {
-    "headline": "Oups ! Quelque chose a mal tourné.",
+    "headline": "Oups! Quelque chose a mal tourné.",
     "description": "Cette page n'a pas pu charger de données. Veuillez réessayer plus tard."
   },
   "informationPages": {
