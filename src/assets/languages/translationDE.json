@@ -84,7 +84,37 @@
     "imageText": "Finden Sie die passende Notunterkunft"
   },
   "kaeltebus": {
-    "imageText": "Rufen Sie den Kältebus"
+    "imageText": "Rufen Sie den Kältebus",
+    "header": "Kältebusanfrage",
+    "subheaderIndigentPerson": "Angaben über notbedürftige Person",
+    "nameLabel": "Name",
+    "genderLabel": "Geschlecht",
+    "maleLabel": "Männlich",
+    "femaleLabel": "Weiblich",
+    "diversLabel": "Divers",
+    "addressLabel": "Adresse",
+    "zipLabel": "Postleitzahl",
+    "medicalCareLabel": "Ärztliche Versorgung notwendig",
+    "warmingLabel": "Hat die Person etwas Wärmendes bei sich?",
+    "warmingPlaceholder": "Wärmende Sachen",
+    "sleepingMatLabel": "Isomatte",
+    "blanketLabel": "Decke",
+    "jacketLabel": "Jacke",
+    "sleepingBagLabel": "Schlafsack",
+    "childrenLabel": "Kinder dabei",
+    "petsLabel": "Haustiere dabei",
+    "wheelchairUserLabel": "Rollstuhlfahrer",
+    "numberOfBagsLabel": "Hat diese Person Gepäck dabei?",
+    "numberOfBagsPlaceholder": "Anzahl an Taschen",
+    "numberOfOtherNeedyPeopleLabel": "Wie viele weitere Personen benötigen Hilfe?",
+    "numberOfOtherNeedyPeoplePlaceholder": "Anzahl weiterer Notbedürftiger",
+    "subheaderRequestPerson": "Angaben über Anfragesteller",
+    "nameRequestingPersonLabel": "Name",
+    "phoneNumberLabel": "Rückrufnummer",
+    "confirmLabel": "Hiermit bestätigen Sie, dass Sie gefragt haben, ob die bedürftige Person die Hilfe annehmen möchte. *",
+    "submitButton": "Senden",
+    "successMessage": "Kältebusanfrage erfolgreich",
+    "errorMessage": "Kältebusanfrage fehlgeschlagen. Bitte versuchen Sie es erneut."
   },
   "legal": {
     "imageText": "Hier finden Sie rechtliche Informationen"

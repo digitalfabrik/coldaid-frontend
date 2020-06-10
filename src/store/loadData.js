@@ -91,7 +91,7 @@ const resetOnAbort = (storeKey, requestId) => {
   })
 }
 
-const updateLoadingState = () => {
+export const updateLoadingState = () => {
   const state = store.getState()
   let isLoading = false
   for (let [_, storeItem] of Object.entries(state)) {
@@ -114,8 +114,8 @@ const resetLoadingError = (storeKey) => {
   store.setState({
     [storeKey]: {
       ...state[storeKey],
-      loadingError: false
-    }
+      loadingError: false,
+    },
   })
 }
 

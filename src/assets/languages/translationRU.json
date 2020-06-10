@@ -83,7 +83,37 @@
     "imageText": "Найти подходящее место для экстренного размещения"
   },
   "kaeltebus": {
-    "imageText": "Вызовите холодный автобус"
+    "imageText": "Вызывать Kältebus",
+    "header": "Kältebus запрос",
+    "subheaderIndigentPerson": "данные любого нуждающегося",
+    "nameLabel": "Имя",
+    "genderLabel": "Пол",
+    "maleLabel": "Мужской",
+    "femaleLabel": "Женщина",
+    "diversLabel": "Дайверы",
+    "addressLabel": "Адрес",
+    "zipLabel": "Почтовый индекс",
+    "medicalCareLabel": "Необходимая медицинская помощь",
+    "warmingLabel": "У человека есть что-то согревающее?",
+    "warmingPlaceholder": "Согревающие вещи",
+    "sleepingMatLabel": "Isomat",
+    "blanketLabel": "Потолок",
+    "jacketLabel": "Куртка",
+    "sleepingBagLabel": "Спальный мешок",
+    "childrenLabel": "Дети с нами",
+    "petsLabel": "Домашние животные с ними",
+    "wheelchairUserLabel": "Пользователи инвалидных колясок",
+    "numberOfBagsLabel": "У этого человека есть багаж?",
+    "numberOfBagsPlaceholder": "Количество карманов",
+    "numberOfOtherNeedyPeopleLabel": "Сколько еще людей нуждаются в помощи?",
+    "numberOfOtherNeedyPeoplePlaceholder": "Количество других нуждающихся",
+    "subheaderRequestPerson": "Информация о запрашивающих",
+    "nameRequestingPersonLabel": "Имя",
+    "phoneNumberLabel": "Номер обратного вызова",
+    "confirmLabel": "Это для того, чтобы подтвердить, что Вы спросили, желает ли нуждающийся человек принять помощь. *",
+    "submitButton": "Отправить",
+    "successMessage": "Kältebus успешная просьба",
+    "errorMessage": "Kältebus запрос не удался. Пожалуйста, попробуйте еще раз."
   },
   "legal": {
     "imageText": "Здесь Вы найдете юридическую информацию"

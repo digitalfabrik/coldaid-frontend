@@ -84,7 +84,37 @@
     "imageText": "Find a Shelter"
   },
   "kaeltebus": {
-    "imageText": "Call the \"Kältebus\""
+    "imageText": "Call the \"Kältebus\"",
+    "header": "Kältebus-Request",
+    "subheaderIndigentPerson": "Information about the indigent person",
+    "nameLabel": "Name",
+    "genderLabel": "Gender",
+    "maleLabel": "Male",
+    "femaleLabel": "Female",
+    "diversLabel": "Divers",
+    "addressLabel": "Address",
+    "zipLabel": "Postcode",
+    "medicalCareLabel": "Medical care necessary",
+    "warmingLabel": "Does the person have anything warming on them?",
+    "warmingPlaceholder": "Warming things",
+    "sleepingMatLabel": "Sleeping mat",
+    "blanketLabel": "Blanket",
+    "jacketLabel": "Jacket",
+    "sleepingBagLabel": "Sleeping bag",
+    "childrenLabel": "Accompanied by children",
+    "petsLabel": "Accompanied by pets",
+    "wheelchairUserLabel": "Wheelchair user",
+    "numberOfBagsLabel": "Does this person have any luggage?",
+    "numberOfBagsPlaceholder": "Number of bags",
+    "numberOfOtherNeedyPeopleLabel": "How many more people need help?",
+    "numberOfOtherNeedyPeoplePlaceholder": "Number of other needy people",
+    "subheaderRequestPerson": "Information about requesting Person",
+    "nameRequestingPersonLabel": "Name",
+    "phoneNumberLabel": "Callback number",
+    "confirmLabel": "Confirm that you have asked if the person in need wants to accept the help. *",
+    "submitButton": "Send",
+    "successMessage": "Kältebus request successful",
+    "errorMessage": "Kältebus request faild. Please try it again."
   },
   "legal": {
     "imageText": "Here you find legal related information"

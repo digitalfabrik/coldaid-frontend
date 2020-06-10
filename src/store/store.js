@@ -9,7 +9,8 @@ export const storeKeys = {
   shelters: 'shelters',
   adviceInformation: 'adviceInformation',
   healthRelatedInformation: 'healthRelatedInformation',
-  legalInformation: 'legalInformation'
+  legalInformation: 'legalInformation',
+  kaeltebus: 'kaeltebus',
 }
 
 export const initialState = {
@@ -18,8 +19,14 @@ export const initialState = {
   [storeKeys.isLoading]: false,
   [storeKeys.shelters]: { data: [], loadingError: false, pendingRequestsId: null, abortController: null },
   [storeKeys.adviceInformation]: { data: null, loadingError: false, pendingRequestsId: null, abortController: null },
-  [storeKeys.healthRelatedInformation]: { data: null, loadingError: false, pendingRequestsId: null, abortController: null },
+  [storeKeys.healthRelatedInformation]: {
+    data: null,
+    loadingError: false,
+    pendingRequestsId: null,
+    abortController: null,
+  },
   [storeKeys.legalInformation]: { data: null, loadingError: false, pendingRequestsId: null, abortController: null },
+  [storeKeys.kaeltebus]: { requestSuccess: false, requestError: false, pendingRequestsId: null },
 }
 
 const createUnistore = () => {
