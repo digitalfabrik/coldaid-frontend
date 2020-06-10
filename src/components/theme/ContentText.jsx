@@ -6,7 +6,7 @@ const ContentText = props => {
     <>
       <Hidden smDown>
         <Box my={4} px={4}>
-          <Typography>
+          <Typography component='div'>
             { props.children }
           </Typography>
         </Box>
@@ -14,7 +14,7 @@ const ContentText = props => {
 
       <Hidden mdUp>
         <Box my={4} px={1}>
-          <Typography>
+          <Typography component='div'>
             { props.children }
           </Typography>
         </Box>
