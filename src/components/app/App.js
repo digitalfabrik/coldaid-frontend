@@ -22,6 +22,7 @@ import Contact from '../../pages/Contact'
 import Imprint from '../../pages/Imprint'
 import Privacy from '../../pages/Privacy'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import KaeltebusSnackbar from '../kaeltebusSnackbar/KaeltebusSnackbar'
 
 export const APP_ROUTES = {
   home: '/',
@@ -63,6 +64,8 @@ function App() {
             <Route exact path={APP_ROUTES.privacy} component={Privacy} />
             <Redirect to={APP_ROUTES.home} />
           </Switch>
+
+          <KaeltebusSnackbar/>
 
           <Hidden smDown>
             <Footer />

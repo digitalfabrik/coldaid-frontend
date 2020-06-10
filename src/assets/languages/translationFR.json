@@ -84,7 +84,37 @@
     "imageText": "Trouver le bon hébergement d'urgence"
   },
   "kaeltebus": {
-    "imageText": "Appelez le \"Kältebus\""
+    "imageText": "Appelez le Kältebus",
+    "header": "Demande de Kältebus",
+    "subheaderIndigentPerson": "Les coordonnées de toute personne dans le besoin",
+    "nameLabel": "Nome",
+    "genderLabel": "Genre",
+    "maleLabel": "Homme",
+    "femaleLabel": "Femme",
+    "diversLabel": "Divers",
+    "addressLabel": "Adresse",
+    "zipLabel": "Code postal",
+    "medicalCareLabel": "Soins médicaux nécessaires",
+    "warmingLabel": "La personne a-t-elle quelque chose qui se réchauffe avec elle?",
+    "warmingPlaceholder": "Réchauffement",
+    "sleepingMatLabel": "Isomat",
+    "blanketLabel": "Plafond",
+    "jacketLabel": "Veste",
+    "sleepingBagLabel": "Sac de couchage",
+    "childrenLabel": "Les enfants avec nous",
+    "petsLabel": "Les animaux de compagnie avec eux",
+    "wheelchairUserLabel": "Les utilisateurs de fauteuils roulants",
+    "numberOfBagsLabel": "Cette personne a-t-elle des bagages ?",
+    "numberOfBagsPlaceholder": "Nombre de poches",
+    "numberOfOtherNeedyPeopleLabel": "Combien de personnes supplémentaires ont besoin d'aide ?",
+    "numberOfOtherNeedyPeoplePlaceholder": "Nombre d'autres personnes dans le besoin",
+    "subheaderRequestPerson": "Informations sur les demandeurs",
+    "nameRequestingPersonLabel": "Nom",
+    "phoneNumberLabel": "Numéro de rappel",
+    "confirmLabel": "Il s'agit de confirmer que vous avez demandé si la personne dans le besoin souhaite accepter l'aide. *",
+    "submitButton": "Envoyer",
+    "successMessage": "Kältebus demande acceptée",
+    "errorMessage": "Kältebus demande a échoué. Veuillez réessayer."
   },
   "legal": {
     "imageText": "Hier finden Sie rechtliche Informationen"
