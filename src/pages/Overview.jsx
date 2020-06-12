@@ -17,18 +17,18 @@ import FilterListIcon from '@material-ui/icons/FilterList'
 
 import { connect } from 'unistore/react'
 
-import Divider from '../../components/theme/Divider'
-import ContentLimiter from '../../components/theme/ContentLimiter'
-import PageHeadline from '../../components/theme/PageHeadline'
-import ServerError from '../../components/serverError/serverError'
+import Divider from '../components/theme/Divider'
+import ContentLimiter from '../components/theme/ContentLimiter'
+import PageHeadline from '../components/theme/PageHeadline'
+import ServerError from '../components/serverError/serverError'
 
-import ShelterTable from './ShelterTable'
+import ShelterTable from '../components/shelterOverview/ShelterTable'
 
-import { storeKeys } from '../../store/store'
-import { loadShelters } from '../../store/actions'
-import { resetRequest } from '../../store/loadData'
+import { storeKeys } from '../store/store'
+import { loadShelters } from '../store/actions'
+import { resetRequest } from '../store/loadData'
 
-import { filterShelters } from './utils'
+import { filterShelters } from '../components/shelterOverview/utils'
 
 const useStyles = makeStyles((theme) => ({
   search: {

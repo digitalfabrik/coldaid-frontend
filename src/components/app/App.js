@@ -14,7 +14,7 @@ import Footer from '../footer/Footer.jsx'
 import LegalInformation from '../../pages/generalInformation/LegalInformation'
 import Kaeltebus from '../../pages/Kaeltebus'
 
-import Overview from '../../pages/shelterOverview/Overview.jsx'
+import Overview from '../../pages/Overview.jsx'
 import MapPage from '../../pages/Map'
 import HealthRelatedInformation from '../../pages/generalInformation/HealthRelatedInformation'
 import AdviceInformation from '../../pages/generalInformation/AdviceInformation'
@@ -65,7 +65,7 @@ function App() {
             <Redirect to={APP_ROUTES.home} />
           </Switch>
 
-          <KaeltebusSnackbar/>
+          <KaeltebusSnackbar />
 
           <Hidden smDown>
             <Footer />
