@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   divider: {
-    margin: `${theme.spacing(8)}px auto`,
+    margin: props => `${theme.spacing(props.marginSize === 'small' ? 4 : 8)}px auto`,
     [theme.breakpoints.down('sm')]: {
-      margin: `${theme.spacing(4)}px auto`,
+      margin: props => `${theme.spacing(props.marginSize === 'small' ? 2 : 4)}px auto`,
     },
     width: '100%',
     maxWidth: props => `${props.maxWidth}%`,

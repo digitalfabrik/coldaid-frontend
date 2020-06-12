@@ -4,7 +4,7 @@ import { Hidden, Typography, makeStyles } from '@material-ui/core'
 const useStyles = makeStyles(theme => ({
   headline: {
     textAlign: 'left',
-    margin: `${theme.spacing(6)}px auto ${theme.spacing(6)}px`,
+    margin: `${theme.spacing(6)}px auto ${theme.spacing(4)}px 0`,
     [theme.breakpoints.down('sm')]: {
       margin: `${theme.spacing(4)}px auto`,
     },

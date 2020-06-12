@@ -81,7 +81,33 @@
     "serverError": "Ошибка при получении данных"
   },
   "overview": {
-    "imageText": "Найти подходящее место для экстренного размещения"
+    "pageHeadline": "Обзор",
+    "imageText": "Найти подходящее место для экстренного размещения",
+    "searchPlaceholder": "Поисковые убежища...",
+    "table": {
+      "head": {
+        "name": "Имя",
+        "address": "Адрес",
+        "availableBedsTotal": "Доступные кровати (всего)",
+        "intakeHours": "Часы приема"
+      }
+    },
+    "filter": {
+      "rules": {
+        "title": "Правила",
+        "children": "Дети",
+        "pets": "Домашние животные",
+        "women": "Только для женщин",
+        "men": "Только для мужчин",
+        "families": "Семьи",
+        "intoxicated": "Зараженный"
+      },
+      "amenities": {
+        "title": "Преимущества",
+        "toilet": "Туалет",
+        "shower": "Показать"
+      }
+    }
   },
   "kaeltebus": {
     "imageText": "Вызывать Kältebus",

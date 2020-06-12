@@ -75,7 +75,7 @@ const headCells = [
   { id: 'address', numeric: true, disablePadding: false, label: 'address' },
   { id: 'available_beds', numeric: true, disablePadding: false, label: 'available_beds' },
   { id: 'intake_hours', numeric: true, disablePadding: false, label: 'intake_hours' },
-  { id: 'distance', numeric: true, disablePadding: false, label: 'distance' },
+  { id: 'distance', numric: true, disablePadding: false, label: 'distance' },
 ];
 
 function EnhancedTableHead(props) {

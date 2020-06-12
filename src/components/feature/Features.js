@@ -27,19 +27,19 @@ const Features = () => {
 
   const features = [
     {
-      icon: <MapIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon}/>,
+      icon: <MapIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
       header: t('home.featuresSection.map.headline'),
       text: t('home.featuresSection.map.description'),
       link: APP_ROUTES.map,
     },
     {
-      icon: <ViewListIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon}/>,
+      icon: <ViewListIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
       header: t('home.featuresSection.shelterOverview.headline'),
       text: t('home.featuresSection.shelterOverview.description'),
       link: APP_ROUTES.shelterOverview,
     },
     {
-      icon: <DirectionsBusIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon}/>,
+      icon: <DirectionsBusIcon htmlColor={'rgba(0,0,0,0.7)'} className={icon} />,
       header: t('home.featuresSection.kaeltebus.headline'),
       text: t('home.featuresSection.kaeltebus.description'),
       link: APP_ROUTES.kaeltebus,
@@ -54,7 +54,7 @@ const Features = () => {
 
       <div className={featureContainer}>
         {features.map((feature, idx) => {
-          return <Feature key={idx} feature={feature}/>
+          return <Feature key={idx} feature={feature} />
         })}
       </div>
     </>

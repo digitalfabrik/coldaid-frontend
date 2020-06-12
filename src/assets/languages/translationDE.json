@@ -82,7 +82,32 @@
   },
   "overview": {
     "pageHeadline": "Übersicht",
-    "imageText": "Finden Sie die passende Notunterkunft"
+    "imageText": "Finden Sie die passende Notunterkunft",
+    "searchPlaceholder": "Suche Unterkünfte…",
+    "table": {
+      "head": {
+        "name": "Name",
+        "address": "Adresse",
+        "availableBedsTotal": "Verfügbare Betten (Gesamt)",
+        "intakeHours": "Aufnahmezeiten"
+      }
+    },
+    "filter": {
+      "rules": {
+        "title": "Regeln",
+        "children": "Kinder",
+        "pets": "Haustiere",
+        "women": "Nur Frauen",
+        "men": "Nur Männer",
+        "families": "Familien",
+        "intoxicated": "Rauschzustand"
+      },
+      "amenities": {
+        "title": "Austattung",
+        "toilet": "Toilette",
+        "shower": "Dusche"
+      }
+    }
   },
   "kaeltebus": {
     "imageText": "Rufen Sie den Kältebus",

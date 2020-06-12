@@ -81,7 +81,33 @@
     "serverError": "Error while retrieving data"
   },
   "overview": {
-    "imageText": "Find a Shelter"
+    "pageHeadline": "Overview",
+    "imageText": "Find a Shelter",
+    "searchPlaceholder": "Search shelters…",
+    "table": {
+      "head": {
+        "name": "Name",
+        "address": "Address",
+        "availableBedsTotal": "Available beds (total)",
+        "intakeHours": "Intake Hours"
+      }
+    },
+    "filter": {
+      "rules": {
+        "title": "Rules",
+        "children": "Children",
+        "pets": "Pets",
+        "women": "Female only",
+        "men": "Male only",
+        "families": "Families",
+        "intoxicated": "Intoxicated"
+      },
+      "amenities": {
+        "title": "Amenities",
+        "toilet": "Toilet",
+        "shower": "Shower"
+      }
+    }
   },
   "kaeltebus": {
     "imageText": "Call the Kältebus",
