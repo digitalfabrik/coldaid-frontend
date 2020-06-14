@@ -9,6 +9,8 @@ import ServerError from '../../components/serverError/serverError'
 import { loadLegalInformation } from '../../store/actions'
 import { resetRequest } from '../../store/loadData'
 import { storeKeys } from '../../store/store'
+import PageHeadline from '../../components/theme/PageHeadline'
+import CmsStylingContainer from '../../components/cmsStylingContainer/cmsStylingContainer'
 
 function LegalInformation(props) {
   const { legalInformation, language, loadLegalInformation } = props
@@ -36,10 +38,8 @@ function LegalInformation(props) {
       {
         legalInformation.data && !legalInformation.loadingError ?
           <>
-            <h1 style={{ textAlign: 'center' }}>{legalInformation.data.title}</h1>
-            <div style={{ whiteSpace: 'pre-wrap' }}>
-              <ContentText>{legalInformation.data.content}</ContentText>
-            </div>
+            <PageHeadline>{legalInformation.data.title}</PageHeadline>
+            <CmsStylingContainer>{legalInformation.data.content}</CmsStylingContainer>
             {displayDate()}
           </>
           :

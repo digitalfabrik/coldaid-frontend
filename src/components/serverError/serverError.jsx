@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Hidden, makeStyles } from '@material-ui/core'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
 import Typography from '@material-ui/core/Typography'
+import ContentLimiter from '../theme/ContentLimiter'
 
 const useStyles = makeStyles(theme => ({
   wrapper: {

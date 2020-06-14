@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react'
-import { connect } from "unistore/react";
-import { useTranslation } from "react-i18next";
+import { connect } from 'unistore/react'
+import { useTranslation } from 'react-i18next'
 
 import ContentLimiter from '../../components/theme/ContentLimiter'
-import ContentText from "../../components/theme/ContentText";
-import ServerError from "../../components/serverError/serverError";
+import ContentText from '../../components/theme/ContentText'
+import ServerError from '../../components/serverError/serverError'
 
-import { loadHealthRelatedInformation } from "../../store/actions";
+import { loadHealthRelatedInformation } from '../../store/actions'
 import { resetRequest } from '../../store/loadData'
 import { storeKeys } from '../../store/store'
+import PageHeadline from '../../components/theme/PageHeadline'
+import CmsStylingContainer from '../../components/cmsStylingContainer/cmsStylingContainer'
 
 function HealthRelatedInformation(props) {
-  const { healthRelatedInformation, language, loadHealthRelatedInformation } = props;
-  const { t } = useTranslation();
+  const { healthRelatedInformation, language, loadHealthRelatedInformation } = props
+  const { t } = useTranslation()
 
   useEffect(() => {
     loadHealthRelatedInformation()
@@ -24,9 +26,9 @@ function HealthRelatedInformation(props) {
 
   const displayDate = () => {
     if (healthRelatedInformation.data && healthRelatedInformation.data.modified_gmt) {
-      return <ContentText>{t("informationPages.last_changed")} {new Date(healthRelatedInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
+      return <ContentText>{t('informationPages.last_changed')} {new Date(healthRelatedInformation.data.modified_gmt).toLocaleDateString()}</ContentText>
     } else {
-      return null;
+      return null
     }
   }
 
@@ -35,15 +37,13 @@ function HealthRelatedInformation(props) {
       {
         healthRelatedInformation.data && !healthRelatedInformation.loadingError ?
           <>
-            <h1 style={{ textAlign: "center" }}>{healthRelatedInformation.data.title}</h1>
-            <div style={{ whiteSpace: 'pre-wrap' }}>
-              <ContentText>{healthRelatedInformation.data.content}</ContentText>
-            </div>
+            <PageHeadline>{healthRelatedInformation.data.title}</PageHeadline>
+            <CmsStylingContainer>{healthRelatedInformation.data.content}</CmsStylingContainer>
             {displayDate()}
           </>
           :
           healthRelatedInformation.loadingError ?
-            <ServerError />
+            <ServerError/>
             :
             <div></div>
       }
@@ -54,7 +54,7 @@ function HealthRelatedInformation(props) {
 
 const mapStateToProps = [storeKeys.healthRelatedInformation, storeKeys.language]
 const actions = {
-  loadHealthRelatedInformation
+  loadHealthRelatedInformation,
 }
 
 export default connect(mapStateToProps, actions)(HealthRelatedInformation)

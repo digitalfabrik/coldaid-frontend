@@ -10,6 +10,7 @@ import { loadAdviceInformation } from '../../store/actions'
 import { resetRequest } from '../../store/loadData'
 import { storeKeys } from '../../store/store'
 import PageHeadline from '../../components/theme/PageHeadline'
+import CmsStylingContainer from '../../components/cmsStylingContainer/cmsStylingContainer'
 
 
 function AdviceInformation(props) {
@@ -40,9 +41,7 @@ function AdviceInformation(props) {
             <PageHeadline>
               {adviceInformation.data.title}
             </PageHeadline>
-            <div style={{ whiteSpace: 'pre-wrap' }}>
-              <ContentText>{adviceInformation.data.content}</ContentText>
-            </div>
+            <CmsStylingContainer>{adviceInformation.data.content}</CmsStylingContainer>
             {displayDate()}
           </>
           :

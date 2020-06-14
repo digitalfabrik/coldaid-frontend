@@ -24,7 +24,7 @@ export const loadAdviceInformation = async state => {
     state,
     storeKeys.adviceInformation,
     null,
-    `http://localhost:8000/api/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/kontakt-zu-app-team-augsburg`)
+    `${BASE_API}/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/kontakt-zu-app-team-augsburg`)
 }
 
 export const loadHealthRelatedInformation = async state => {
@@ -32,7 +32,7 @@ export const loadHealthRelatedInformation = async state => {
   return await loadData(state,
     storeKeys.healthRelatedInformation,
     null,
-    `http://localhost:8000/api/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/uber-die-app-integreat-augsburg`)
+    `${BASE_API}/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/uber-die-app-integreat-augsburg`)
 }
 
 export const loadLegalInformation = async state => {
@@ -40,7 +40,7 @@ export const loadLegalInformation = async state => {
   return await loadData(state,
     storeKeys.legalInformation,
     null,
-    `http://localhost:8000/api/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/wissenswertes-uber-augsburg`)
+    `${BASE_API}/augsburg/${state.language}/page/?url=augsburg/${state.language}/willkommen/wissenswertes-uber-augsburg`)
 }
 
 export const requestKaeltebus = async (state, data) => {
@@ -54,7 +54,7 @@ export const requestKaeltebus = async (state, data) => {
   })
   updateLoadingState()
   try {
-    await axios.post(`http://localhost:8000/api/${API.kaeltebusRequest}`, { data: JSON.stringify(data) })
+    await axios.post(`${BASE_API}/${API.kaeltebusRequest}`, { data: JSON.stringify(data) })
     const upToDateState = store.getState()
     store.setState({
       [storeKeys.kaeltebus]: { ...upToDateState[storeKeys.kaeltebus], requestSuccess: true, pendingRequestsId: null },

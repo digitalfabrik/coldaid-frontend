@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'left',
     margin: theme.spacing(0,0,4),
     [theme.breakpoints.down('sm')]: {
-      margin: `${theme.spacing(4)}px auto`,
+      margin: theme.spacing(0,0,2),
     },
     fontWeight: 100
   }
