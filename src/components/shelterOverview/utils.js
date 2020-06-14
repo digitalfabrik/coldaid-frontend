@@ -1,9 +1,6 @@
 import pathOr from '@ramda/pathor'
 
 export const descendingComparator = (a, b, orderBy) => {
-  console.log('a', a)
-  console.log('b', b)
-  console.log('orderBy', orderBy)
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }

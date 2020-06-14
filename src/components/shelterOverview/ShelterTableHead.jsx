@@ -18,9 +18,9 @@ function ShelterTableHead(props) {
 
   const headCells = [
     { id: 'name', alignRight: false, disablePadding: false, label: t('overview.table.head.name'), sortable: true },
-    { id: 'address', alignRight: false, disablePadding: false, label: t('overview.table.head.address'), hiddenOnMobile: true },
-    { id: 'availableBeds', alignRight: true, disablePadding: false, label: t('overview.table.head.availableBedsTotal') },
-    { id: 'intakeHours', alignRight: true, disablePadding: false, label: t('overview.table.head.intakeHours'), hiddenOnMobile: true },
+    { id: 'address', alignRight: false, disablePadding: false, label: t('overview.table.head.address'), hiddenSmDown: true },
+    { id: 'availableBeds', alignRight: true, disablePadding: false, label: t('overview.table.head.availableBedsTotal'), hiddenXsDown: true },
+    { id: 'intakeHours', alignRight: true, disablePadding: false, label: t('overview.table.head.intakeHours'), hiddenSmDown: true },
   ]
 
   return (
@@ -29,7 +29,7 @@ function ShelterTableHead(props) {
         <TableCell/>
         {headCells.map((headCell) => {
           return(
-            <Hidden key={headCell.id} smDown={headCell.hiddenOnMobile}>
+            <Hidden key={headCell.id} smDown={headCell.hiddenSmDown} xsDown={headCell.hiddenXsDown}>
               <TableCell
                 key={headCell.id}
                 align={headCell.alignRight ? 'right' : 'left'}

@@ -50,7 +50,9 @@ const ShelterTableRow = ({ shelter, shelterIdx }) => {
           </TableCell>
         </Hidden>
 
-        <TableCell align="right">{availableBedsTotal}</TableCell>
+        <Hidden xsDown>
+          <TableCell align="right">{availableBedsTotal}</TableCell>
+        </Hidden>
 
         <Hidden smDown>
           <TableCell align="right">{intakeHours}</TableCell>

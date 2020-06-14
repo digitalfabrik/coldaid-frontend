@@ -31,6 +31,13 @@ import { resetRequest } from '../store/loadData'
 import { filterShelters } from '../components/shelterOverview/utils'
 
 const useStyles = makeStyles((theme) => ({
+  searchWrapper:  {
+    display: 'flex',
+    flexDirection: 'row',
+    margin: theme.spacing(4, 'auto'),
+    alignItems: 'center',
+    width: 'max-content'
+  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -40,12 +47,11 @@ const useStyles = makeStyles((theme) => ({
     },
     maxWidth: '290px',
     width: '100%',
-    margin: theme.spacing(4, 'auto'),
-    [theme.breakpoints.down('sm')]: {
-      margin: theme.spacing(0, 'auto', 4)
-    },
     border: '1px solid',
-    borderColor: theme.palette.primary.main
+    borderColor: theme.palette.primary.main,
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: '250px'
+    },
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -55,11 +61,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  filterButton: {
-    position: 'absolute',
-    top: '-6px',
-    right: '-48px'
   },
   inputRoot: {
     color: 'inherit',
@@ -160,7 +161,7 @@ const Overview = props => {
     setShowFilters(!showFilters)
   }
 
-  if (!shelters.data) return <ServerError />
+  if (!shelters.data || shelters.data.length === 0) return <ServerError />
 
   const filteredShelters = filterShelters(shelters.data, searchValue, rules, ruleFilters, amenities, amenityFilters)
 
@@ -168,21 +169,23 @@ const Overview = props => {
     <ContentLimiter withBoxShadow>
       <PageHeadline>{t('overview.pageHeadline')}</PageHeadline>
 
-      <div className={classes.search}>
-        <div className={classes.searchIcon}>
-          <SearchIcon />
-        </div>
+      <div className={classes.searchWrapper}>
+        <div className={classes.search}>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
 
-        <InputBase
-          value={searchValue}
-          onChange={e => setSearchValue(e.target.value)}
-          placeholder={t('overview.searchPlaceholder')}
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput,
-          }}
-          inputProps={{ 'aria-label': 'search' }}
-        />
+          <InputBase
+            value={searchValue}
+            onChange={e => setSearchValue(e.target.value)}
+            placeholder={t('overview.searchPlaceholder')}
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </div>
 
         <Tooltip className={classes.filterButton} title="Filter list">
           <IconButton onClick={e => toggleShowFilters()} aria-label="filter list">
