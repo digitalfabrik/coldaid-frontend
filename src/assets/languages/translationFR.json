@@ -81,7 +81,33 @@
     "serverError": "Erreur d'extraction des données"
   },
   "overview": {
-    "imageText": "Trouver le bon hébergement d'urgence"
+    "pageHeadline": "Voir",
+    "imageText": "Trouver le bon hébergement d'urgence",
+    "searchPlaceholder": "Suche Unterkünfte…",
+    "table": {
+      "head": {
+        "name": "Nom",
+        "address": "Adresse",
+        "availableBedsTotal": "Lits disponibles (total)",
+        "intakeHours": "Temps d'enregistrement"
+      }
+    },
+    "filter": {
+      "rules": {
+        "title": "Règles",
+        "children": "Enfants",
+        "pets": "Animaux de compagnie",
+        "women": "Femmes seulement",
+        "men": "Hommes seulement",
+        "families": "Familles",
+        "intoxicated": "état d'intoxication"
+      },
+      "amenities": {
+        "title": "Équipement",
+        "toilet": "Toilettes",
+        "shower": "Douche"
+      }
+    }
   },
   "kaeltebus": {
     "imageText": "Appelez le Kältebus",
