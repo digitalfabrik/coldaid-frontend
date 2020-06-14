@@ -161,7 +161,13 @@ const Overview = props => {
     setShowFilters(!showFilters)
   }
 
-  if (!shelters.data || shelters.data.length === 0) return <ServerError />
+  if (shelters.loadingError) return (
+    <ContentLimiter withBoxShadow>
+      <ServerError />
+    </ContentLimiter>
+  )
+
+  if (!shelters.data) return null
 
   const filteredShelters = filterShelters(shelters.data, searchValue, rules, ruleFilters, amenities, amenityFilters)
 
