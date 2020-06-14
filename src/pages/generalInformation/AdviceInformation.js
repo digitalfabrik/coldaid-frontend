@@ -9,6 +9,7 @@ import ServerError from '../../components/serverError/serverError'
 import { loadAdviceInformation } from '../../store/actions'
 import { resetRequest } from '../../store/loadData'
 import { storeKeys } from '../../store/store'
+import PageHeadline from '../../components/theme/PageHeadline'
 
 
 function AdviceInformation(props) {
@@ -36,7 +37,9 @@ function AdviceInformation(props) {
       {
         adviceInformation.data && !adviceInformation.loadingError ?
           <>
-            <h1 style={{ textAlign: 'center' }}>{adviceInformation.data.title}</h1>
+            <PageHeadline>
+              {adviceInformation.data.title}
+            </PageHeadline>
             <div style={{ whiteSpace: 'pre-wrap' }}>
               <ContentText>{adviceInformation.data.content}</ContentText>
             </div>

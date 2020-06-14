@@ -37,7 +37,7 @@ const Footer = () => {
 
   return (
     <footer className={classes.footer}>
-      <ContentLimiter>
+      <ContentLimiter footer>
         <div className={classes.footerLimiter}>
           <div className={classes.links}>
             <Link

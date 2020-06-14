@@ -4,7 +4,7 @@ import { Hidden, Typography, makeStyles } from '@material-ui/core'
 const useStyles = makeStyles(theme => ({
   headline: {
     textAlign: 'left',
-    margin: `${theme.spacing(6)}px auto ${theme.spacing(4)}px 0`,
+    margin: theme.spacing(0,0,4),
     [theme.breakpoints.down('sm')]: {
       margin: `${theme.spacing(4)}px auto`,
     },
@@ -24,7 +24,7 @@ const PageHeadline = props => {
       </Hidden>
 
       <Hidden mdUp>
-        <Typography className={classes.headline} variant={"h3"} component={"h2"} align="center">
+        <Typography className={classes.headline} variant={"h4"} component={"h1"} align="center">
           {props.children}
         </Typography>
       </Hidden>
