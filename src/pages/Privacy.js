@@ -1,7 +1,7 @@
 import React from 'react'
 import ContentLimiter from '../components/theme/ContentLimiter'
-import ContentText from '../components/theme/ContentText'
 import { useTranslation } from 'react-i18next'
+import CmsStylingContainer from '../components/cmsStylingContainer/cmsStylingContainer'
 
 /**
  * Placeholer text. Simple styling. Copy-paste https://integreat-app.de/datenschutz/
@@ -10,8 +10,8 @@ function Privacy() {
   const { t } = useTranslation()
   return (
     <ContentLimiter withBoxShadow>
-      <h1 style={{ textAlign: 'center' }}>{t('privacy.navigationLabel')}</h1>
-      <ContentText>
+      <CmsStylingContainer>
+        <h1>{t('privacy.navigationLabel')}</h1>
         <p>Bei der Nutzung der Integreat-App f&uuml;r Smartphones und der Integreat-Web-Application (zusammen &bdquo;
           <strong>Apps</strong>&bdquo;) erhebt die TU Projects Obdachlosenhilfe gGmbH (von nun an &bdquo;<strong>Beste
             Firma</strong>&ldquo; oder &bdquo;<strong>wir</strong>&bdquo;) als Verantwortlicher Daten. In dieser
@@ -91,7 +91,7 @@ function Privacy() {
         <p>Wir haben einen Datenschutzbeauftragten ernannt. Dieser ist erreichbar unter:</p>
         <p>Ulli Holtgrave<br/>TU Projects TU Berlin<br/>ulli@tu-projects.de<br/>Straße des 17. Juni 135<br/>10623 Berlin
         </p>
-      </ContentText>
+      </CmsStylingContainer>
     </ContentLimiter>
   )
 }

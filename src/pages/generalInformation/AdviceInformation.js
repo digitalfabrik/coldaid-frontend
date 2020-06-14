@@ -9,6 +9,8 @@ import ServerError from '../../components/serverError/serverError'
 import { loadAdviceInformation } from '../../store/actions'
 import { resetRequest } from '../../store/loadData'
 import { storeKeys } from '../../store/store'
+import PageHeadline from '../../components/theme/PageHeadline'
+import CmsStylingContainer from '../../components/cmsStylingContainer/cmsStylingContainer'
 
 
 function AdviceInformation(props) {
@@ -36,10 +38,10 @@ function AdviceInformation(props) {
       {
         adviceInformation.data && !adviceInformation.loadingError ?
           <>
-            <h1 style={{ textAlign: 'center' }}>{adviceInformation.data.title}</h1>
-            <div style={{ whiteSpace: 'pre-wrap' }}>
-              <ContentText>{adviceInformation.data.content}</ContentText>
-            </div>
+            <PageHeadline>
+              {adviceInformation.data.title}
+            </PageHeadline>
+            <CmsStylingContainer>{adviceInformation.data.content}</CmsStylingContainer>
             {displayDate()}
           </>
           :

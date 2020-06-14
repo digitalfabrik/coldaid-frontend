@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Hidden, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 
 import ContentLimiter from '../components/theme/ContentLimiter'
 import FormControl from '@material-ui/core/FormControl'
@@ -16,18 +16,12 @@ import { storeKeys } from '../store/store'
 import { requestKaeltebus } from '../store/actions'
 import { connect } from 'unistore/react'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import PageHeadline from '../components/theme/PageHeadline'
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     fontWeight: '300',
-    paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4),
-    [theme.breakpoints.down('sm')]: {
-      paddingLeft: theme.spacing(1),
-      paddingRight: theme.spacing(1),
-    },
   },
   header: {
     fontWeight: '100',
@@ -271,17 +265,9 @@ function Kaeltebus(props) {
     <ContentLimiter withBoxShadow>
       <div className={classes.wrapper}>
 
-        <Hidden smDown>
-          <Typography variant="h2" className={classes.header}>
-            {t('kaeltebus.header')}
-          </Typography>
-        </Hidden>
-
-        <Hidden mdUp>
-          <Typography variant="h4" className={classes.header}>
-            {t('kaeltebus.header')}
-          </Typography>
-        </Hidden>
+        <PageHeadline>
+          {t('kaeltebus.header')}
+        </PageHeadline>
 
         <form onSubmit={handleSubmit} autoComplete="off">
           <Typography className={classes.subHeader} variant="h6">

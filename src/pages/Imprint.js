@@ -1,15 +1,15 @@
 import React from 'react'
 import ContentLimiter from '../components/theme/ContentLimiter'
 import { useTranslation } from 'react-i18next'
-import ContentText from '../components/theme/ContentText'
+import CmsStylingContainer from '../components/cmsStylingContainer/cmsStylingContainer'
 
 function Imprint() {
   const { t } = useTranslation()
 
   return (
     <ContentLimiter withBoxShadow>
-      <h1 style={{ textAlign: 'center' }}>{t('imprint.navigationLabel')}</h1>
-      <ContentText>
+      <CmsStylingContainer>
+        <h1>{t('imprint.navigationLabel')}</h1>
         <p>Die Inhalte werden herausgegeben durch:</p>
         <p><strong>Herausgeber:</strong></p>
         <p>TU Projects<br/>(Gebietsk&ouml;rperschaft des &ouml;ffentlichen Rechts)<br/>Straße des 17. Juni 135<br/>10623
@@ -66,7 +66,7 @@ function Imprint() {
           gel&ouml;scht.</p>
         <p>F&uuml;r die Inhalte der werblichen Eintr&auml;ge auf dem Portal www.berlin-city.de sind die jeweils
           eintragenden Unternehmen selbst verantwortlich.</p>
-      </ContentText>
+      </CmsStylingContainer>
     </ContentLimiter>
   )
 }
