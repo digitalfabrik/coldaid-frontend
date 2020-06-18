@@ -41,7 +41,9 @@ function AdviceInformation(props) {
             <PageHeadline>
               {adviceInformation.data.title}
             </PageHeadline>
-            <CmsStylingContainer>{adviceInformation.data.content}</CmsStylingContainer>
+            <CmsStylingContainer>
+              <div dangerouslySetInnerHTML={{ __html: adviceInformation.data.content }}/>
+            </CmsStylingContainer>
             {displayDate()}
           </>
           :
