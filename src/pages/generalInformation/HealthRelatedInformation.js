@@ -38,7 +38,9 @@ function HealthRelatedInformation(props) {
         healthRelatedInformation.data && !healthRelatedInformation.loadingError ?
           <>
             <PageHeadline>{healthRelatedInformation.data.title}</PageHeadline>
-            <CmsStylingContainer>{healthRelatedInformation.data.content}</CmsStylingContainer>
+            <CmsStylingContainer>
+              <div dangerouslySetInnerHTML={{ __html: healthRelatedInformation.data.content }}/>
+            </CmsStylingContainer>
             {displayDate()}
           </>
           :

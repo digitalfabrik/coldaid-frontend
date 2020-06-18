@@ -32,14 +32,15 @@ function LegalInformation(props) {
     }
   }
 
-
   return (
     <ContentLimiter withBoxShadow>
       {
         legalInformation.data && !legalInformation.loadingError ?
           <>
             <PageHeadline>{legalInformation.data.title}</PageHeadline>
-            <CmsStylingContainer>{legalInformation.data.content}</CmsStylingContainer>
+            <CmsStylingContainer>
+              <div dangerouslySetInnerHTML={{ __html: legalInformation.data.content }}/>
+            </CmsStylingContainer>
             {displayDate()}
           </>
           :
